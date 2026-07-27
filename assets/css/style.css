@@ -96,7 +96,11 @@
     --w-bold: 700;    --w-extrabold: 800;
 
     /* Fluid scale, 360 → 1600px */
-    --t-hero:       clamp(2.5rem, 1.35rem + 4.9vw, 5.5rem);      /* 40 → 88 */
+    /* The cap was 88px, which overpowered the hero: at that size the headline
+       broke to three lines and left the supporting copy and CTAs looking like
+       an afterthought. 72px keeps the headline dominant while staying a clear
+       step above --t-display (64px) on the internal pages. */
+    --t-hero:       clamp(2.25rem, 1.5rem + 3.6vw, 4.5rem);      /* 36 → 72 */
     --t-display:    clamp(2.125rem, 1.35rem + 3.3vw, 4rem);      /* 34 → 64 */
     --t-section:    clamp(1.875rem, 1.35rem + 2.3vw, 3.25rem);   /* 30 → 52 */
     --t-subsection: clamp(1.5rem, 1.2rem + 1.35vw, 2.25rem);     /* 24 → 36 */
