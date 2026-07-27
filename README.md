@@ -1,6 +1,6 @@
 # Neoteric ERA — Website Front-End
 
-A production-quality, multi-page static front-end for **Neoteric ERA IT Services**,
+A production-quality, multi-page static front-end for **Neoteric ERA Digital Services**,
 a digital agency providing website development, SEO, Google Ads and digital
 marketing to businesses in the United States.
 
@@ -41,11 +41,11 @@ no framework, no dependencies to install.
 
 ## Overview
 
-**Client:** Neoteric ERA IT Services
+**Client:** Neoteric ERA Digital Services
 **Audience:** Businesses in the United States
-**Office:** Muslim Town, Lahore, Pakistan
+**Office:** Office #105, 2nd Floor, Chuadhry Center, Multan Rd, Sodiwal, Lahore 54000, Pakistan
 **Phone:** +92 309 0155045
-**Email:** `hello@neotericera.com` — **placeholder, must be confirmed**
+**Email:** `info@neotericera.com`
 
 | Priority  | Conversion                      | Where                                   |
 |-----------|---------------------------------|-----------------------------------------|
@@ -398,7 +398,7 @@ where a literal illustration would not.
 
 ### The wordmark
 
-Reads **NEOTERIC** in ink, **ERA** in the brand gradient, with **IT SERVICES**
+Reads **NEOTERIC** in ink, **ERA** in the brand gradient, with **DIGITAL SERVICES**
 below as a spaced-out descriptor. Two weights of information in one lockup: the
 name, and what the company actually does. A visitor who sees only the logo still
 learns the business.
@@ -873,8 +873,6 @@ attributes for animation delays — allow them or move those to utility classes.
 
 ### Blocking — before launch
 
-- [ ] **Confirm the company email.** `hello@neotericera.com` is a placeholder in
-      ~40 locations.
 - [ ] **Replace the placeholder domain** in canonicals, Open Graph, JSON-LD,
       `robots.txt`, `sitemap.xml`.
 - [ ] **Verify the remaining statistics** against real data. Remove anything
@@ -940,5 +938,6 @@ the claim rather than soften it.
 
 ---
 
-**Neoteric ERA IT Services** · Muslim Town, Lahore, Pakistan · +92 309 0155045
+**Neoteric ERA Digital Services** · Office #105, 2nd Floor, Chuadhry Center, Multan Rd,
+Sodiwal, Lahore 54000, Pakistan · +92 309 0155045
 Serving businesses across the United States.
