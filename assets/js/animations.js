@@ -17,6 +17,20 @@
 (function () {
     'use strict';
 
+    /* Arm the reveal system.
+       ----------------------------------------------------------------------
+       animations.css keeps every hidden resting state behind `.has-reveal`, so
+       nothing on the page is hidden until this line runs. It is deliberately
+       the first statement in the module and sits outside every try/catch:
+       until the browser has confirmed it can execute this file, no content is
+       allowed to be invisible.
+
+       main.js removes `.no-js` on its own, so that class cannot be relied on
+       to cover a failure of THIS file specifically. If animations.js 404s, is
+       blocked, or throws on parse, `.has-reveal` is simply never added and the
+       whole site renders as static, fully visible HTML. */
+    document.documentElement.classList.add('has-reveal');
+
     const utils = (window.NeotericERA && window.NeotericERA.utils) || {};
     const $  = utils.$  || ((s, c) => (c || document).querySelector(s));
     const $$ = utils.$$ || ((s, c) => Array.prototype.slice.call((c || document).querySelectorAll(s)));
@@ -71,7 +85,15 @@
             // Fires a little before the element edge enters the viewport so
             // motion has already settled by the time it is properly visible.
             rootMargin: '0px 0px -12% 0px',
-            threshold: 0.08
+
+            // threshold 0, deliberately. A ratio-based threshold is a trap for
+            // reveal work: an element taller than the viewport, or one whose
+            // rendered area is reduced by its own styling, may never reach a
+            // given ratio, and a reveal that never fires leaves content
+            // permanently invisible. The rootMargin above already provides the
+            // "wait until it is properly on screen" behaviour that a threshold
+            // would otherwise be doing.
+            threshold: 0
         });
 
         items.forEach((el) => {

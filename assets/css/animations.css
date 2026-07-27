@@ -5,8 +5,15 @@
      1. The element carries a `reveal-*` class in the markup.
      2. CSS defines its resting (hidden) state.
      3. animations.js adds `.is-revealed` via Intersection Observer.
-     4. If JavaScript never runs, the `.no-js` block at the foot of this file
-        makes everything visible. Content is never trapped.
+     4. Two independent fail-safes mean content is never trapped:
+          - Resting states are gated behind `.has-reveal`, added by
+            animations.js as its first statement. If that file never arrives,
+            nothing is ever hidden.
+          - The `.no-js` block at the foot of this file covers JS disabled.
+
+     Never put clip-path, or anything else that collapses an element's rendered
+     area, on an element the observer watches: it will report zero intersection,
+     never be revealed, and stay invisible forever. Clip a child instead.
 
    Timing tiers:
      micro-interaction   200ms
@@ -16,6 +23,20 @@
 
 /* ==========================================================================
    01. REVEAL PRIMITIVES
+   --------------------------------------------------------------------------
+   Every hidden resting state below is gated behind `.has-reveal`, which
+   animations.js adds to <html> as its very first statement.
+
+   Why the gate matters: main.js removes `.no-js` from <html>, and it does so
+   independently of animations.js. So if animations.js alone fails to arrive —
+   a 404, a CSP rule, a stalled CDN, a syntax error from a bad edit — `.no-js`
+   is already gone and the resting states would apply with nothing left to
+   remove them. Every revealed element on the site would be permanently
+   invisible, with no error anywhere to explain it.
+
+   Gated this way, a missing animations.js costs the animation and nothing
+   else: the page renders fully, just without motion. Same pattern as
+   `.has-imgfade` further down, and for the same reason.
    ========================================================================== */
 
 [class*="reveal-"] {
@@ -25,18 +46,18 @@
     transition-delay: var(--reveal-delay, 0ms);
 }
 
-.reveal-up { opacity: 0; transform: translate3d(0, 2.5rem, 0); }
+.has-reveal .reveal-up { opacity: 0; transform: translate3d(0, 2.5rem, 0); }
 .reveal-up.is-revealed { opacity: 1; transform: translate3d(0, 0, 0); }
 
-.reveal-fade { opacity: 0; }
+.has-reveal .reveal-fade { opacity: 0; }
 .reveal-fade.is-revealed { opacity: 1; }
 
-.reveal-left { opacity: 0; transform: translate3d(-2.25rem, 0, 0); }
-.reveal-right { opacity: 0; transform: translate3d(2.25rem, 0, 0); }
+.has-reveal .reveal-left { opacity: 0; transform: translate3d(-2.25rem, 0, 0); }
+.has-reveal .reveal-right { opacity: 0; transform: translate3d(2.25rem, 0, 0); }
 .reveal-left.is-revealed,
 .reveal-right.is-revealed { opacity: 1; transform: translate3d(0, 0, 0); }
 
-.reveal-scale { opacity: 0; transform: scale(0.975); }
+.has-reveal .reveal-scale { opacity: 0; transform: scale(0.975); }
 .reveal-scale.is-revealed { opacity: 1; transform: scale(1); }
 
 /* ==========================================================================
@@ -47,21 +68,54 @@
    reveals and is reserved for large editorial figures.
    ========================================================================== */
 
-.reveal-mask { clip-path: inset(0 0 100% 0); will-change: clip-path; }
-.reveal-mask.is-revealed { clip-path: inset(0 0 0 0); }
+/* CRITICAL: the clip goes on the INNER image, never on the observed element.
+   --------------------------------------------------------------------------
+   This used to read `.reveal-mask { clip-path: inset(0 0 100% 0) }`, i.e. the
+   clip sat on the same <figure> that the IntersectionObserver watches. Browsers
+   factor clip-path into the intersection rectangle, so a fully clipped element
+   reports zero intersection, never crosses the observer threshold, and never
+   receives `.is-revealed` — which was the only thing that would have unclipped
+   it. A closed loop: the element was invisible *because* it was invisible.
 
-.reveal-mask > img,
-.reveal-mask > picture > img {
+   Only figures above the fold escaped, via the getBoundingClientRect fast path
+   in initReveals(). Every masked figure further down the page stayed blank.
+
+   Clipping the image instead leaves the figure at full size for the observer.
+   The visual result is identical: .ratio-box is overflow:hidden with the image
+   absolutely positioned to fill it, so clipping either one looks the same.
+
+   Rule of thumb for anything added later: never put clip-path, or any other
+   property that collapses an element's rendered area, on an element that an
+   IntersectionObserver is watching. */
+.reveal-mask { will-change: clip-path; }
+
+/* The `html` prefix is load-bearing, not decoration.
+   Section 06 sets `.has-imgfade img[loading="lazy"] { transition: opacity … }`.
+   Every masked figure holds a lazy image, and that selector has the same
+   specificity as a bare `.has-reveal .reveal-mask > img` but sits later in the
+   file — so it would win, replace the transition shorthand outright, and the
+   clip and scale would snap instead of animating. Prefixing with `html` adds
+   one element to the count and settles it. The opacity leg is carried here too
+   so the lazy fade still runs. */
+html.has-reveal .reveal-mask > img,
+html.has-reveal .reveal-mask > picture > img {
+    clip-path: inset(0 0 100% 0);
     transform: scale(1.14);
-    transition: transform 1500ms var(--ease-out);
-    transition-delay: var(--reveal-delay, 0ms);
+    transition-property: clip-path, transform, opacity;
+    transition-duration: var(--d-reveal), 1500ms, 600ms;
+    transition-timing-function: var(--ease-out), var(--ease-out), var(--ease-subtle);
+    transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms;
 }
 
-.reveal-mask.is-revealed > img,
-.reveal-mask.is-revealed > picture > img { transform: scale(1); }
+html .reveal-mask.is-revealed > img,
+html .reveal-mask.is-revealed > picture > img {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+}
 
-.reveal-wipe { clip-path: inset(0 100% 0 0); }
-.reveal-wipe.is-revealed { clip-path: inset(0 0 0 0); }
+/* Same reasoning: the wipe clips its children, not itself. */
+.has-reveal .reveal-wipe > * { clip-path: inset(0 100% 0 0); transition: clip-path var(--d-reveal) var(--ease-out); }
+.reveal-wipe.is-revealed > * { clip-path: inset(0 0 0 0); }
 
 /* ==========================================================================
    03. TEXT-LINE REVEAL
@@ -78,7 +132,7 @@
     margin-bottom: -0.14em;
 }
 
-.reveal-lines .line__inner {
+.has-reveal .reveal-lines .line__inner {
     display: block;
     transform: translate3d(0, 105%, 0);
     transition: transform 1000ms var(--ease-out);
@@ -95,7 +149,7 @@
     margin-bottom: -0.14em;
 }
 
-.reveal-words .word__inner {
+.has-reveal .reveal-words .word__inner {
     display: inline-block;
     transform: translate3d(0, 105%, 0);
     transition: transform 820ms var(--ease-out);
@@ -134,7 +188,7 @@
    05. DECORATIVE RULE EXPANSION
    ========================================================================== */
 
-.reveal-rule {
+.has-reveal .reveal-rule {
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 950ms var(--ease-out);
@@ -143,7 +197,7 @@
 
 .reveal-rule.is-revealed { transform: scaleX(1); }
 
-.reveal-rule-vertical {
+.has-reveal .reveal-rule-vertical {
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 950ms var(--ease-out);
@@ -286,9 +340,14 @@
         scroll-behavior: auto !important;
     }
 
+    /* The inner media selectors matter here: the mask and wipe clips live on
+       the child, not the wrapper, so clearing only the wrapper would leave the
+       image clipped for anyone who prefers reduced motion. */
     [class*="reveal-"],
     .reveal-up, .reveal-fade, .reveal-left, .reveal-right,
-    .reveal-scale, .reveal-mask, .reveal-wipe {
+    .reveal-scale, .reveal-mask, .reveal-wipe,
+    .reveal-mask > img, .reveal-mask > picture > img,
+    .reveal-wipe > * {
         opacity: 1 !important;
         transform: none !important;
         clip-path: none !important;
@@ -325,8 +384,14 @@
     clip-path: none !important;
 }
 
+/* The clip now lives on the inner media, so it has to be cleared there too —
+   the [class*="reveal-"] rule above only reaches the wrapper. */
 .no-js .reveal-mask > img,
-.no-js .reveal-mask > picture > img { transform: none !important; }
+.no-js .reveal-mask > picture > img,
+.no-js .reveal-wipe > * {
+    transform: none !important;
+    clip-path: none !important;
+}
 
 .no-js .reveal-lines .line__inner,
 .no-js .reveal-words .word__inner { transform: none !important; }
