@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================================
+  Neoteric ERA — sitemap.xml
+  ----------------------------------------------------------------------------
+  This file lists ONLY pages that exist as files in this build. A sitemap that
+  advertises URLs which return 404 is worse than a short one: Search Console
+  reports the errors and the whole file is discounted as a discovery signal.
+
+  BEFORE LAUNCH:
+    1. Replace www.neotericera.com with the production domain — here, in
+       robots.txt, and in the canonical/og:url tags in every page head.
+    2. Set <lastmod> from real publication dates. Every page claiming the same
+       date is read as noise and ignored as a freshness signal.
+    3. Regenerate whenever pages are added. Hand maintenance drifts.
+
+  DELIBERATELY EXCLUDED:
+    404.html             carries noindex; an error page must never be submitted.
+    service-detail.html  a query-string template (?service=...), not a page.
+                         robots.txt blocks the parameterised forms so one
+                         template is not indexed a dozen times over. When these
+                         become real paths (/services/seo/local-seo/), add each
+                         here and drop the matching Disallow rule.
+
+  Note on <priority> and <changefreq>: Google has stated it ignores both. They
+  are retained because some other crawlers still read them, and they cost
+  nothing.
+  ============================================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ===================== Primary ===================== -->
+  <url>
+    <loc>https://www.neotericera.com/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/services.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/about.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/contact.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ===================== Service pages =====================
+       The four disciplines the business leads with. These are the primary
+       organic entry points and carry the highest non-home priority. -->
+  <url>
+    <loc>https://www.neotericera.com/service-web-development.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/service-seo.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/service-google-ads.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/service-digital-marketing.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ===================== Proof ===================== -->
+  <url>
+    <loc>https://www.neotericera.com/portfolio.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===================== Support =====================
+       FAQs carries FAQPage schema and is eligible for rich results, so it is
+       worth a higher priority than its position in the nav suggests. -->
+  <url>
+    <loc>https://www.neotericera.com/faq.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ===================== Editorial =====================
+       blog-detail.html is a single published article. As more are added, each
+       gets its own entry with its real publication date. -->
+  <url>
+    <loc>https://www.neotericera.com/blog.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/blog-detail.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ===================== Legal =====================
+       Listed so they stay discoverable — several ad and payment platforms
+       check that these pages are reachable before approving an account. -->
+  <url>
+    <loc>https://www.neotericera.com/privacy-policy.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.neotericera.com/terms.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

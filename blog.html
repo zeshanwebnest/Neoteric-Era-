@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Insights | Web Performance, SEO &amp; Paid Media Notes | Neoteric ERA</title>
+<meta name="description" content="Working notes on Core Web Vitals, local SEO at scale, platform selection, paid media structure and conversion optimisation — with the trade-offs left in.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.neotericera.com/blog.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Neoteric ERA">
+<meta property="og:url" content="https://www.neotericera.com/blog.html">
+<meta property="og:title" content="Insights | Neoteric ERA">
+<meta property="og:description" content="Working notes, not thought leadership. Written for the person who has to make the decision.">
+<meta property="og:image" content="https://www.neotericera.com/assets/images/hero/page-blog.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Insights | Neoteric ERA">
+<meta name="twitter:description" content="Working notes, not thought leadership.">
+<meta name="twitter:image" content="https://www.neotericera.com/assets/images/hero/page-blog.webp">
+
+<meta name="theme-color" content="#0A0E1C">
+<meta name="color-scheme" content="light">
+
+<!-- Favicons & manifest -->
+<link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/branding/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Typography. Plus Jakarta Sans carries display and headings; Inter carries
+     body copy and UI. Both hold tight, even colour at display sizes and stay
+     legible at 15-16px, which is where most of this site's reading happens.
+     Weights are enumerated rather than requested as a range to keep the
+     payload small. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<!--
+  Bootstrap 5 supplies the container/grid system, form layout, responsive
+  utilities and breakpoints. The Bootstrap JavaScript bundle is deliberately
+  NOT loaded: the header, drawer, mega menu, accordions and slider are custom
+  vanilla implementations, so the bundle would be dead weight on every page.
+-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISmX4MhbVJarPYFqjnJHDIe6Zn1BsrBn3aeRVIElYzXPU1PdKgm/H" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous">
+
+<link rel="stylesheet" href="assets/css/bootstrap-overrides.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.neotericera.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.neotericera.com/blog.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Neoteric ERA Insights",
+  "url": "https://www.neotericera.com/blog.html",
+  "publisher": { "@id": "https://www.neotericera.com/#organization" },
+  "inLanguage": "en-US"
+}
+</script>
+</head>
+
+<body class="is-annotated">
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ==========================================================================
+     TOPBAR
+     ========================================================================== -->
+<div class="topbar" id="topbar">
+    <div class="shell topbar__inner">
+        <p class="topbar__text u-mb-0">
+            <span class="topbar__dot" aria-hidden="true"></span>
+            Website Development &middot; SEO &middot; Google Ads &middot; Digital Marketing
+        </p>
+        <a class="topbar__link" href="contact.html">
+            Get a free proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <button class="topbar__close" type="button" aria-label="Dismiss announcement">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     SITE HEADER
+     --------------------------------------------------------------------------
+     `site-header--over-dark` is applied only on pages whose hero is a dark
+     full-bleed panel. Every other page gets the solid white header from the
+     top. Both converge on the same condensed state once scrolled.
+     ========================================================================== -->
+<header class="site-header" id="siteHeader">
+    <div class="shell site-header__inner">
+
+        <a class="site-logo" href="index.html" aria-label="Neoteric ERA IT Services — home">
+            <!-- Two lockups stacked and cross-faded, so the logo colour changes
+                 in step with the header's own background. -->
+            <img class="site-logo__light" src="assets/images/branding/logo-light.svg"
+                 alt="Neoteric ERA IT Services" width="295" height="72">
+            <img class="site-logo__dark" src="assets/images/branding/logo-dark.svg"
+                 alt="" aria-hidden="true" width="295" height="72">
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary">
+            <ul class="primary-nav__list">
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="index.html" data-nav="home">Home</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="about.html" data-nav="about">About</a>
+                </li>
+
+                <!-- Services mega menu -->
+                <li class="primary-nav__item" data-mega>
+                    <a class="primary-nav__link" href="services.html" data-nav="services">
+                        Services <i class="bi bi-chevron-down primary-nav__chevron" aria-hidden="true"></i>
+                    </a>
+                    <div class="mega-menu" role="group" aria-label="Services">
+                        <div class="shell mega-menu__inner">
+                            <div class="mega-menu__columns">
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-web-development.html">
+                                        <i class="bi bi-code-slash" aria-hidden="true"></i> Website Development
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=wordpress-development">WordPress Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=shopify-development">Shopify Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=custom-website-development">Custom Websites</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=laravel-development">Laravel Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=react-development">React Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=nextjs-development">Next.js Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ecommerce-development">Ecommerce Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=website-redesign">Website Redesign</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=website-maintenance">Website Maintenance</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-seo.html">
+                                        <i class="bi bi-graph-up-arrow" aria-hidden="true"></i> SEO
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=local-seo">Local SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=technical-seo">Technical SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=on-page-seo">On-Page SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=off-page-seo">Off-Page SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=enterprise-seo">Enterprise SEO</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-google-ads.html">
+                                        <i class="bi bi-bullseye" aria-hidden="true"></i> Google Ads
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=search-ads">Search Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=shopping-ads">Shopping Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=display-ads">Display Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=performance-max">Performance Max</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=youtube-ads">YouTube Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ppc-management">PPC Management</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-digital-marketing.html">
+                                        <i class="bi bi-broadcast" aria-hidden="true"></i> Digital Marketing
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=content-marketing">Content Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=conversion-rate-optimization">Conversion Optimisation</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=social-media-marketing">Social Media Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=email-marketing">Email Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=branding">Branding</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mega-menu__feature">
+                                <p class="eyebrow">Free review</p>
+                                <p class="mega-menu__feature-title">Find out what is actually holding your growth back.</p>
+                                <p class="mega-menu__feature-text">
+                                    We look at your site speed, search visibility and campaign structure,
+                                    then tell you which discipline will move your number first.
+                                </p>
+                                <a class="button-accent button-sm" href="contact.html">
+                                    Get a free proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+                                </a>
+                                <p class="mega-menu__feature-meta u-mb-0">No obligation &middot; Reply within 1 business day</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="portfolio.html" data-nav="portfolio">Portfolio</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="blog.html" data-nav="blog" aria-current="page">Insights</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="faq.html" data-nav="faq">FAQs</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="contact.html" data-nav="contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a class="header-phone" href="tel:+923090155045">
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                <span>+92 309 0155045</span>
+            </a>
+            <a class="button-primary button-sm" href="contact.html"
+               data-cta-responsive
+               data-label-long="Get a Free Proposal"
+               data-label-short="Proposal">Get a Free Proposal</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation menu">
+                <span class="nav-toggle__bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MOBILE NAVIGATION DRAWER
+     Full-screen, scroll-locked, focus-trapped. 60px minimum touch targets and
+     a pinned CTA block so the primary action never needs scrolling to.
+     ========================================================================== -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-nav__header">
+        <a class="site-logo" href="index.html" aria-label="Neoteric ERA IT Services — home">
+            <img src="assets/images/branding/logo-dark.svg" alt="Neoteric ERA IT Services" width="295" height="72">
+        </a>
+        <button class="mobile-nav__close" type="button" aria-label="Close navigation menu">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="mobile-nav__body">
+        <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="index.html" data-nav="home">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="about.html" data-nav="about">About</a>
+            </li>
+
+            <li class="mobile-nav__item">
+                <button class="mobile-nav__trigger" type="button" aria-expanded="false" aria-controls="mobileServices">
+                    Services <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                </button>
+                <div class="mobile-nav__panel" id="mobileServices">
+                    <div class="mobile-nav__panel-inner">
+                        <div class="mobile-nav__sublist">
+                            <a class="mobile-nav__subgroup-title" href="service-web-development.html">Website Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=wordpress-development">WordPress Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=shopify-development">Shopify Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=custom-website-development">Custom Websites</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ecommerce-development">Ecommerce Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=website-redesign">Website Redesign</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=website-maintenance">Website Maintenance</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-seo.html">SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=local-seo">Local SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=technical-seo">Technical SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=on-page-seo">On-Page SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=enterprise-seo">Enterprise SEO</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-google-ads.html">Google Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=search-ads">Search Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=shopping-ads">Shopping Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=performance-max">Performance Max</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ppc-management">PPC Management</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-digital-marketing.html">Digital Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=content-marketing">Content Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=conversion-rate-optimization">Conversion Optimisation</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=social-media-marketing">Social Media Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=email-marketing">Email Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=branding">Branding</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="portfolio.html" data-nav="portfolio">Portfolio</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="blog.html" data-nav="blog" aria-current="page">Insights</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="faq.html" data-nav="faq">FAQs</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="contact.html" data-nav="contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mobile-nav__footer">
+        <a class="button-accent button-block" href="contact.html">
+            Get a Free Proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="button-secondary button-block" href="https://wa.me/923090155045" target="_blank">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp Our Team
+        </a>
+        <div class="mobile-nav__contact">
+            <a href="tel:+923090155045"><i class="bi bi-telephone" aria-hidden="true"></i> +92 309 0155045</a>
+            <!-- COMPANY EMAIL PLACEHOLDER: confirm the address before launch -->
+            <a href="mailto:hello@neotericera.com"><i class="bi bi-envelope" aria-hidden="true"></i> hello@neotericera.com</a>
+        </div>
+    </div>
+</div>
+
+
+<main id="main">
+
+    <section class="page-hero" aria-labelledby="pageTitle">
+        <div class="bg-decor" aria-hidden="true">
+            <span class="orb orb-brand orb-1"></span>
+            <span class="orb orb-violet orb-2"></span>
+            <div class="bg-grid"></div>
+        </div>
+        <div class="shell page-hero__inner">
+            <nav class="breadcrumbs u-mb-6" aria-label="Breadcrumb">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumbs__item"><span aria-current="page">Insights</span></li>
+                </ol>
+            </nav>
+            <div class="page-hero__layout">
+                <div>
+                    <p class="eyebrow reveal-up">Insights</p>
+                    <h1 class="heading-display reveal-lines" id="pageTitle">Working notes, not thought leadership.</h1>
+                </div>
+                <div>
+                    <p class="page-hero__lead reveal-up" style="--reveal-delay: 180ms;">
+                        Written for the person who has to make the decision, with the trade-offs left in.
+                        If an article does not tell you when <em>not</em> to do something, it is not
+                        finished.
+                    </p>
+                    <div class="page-hero__actions reveal-up" style="--reveal-delay: 280ms;">
+                        <a class="button-primary" href="#articles">
+                            Browse articles <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                        <a class="button-secondary" href="contact.html">
+                            Ask us directly <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facts row, matching every other internal hero. Without it this
+                 hero sat noticeably shallower than its siblings, which reads as
+                 inconsistent spacing rather than as a deliberate variation. -->
+            <dl class="page-hero__facts reveal-up" style="--reveal-delay: 380ms;">
+                <div>
+                    <dt class="page-hero__fact-label">Topics covered</dt>
+                    <dd class="page-hero__fact-value">5</dd>
+                </div>
+                <div>
+                    <dt class="page-hero__fact-label">Typical read</dt>
+                    <dd class="page-hero__fact-value">9 min</dd>
+                </div>
+                <div>
+                    <dt class="page-hero__fact-label">Written by</dt>
+                    <dd class="page-hero__fact-value">Delivery</dd>
+                </div>
+                <div>
+                    <dt class="page-hero__fact-label">Sales gloss</dt>
+                    <dd class="page-hero__fact-value">None</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- FEATURED ARTICLE -->
+    <section class="section surface-white" aria-labelledby="featuredHeading">
+        <div class="shell">
+            <h2 class="visually-hidden" id="featuredHeading">Featured article</h2>
+            <article class="post-card post-card-featured reveal-up">
+                <div class="post-card__media">
+                    <img src="assets/images/blog/core-web-vitals.webp"
+                         alt="Editorial composition illustrating Core Web Vitals measurement"
+                         width="1200" height="800" loading="lazy" decoding="async">
+                </div>
+                <div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Performance</li>
+                        <li><time datetime="2026-07-14">14 Jul 2026</time></li>
+                        <li>9 min read</li>
+                        <li><span class="tag tag-accent">Featured</span></li>
+                    </ul>
+                    <h3 class="post-card__title">
+                        <a href="blog-detail.html">Core Web Vitals: which fixes actually move the number</a>
+                    </h3>
+                    <p class="post-card__excerpt">
+                        Most sites fail Largest Contentful Paint for one of four reasons, and only one of
+                        them is image size. A practical order of operations for teams without a
+                        performance engineer — including the fixes that are usually a waste of a sprint.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-01.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>Technical Lead <span class="placeholder-note">Author</span></span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html">
+                            Read article <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ARTICLE GRID WITH SEARCH AND FILTERS -->
+    <section class="section surface-tint rule-top" id="articles" data-search-root aria-labelledby="articlesHeading">
+        <div class="shell">
+            <div class="section-header section-header-split">
+                <div>
+                    <p class="section-index reveal-up">All articles</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="articlesHeading">Everything we have published.</h2>
+                </div>
+                <div class="reveal-up" style="--reveal-delay: 160ms;">
+                    <form class="search-field" role="search" aria-label="Search articles">
+                        <label class="visually-hidden" for="blogSearch">Search articles</label>
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                        <input class="form-input" type="search" id="blogSearch" name="q"
+                               placeholder="Search by topic, platform or channel"
+                               data-search-input autocomplete="off">
+                    </form>
+                    <p class="filter-status u-mt-4 u-mb-0" role="status" aria-live="polite" data-search-status></p>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group filter-group-scroll" role="group" aria-label="Filter by category">
+                    <span class="filter-group__label" aria-hidden="true">Category</span>
+                    <button class="filter-chip is-active" type="button" aria-pressed="true" data-search-category="all">All</button>
+                    <button class="filter-chip" type="button" aria-pressed="false" data-search-category="performance">Performance</button>
+                    <button class="filter-chip" type="button" aria-pressed="false" data-search-category="seo">SEO</button>
+                    <button class="filter-chip" type="button" aria-pressed="false" data-search-category="ecommerce">Ecommerce</button>
+                    <button class="filter-chip" type="button" aria-pressed="false" data-search-category="paid-media">Paid Media</button>
+                    <button class="filter-chip" type="button" aria-pressed="false" data-search-category="conversion">Conversion</button>
+                </div>
+            </div>
+
+            <div class="grid grid-3 u-mt-8 reveal-stagger-tight" data-search-grid>
+
+                <article class="post-card reveal-up"
+                         data-search-category="seo"
+                         data-search-text="Location pages that rank thin local SEO multi city architecture template city name">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/local-seo-multi-city.webp" alt="Editorial composition illustrating multi-city local search strategy" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Local SEO</li>
+                        <li><time datetime="2026-07-02">2 Jul 2026</time></li>
+                        <li>11 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Location pages that rank, and the thin ones that get ignored</a></h3>
+                    <p class="post-card__excerpt">
+                        Swapping a city name into a template stopped working years ago. What genuinely
+                        differentiated local pages contain, with a structure you can reuse.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-02.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>SEO Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: Location pages that rank">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="ecommerce"
+                         data-search-text="Shopify WooCommerce platform selection catalogue margins team ecommerce comparison">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/shopify-vs-woocommerce.webp" alt="Editorial composition comparing two ecommerce platforms" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Ecommerce</li>
+                        <li><time datetime="2026-06-19">19 Jun 2026</time></li>
+                        <li>13 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Shopify or WooCommerce: the questions that actually decide it</a></h3>
+                    <p class="post-card__excerpt">
+                        Not a feature table. Six questions about your catalogue, your team and your
+                        margins that will point clearly at one platform or the other.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-03.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>Ecommerce Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: Shopify or WooCommerce">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="paid-media"
+                         data-search-text="Performance Max asset groups audience signals automation Google Ads black box structure">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/performance-max.webp" alt="Editorial composition illustrating automated campaign structure" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Paid Media</li>
+                        <li><time datetime="2026-06-05">5 Jun 2026</time></li>
+                        <li>10 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Performance Max: making automation explainable</a></h3>
+                    <p class="post-card__excerpt">
+                        It is not a black box by nature — it is a black box when nobody structures the
+                        asset groups or signals. What to configure before you trust it with budget.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-04.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>Paid Media Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: Performance Max, making automation explainable">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="seo"
+                         data-search-text="website redesign without losing rankings migration redirect map content parity replatform">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/website-redesign-seo.webp" alt="Editorial composition illustrating a website migration" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">SEO</li>
+                        <li><time datetime="2026-05-21">21 May 2026</time></li>
+                        <li>12 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Redesigning without losing your rankings</a></h3>
+                    <p class="post-card__excerpt">
+                        Post-redesign traffic collapse is almost always the same two failures. The
+                        pre-launch checklist that prevents both, in the order it should be worked.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-02.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>SEO Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: Redesigning without losing your rankings">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="conversion"
+                         data-search-text="conversion audit funnel analysis session recording form abandonment CRO hypothesis testing">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/conversion-audit.webp" alt="Editorial composition illustrating a conversion funnel audit" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Conversion</li>
+                        <li><time datetime="2026-05-08">8 May 2026</time></li>
+                        <li>8 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">A conversion audit you can run yourself in an afternoon</a></h3>
+                    <p class="post-card__excerpt">
+                        Six checks that find most funnel leaks without any specialist tooling. Useful
+                        before you pay anyone — including us — to investigate.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-01.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>Technical Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: A conversion audit you can run yourself">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="seo performance"
+                         data-search-text="technical SEO audit crawl indexation canonical log file analysis priorities">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/technical-seo-audit.webp" alt="Editorial composition illustrating a technical SEO audit" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">SEO</li>
+                        <li><time datetime="2026-04-24">24 Apr 2026</time></li>
+                        <li>14 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">What a technical SEO audit should actually deliver</a></h3>
+                    <p class="post-card__excerpt">
+                        A 200-page PDF listing every warning a crawler produced is not an audit. What a
+                        useful one contains, and how to tell whether you were sold one.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-02.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>SEO Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: What a technical SEO audit should deliver">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="paid-media"
+                         data-search-text="PPC budget allocation seasonal pacing spend reallocation campaign priority">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/ppc-budget-allocation.webp" alt="Editorial composition illustrating budget allocation across campaigns" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Paid Media</li>
+                        <li><time datetime="2026-04-10">10 Apr 2026</time></li>
+                        <li>9 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Budget pacing for seasonal businesses</a></h3>
+                    <p class="post-card__excerpt">
+                        Spreading spend evenly across a year with a sharp seasonal peak is a reliable way
+                        to overpay in the trough and run dry at the top.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-04.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>Paid Media Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: Budget pacing for seasonal businesses">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+                <article class="post-card reveal-up"
+                         data-search-category="performance"
+                         data-search-text="core web vitals LCP INP CLS image loading font strategy javascript execution">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/core-web-vitals.webp" alt="Editorial composition illustrating Core Web Vitals measurement" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Performance</li>
+                        <li><time datetime="2026-07-14">14 Jul 2026</time></li>
+                        <li>9 min read</li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Core Web Vitals: which fixes actually move the number</a></h3>
+                    <p class="post-card__excerpt">
+                        Most sites fail LCP for one of four reasons, and only one of them is image size. A
+                        practical order of operations.
+                    </p>
+                    <div class="post-card__footer">
+                        <div class="post-card__author">
+                            <img src="assets/images/team/author-01.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            <span>Technical Lead</span>
+                        </div>
+                        <a class="link-underline" href="blog-detail.html" aria-label="Read: Core Web Vitals">Read <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="empty-state u-mt-8" data-search-empty>
+                <p class="empty-state__icon u-mb-0" aria-hidden="true"><i class="bi bi-journal-x"></i></p>
+                <p class="empty-state__title u-mb-0">Nothing matches that search</p>
+                <p class="empty-state__text">
+                    We publish selectively rather than often. If there is a topic you want covered,
+                    tell us — we would rather write something you actually need.
+                </p>
+                <div class="cluster u-mt-6" style="justify-content: center;">
+                    <a class="button-primary" href="contact.html">
+                        Suggest a topic <span class="arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="pagination u-mt-8" aria-label="Article pagination">
+                <span class="pagination__link is-disabled" aria-hidden="true"><i class="bi bi-chevron-left" aria-hidden="true"></i></span>
+                <a class="pagination__link" href="blog.html" aria-current="page">1</a>
+                <a class="pagination__link" href="blog.html">2</a>
+                <span class="pagination__ellipsis" aria-hidden="true">&hellip;</span>
+                <a class="pagination__link" href="blog.html" aria-label="Next page"><i class="bi bi-chevron-right" aria-hidden="true"></i></a>
+            </nav>
+            <p class="text-small text-body-muted u-text-centre u-mt-4">
+                Pagination is presentational in this prototype — all articles are on this page.
+                <span class="placeholder-note">Static prototype</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- POPULAR + NEWSLETTER -->
+    <section class="section surface-brand-tint" aria-labelledby="popularHeading">
+        <div class="shell">
+            <div class="grid grid-split">
+                <div>
+                    <p class="section-index reveal-up">Most read</p>
+                    <h2 class="heading-subsection reveal-lines u-mt-4" id="popularHeading">Popular articles.</h2>
+                    <div class="widget u-mt-6 reveal-up">
+                        <h3 class="widget__title">Read most this quarter</h3>
+                        <div class="widget-list">
+                            <a href="blog-detail.html">
+                                <span>Performance</span>
+                                Core Web Vitals: which fixes actually move the number
+                            </a>
+                            <a href="blog-detail.html">
+                                <span>Local SEO</span>
+                                Location pages that rank, and the thin ones that get ignored
+                            </a>
+                            <a href="blog-detail.html">
+                                <span>Ecommerce</span>
+                                Shopify or WooCommerce: the questions that actually decide it
+                            </a>
+                            <a href="blog-detail.html">
+                                <span>SEO</span>
+                                Redesigning without losing your rankings
+                            </a>
+                            <a href="blog-detail.html">
+                                <span>Conversion</span>
+                                A conversion audit you can run yourself in an afternoon
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-small text-body-muted u-mt-4 u-mb-0">
+                        Ranking reflects analytics, not editorial preference.
+                        <span class="placeholder-note">Data pending</span>
+                    </p>
+                </div>
+
+                <div class="reveal-up">
+                    <div class="form-panel">
+                        <p class="eyebrow eyebrow-plain u-mb-4">Newsletter</p>
+                        <h2 class="heading-subsection u-mb-4">One useful email a month.</h2>
+                        <p class="text-small text-body-muted u-mb-6">
+                            What actually changed in search and paid media, and what it means for a
+                            business like yours. No campaigns, no filler, unsubscribe in one click.
+                        </p>
+                        <form class="newsletter-form" data-newsletter novalidate>
+                            <div class="newsletter-form__field form-field">
+                                <label class="form-label" for="blogNewsletterEmail">Work email</label>
+                                <input class="form-input" type="email" id="blogNewsletterEmail" name="email"
+                                       placeholder="you@company.com" autocomplete="email"
+                                       aria-describedby="blogNewsletterEmail-error" required>
+                                <p class="form-error" id="blogNewsletterEmail-error" role="alert"></p>
+                            </div>
+                            <button class="button-primary" type="submit">
+                                <span class="button-spinner" aria-hidden="true"></span>
+                                <span class="button-label">Subscribe</span>
+                                <span class="arrow" aria-hidden="true">&rarr;</span>
+                            </button>
+                            <p class="newsletter-form__note u-mb-0">
+                                By subscribing you agree to our
+                                <a class="link-inline" href="privacy-policy.html">privacy policy</a>.
+                            </p>
+                            <p class="newsletter-form__success" data-newsletter-success>
+                                Thank you — please check your inbox to confirm your subscription.
+                            </p>
+                        </form>
+                    </div>
+
+                    <div class="callout u-mt-6">
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                        <p class="u-mb-0">
+                            <span class="callout__title">Want something covered?</span>
+                            We would rather write what you need than what ranks.
+                            <a class="link-inline" href="contact.html">Suggest a topic</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="blogCta">
+        <div class="cta-band__media">
+            <img src="assets/images/hero/cta-background.webp" alt="" width="1920" height="900" loading="lazy" decoding="async">
+        </div>
+        <div class="shell cta-band__inner">
+            <div>
+                <p class="eyebrow reveal-up">Next step</p>
+                <h2 class="heading-display reveal-lines u-mt-4" id="blogCta">Prefer to just ask someone?</h2>
+                <p class="cta-band__text reveal-up">
+                    Reading is slower than asking. Send us the situation and you will get a straight
+                    answer rather than a discovery call.
+                </p>
+                <div class="cta-band__actions reveal-up">
+                    <a class="button-primary button-lg" href="contact.html">
+                        Get a Free Proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a class="button-secondary button-lg" href="https://wa.me/923090155045" target="_blank">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp Our Team
+                    </a>
+                </div>
+            </div>
+            <div class="cta-details reveal-up">
+                <a class="cta-details__item" href="tel:+923090155045">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-telephone"></i></span>
+                    <span>
+                        <span class="cta-details__label">Call us</span>
+                        <span class="cta-details__value">+92 309 0155045</span>
+                    </span>
+                </a>
+                <a class="cta-details__item" href="mailto:hello@neotericera.com">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-envelope"></i></span>
+                    <span>
+                        <span class="cta-details__label">Email us</span>
+                        <span class="cta-details__value">hello@neotericera.com</span>
+                    </span>
+                </a>
+                <a class="cta-details__item" href="faq.html">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                    <span>
+                        <span class="cta-details__label">Quick answers</span>
+                        <span class="cta-details__value">FAQ</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==========================================================================
+     SITE FOOTER
+     ========================================================================== -->
+<footer class="site-footer">
+
+    <div class="footer-newsletter">
+        <div class="shell footer-newsletter__inner">
+            <div>
+                <p class="footer-newsletter__title u-mb-0">One useful email a month. No campaigns, no filler.</p>
+                <p class="footer-newsletter__text">
+                    What actually changed in search and paid media, and what it means for a business
+                    like yours. Unsubscribe in one click.
+                </p>
+            </div>
+
+            <form class="newsletter-form" data-newsletter novalidate>
+                <div class="newsletter-form__field form-field">
+                    <label class="visually-hidden" for="footerEmail">Email address</label>
+                    <input class="form-input" type="email" id="footerEmail" name="email"
+                           placeholder="you@company.com" autocomplete="email"
+                           aria-describedby="footerEmail-error" required>
+                    <p class="form-error" id="footerEmail-error" role="alert"></p>
+                </div>
+                <button class="button-primary" type="submit">
+                    <span class="button-spinner" aria-hidden="true"></span>
+                    <span class="button-label">Subscribe</span>
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
+                </button>
+                <p class="newsletter-form__note u-mb-0">
+                    By subscribing you agree to our <a class="link-inline" href="privacy-policy.html">privacy policy</a>.
+                </p>
+                <p class="newsletter-form__success" data-newsletter-success>
+                    Thank you — please check your inbox to confirm your subscription.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-main">
+        <div class="shell footer-grid">
+
+            <div class="footer-brand">
+                <a class="footer-brand__logo" href="index.html" aria-label="Neoteric ERA — home">
+                    <img src="assets/images/branding/logo-light.svg" alt="Neoteric ERA" width="295" height="72">
+                </a>
+                <p class="footer-brand__text">
+                    A digital growth partner for ambitious US businesses. We connect strategy, design,
+                    development and acquisition so the whole system moves together rather than in
+                    separate directions.
+                </p>
+
+                <div class="footer-contact">
+                    <a class="footer-contact__item" href="tel:+923090155045">
+                        <i class="bi bi-telephone" aria-hidden="true"></i>
+                        <span>+92 309 0155045</span>
+                    </a>
+                    <!-- COMPANY EMAIL PLACEHOLDER -->
+                    <a class="footer-contact__item" href="mailto:hello@neotericera.com">
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <span>hello@neotericera.com</span>
+                    </a>
+                    <p class="footer-contact__item u-mb-0">
+                        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                        <span>Muslim Town, Lahore, Pakistan</span>
+                    </p>
+                    <p class="footer-contact__item u-mb-0">
+                        <i class="bi bi-globe" aria-hidden="true"></i>
+                        <span>Serving businesses across the United States</span>
+                    </p>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/neotericera" target="_blank" aria-label="Neoteric ERA on LinkedIn">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/neotericera" target="_blank" aria-label="Neoteric ERA on Facebook">
+                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/neotericera" target="_blank" aria-label="Neoteric ERA on Instagram">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/923090155045" target="_blank" aria-label="Message Neoteric ERA on WhatsApp">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-column">
+                    <h2 class="footer-column__title">Services</h2>
+                    <ul class="footer-links">
+                        <li><a href="service-web-development.html">Website Development</a></li>
+                        <li><a href="service-seo.html">SEO</a></li>
+                        <li><a href="service-google-ads.html">Google Ads</a></li>
+                        <li><a href="service-digital-marketing.html">Digital Marketing</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-column-stacked">
+                    <h2 class="footer-column__title">Popular Solutions</h2>
+                    <ul class="footer-links">
+                        <li><a href="service-detail.html?service=wordpress-development">WordPress Development</a></li>
+                        <li><a href="service-detail.html?service=shopify-development">Shopify Development</a></li>
+                        <li><a href="service-detail.html?service=local-seo">Local SEO</a></li>
+                        <li><a href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a></li>
+                        <li><a href="service-detail.html?service=ppc-management">PPC Management</a></li>
+                        <li><a href="service-detail.html?service=website-redesign">Website Redesign</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="footer-column__title">Company</h2>
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Insights</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="footer-column__title">Legal</h2>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="sitemap.xml">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="shell footer-bottom__inner">
+            <p class="u-mb-0">&copy; <span data-current-year>2026</span> Neoteric ERA. All rights reserved.</p>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="sitemap.xml">Sitemap</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/923090155045" target="_blank" aria-label="Message us on WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+</a>
+<button class="back-to-top" type="button" aria-label="Back to top">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Scripts deferred so parsing is never blocked -->
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/form-validation.js" defer></script>
+<script src="assets/js/location-data.js" defer></script>
+
+<script src="assets/js/portfolio-filter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+# =============================================================================
+# Neoteric ERA — robots.txt
+# -----------------------------------------------------------------------------
+# BEFORE LAUNCH:
+#   1. Replace www.neotericera.com with the production domain.
+#   2. While the site is on a staging domain, replace the whole file with:
+#          User-agent: *
+#          Disallow: /
+#      and add an HTTP auth layer as well — a Disallow is a request, not a lock.
+# =============================================================================
+
+User-agent: *
+Allow: /
+
+# Query-parameterised template URLs are prototype-only. In production these
+# become real paths (/services/..., /usa/california/...) and these rules can be
+# removed. Until then, block them so the same page is not indexed many times
+# under different query strings.
+Disallow: /*?service=
+Disallow: /*?industry=
+Disallow: /*?city=
+Disallow: /*?state=
+
+# Filter and search parameters produce no unique indexable content.
+Disallow: /*?category=
+Disallow: /*?technology=
+Disallow: /*?type=
+Disallow: /*?q=
+
+# Never index the error page.
+Disallow: /404.html
+
+# Assets must stay crawlable — blocking CSS or JS prevents search engines
+# rendering the page as a visitor sees it.
+Allow: /assets/
+
+# --- Crawler-specific rules --------------------------------------------------
+
+# Common SEO auditing crawlers. Uncomment if third-party scraping becomes a
+# bandwidth problem; leaving them allowed is generally harmless.
+# User-agent: AhrefsBot
+# Crawl-delay: 10
+# User-agent: SemrushBot
+# Crawl-delay: 10
+
+Sitemap: https://www.neotericera.com/sitemap.xml

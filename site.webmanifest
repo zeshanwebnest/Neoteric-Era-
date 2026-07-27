@@ -1,0 +1,22 @@
+{
+  "name": "Neoteric ERA IT Services",
+  "short_name": "Neoteric ERA",
+  "description": "Digital agency providing website development, SEO, Google Ads and digital marketing services to businesses across the United States.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0A0E1C",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/assets/images/branding/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

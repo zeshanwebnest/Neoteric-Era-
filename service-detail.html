@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WordPress Development | Service Detail | Neoteric ERA</title>
+<meta name="description" content="Reusable child-service template. WordPress development for US businesses: custom themes, structured content models and a deliberately chosen plugin set.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.neotericera.com/service-detail.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Neoteric ERA">
+<meta property="og:url" content="https://www.neotericera.com/service-detail.html">
+<meta property="og:title" content="Service Detail | Neoteric ERA">
+<meta property="og:description" content="Scope, process, deliverables and suitability for each individual service.">
+<meta property="og:image" content="https://www.neotericera.com/assets/images/services/wordpress.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Service Detail | Neoteric ERA">
+<meta name="twitter:description" content="Scope, process, deliverables and suitability for each individual service.">
+<meta name="twitter:image" content="https://www.neotericera.com/assets/images/services/wordpress.webp">
+
+<meta name="theme-color" content="#0A0E1C">
+<meta name="color-scheme" content="light">
+
+<!-- Favicons & manifest -->
+<link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/branding/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Typography. Plus Jakarta Sans carries display and headings; Inter carries
+     body copy and UI. Both hold tight, even colour at display sizes and stay
+     legible at 15-16px, which is where most of this site's reading happens.
+     Weights are enumerated rather than requested as a range to keep the
+     payload small. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<!--
+  Bootstrap 5 supplies the container/grid system, form layout, responsive
+  utilities and breakpoints. The Bootstrap JavaScript bundle is deliberately
+  NOT loaded: the header, drawer, mega menu, accordions and slider are custom
+  vanilla implementations, so the bundle would be dead weight on every page.
+-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISmX4MhbVJarPYFqjnJHDIe6Zn1BsrBn3aeRVIElYzXPU1PdKgm/H" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous">
+
+<link rel="stylesheet" href="assets/css/bootstrap-overrides.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.neotericera.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.neotericera.com/services.html" },
+    { "@type": "ListItem", "position": 3, "name": "Service Detail", "item": "https://www.neotericera.com/service-detail.html" }
+  ]
+}
+</script>
+</head>
+
+<!--
+  ============================================================================
+  REUSABLE CHILD-SERVICE TEMPLATE
+  ----------------------------------------------------------------------------
+  One template serves all 26 child services. Open it with a `?service=` query
+  string and assets/js/location-data.js fills every `[data-svc-field]` and
+  `[data-svc-list]` slot from the SERVICE_DETAIL data map:
+
+      service-detail.html?service=shopify-development
+      service-detail.html?service=local-seo
+      service-detail.html?service=performance-max
+
+  Opened with no query string it renders as WordPress Development — a
+  complete, readable, indexable page rather than an empty shell.
+
+  ── PRODUCTION NOTE ────────────────────────────────────────────────────────
+  In the CMS build each child service becomes its own URL
+  (/services/website-development/wordpress-development/) rendered from this
+  same template, with the query-string hydration replaced by server-side
+  rendering. The `[data-svc-*]` slots map one-to-one onto template variables.
+  ============================================================================
+-->
+<body class="is-annotated" data-service-template>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ==========================================================================
+     TOPBAR
+     ========================================================================== -->
+<div class="topbar" id="topbar">
+    <div class="shell topbar__inner">
+        <p class="topbar__text u-mb-0">
+            <span class="topbar__dot" aria-hidden="true"></span>
+            Website Development &middot; SEO &middot; Google Ads &middot; Digital Marketing
+        </p>
+        <a class="topbar__link" href="contact.html">
+            Get a free proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <button class="topbar__close" type="button" aria-label="Dismiss announcement">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     SITE HEADER
+     --------------------------------------------------------------------------
+     `site-header--over-dark` is applied only on pages whose hero is a dark
+     full-bleed panel. Every other page gets the solid white header from the
+     top. Both converge on the same condensed state once scrolled.
+     ========================================================================== -->
+<header class="site-header" id="siteHeader">
+    <div class="shell site-header__inner">
+
+        <a class="site-logo" href="index.html" aria-label="Neoteric ERA IT Services — home">
+            <!-- Two lockups stacked and cross-faded, so the logo colour changes
+                 in step with the header's own background. -->
+            <img class="site-logo__light" src="assets/images/branding/logo-light.svg"
+                 alt="Neoteric ERA IT Services" width="295" height="72">
+            <img class="site-logo__dark" src="assets/images/branding/logo-dark.svg"
+                 alt="" aria-hidden="true" width="295" height="72">
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary">
+            <ul class="primary-nav__list">
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="index.html" data-nav="home">Home</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="about.html" data-nav="about">About</a>
+                </li>
+
+                <!-- Services mega menu -->
+                <li class="primary-nav__item" data-mega>
+                    <a class="primary-nav__link" href="services.html" data-nav="services" aria-current="page">
+                        Services <i class="bi bi-chevron-down primary-nav__chevron" aria-hidden="true"></i>
+                    </a>
+                    <div class="mega-menu" role="group" aria-label="Services">
+                        <div class="shell mega-menu__inner">
+                            <div class="mega-menu__columns">
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-web-development.html">
+                                        <i class="bi bi-code-slash" aria-hidden="true"></i> Website Development
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=wordpress-development">WordPress Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=shopify-development">Shopify Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=custom-website-development">Custom Websites</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=laravel-development">Laravel Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=react-development">React Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=nextjs-development">Next.js Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ecommerce-development">Ecommerce Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=website-redesign">Website Redesign</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=website-maintenance">Website Maintenance</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-seo.html">
+                                        <i class="bi bi-graph-up-arrow" aria-hidden="true"></i> SEO
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=local-seo">Local SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=technical-seo">Technical SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=on-page-seo">On-Page SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=off-page-seo">Off-Page SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=enterprise-seo">Enterprise SEO</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-google-ads.html">
+                                        <i class="bi bi-bullseye" aria-hidden="true"></i> Google Ads
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=search-ads">Search Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=shopping-ads">Shopping Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=display-ads">Display Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=performance-max">Performance Max</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=youtube-ads">YouTube Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ppc-management">PPC Management</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-digital-marketing.html">
+                                        <i class="bi bi-broadcast" aria-hidden="true"></i> Digital Marketing
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=content-marketing">Content Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=conversion-rate-optimization">Conversion Optimisation</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=social-media-marketing">Social Media Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=email-marketing">Email Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=branding">Branding</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mega-menu__feature">
+                                <p class="eyebrow">Free review</p>
+                                <p class="mega-menu__feature-title">Find out what is actually holding your growth back.</p>
+                                <p class="mega-menu__feature-text">
+                                    We look at your site speed, search visibility and campaign structure,
+                                    then tell you which discipline will move your number first.
+                                </p>
+                                <a class="button-accent button-sm" href="contact.html">
+                                    Get a free proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+                                </a>
+                                <p class="mega-menu__feature-meta u-mb-0">No obligation &middot; Reply within 1 business day</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="portfolio.html" data-nav="portfolio">Portfolio</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="blog.html" data-nav="blog">Insights</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="faq.html" data-nav="faq">FAQs</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="contact.html" data-nav="contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a class="header-phone" href="tel:+923090155045">
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                <span>+92 309 0155045</span>
+            </a>
+            <a class="button-primary button-sm" href="contact.html"
+               data-cta-responsive
+               data-label-long="Get a Free Proposal"
+               data-label-short="Proposal">Get a Free Proposal</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation menu">
+                <span class="nav-toggle__bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MOBILE NAVIGATION DRAWER
+     Full-screen, scroll-locked, focus-trapped. 60px minimum touch targets and
+     a pinned CTA block so the primary action never needs scrolling to.
+     ========================================================================== -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-nav__header">
+        <a class="site-logo" href="index.html" aria-label="Neoteric ERA IT Services — home">
+            <img src="assets/images/branding/logo-dark.svg" alt="Neoteric ERA IT Services" width="295" height="72">
+        </a>
+        <button class="mobile-nav__close" type="button" aria-label="Close navigation menu">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="mobile-nav__body">
+        <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="index.html" data-nav="home">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="about.html" data-nav="about">About</a>
+            </li>
+
+            <li class="mobile-nav__item">
+                <button class="mobile-nav__trigger" type="button" aria-expanded="false" aria-controls="mobileServices">
+                    Services <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                </button>
+                <div class="mobile-nav__panel" id="mobileServices">
+                    <div class="mobile-nav__panel-inner">
+                        <div class="mobile-nav__sublist">
+                            <a class="mobile-nav__subgroup-title" href="service-web-development.html">Website Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=wordpress-development">WordPress Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=shopify-development">Shopify Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=custom-website-development">Custom Websites</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ecommerce-development">Ecommerce Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=website-redesign">Website Redesign</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=website-maintenance">Website Maintenance</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-seo.html">SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=local-seo">Local SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=technical-seo">Technical SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=on-page-seo">On-Page SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=enterprise-seo">Enterprise SEO</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-google-ads.html">Google Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=search-ads">Search Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=shopping-ads">Shopping Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=performance-max">Performance Max</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ppc-management">PPC Management</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-digital-marketing.html">Digital Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=content-marketing">Content Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=conversion-rate-optimization">Conversion Optimisation</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=social-media-marketing">Social Media Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=email-marketing">Email Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=branding">Branding</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="portfolio.html" data-nav="portfolio">Portfolio</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="blog.html" data-nav="blog">Insights</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="faq.html" data-nav="faq">FAQs</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="contact.html" data-nav="contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mobile-nav__footer">
+        <a class="button-accent button-block" href="contact.html">
+            Get a Free Proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="button-secondary button-block" href="https://wa.me/923090155045" target="_blank">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp Our Team
+        </a>
+        <div class="mobile-nav__contact">
+            <a href="tel:+923090155045"><i class="bi bi-telephone" aria-hidden="true"></i> +92 309 0155045</a>
+            <!-- COMPANY EMAIL PLACEHOLDER: confirm the address before launch -->
+            <a href="mailto:hello@neotericera.com"><i class="bi bi-envelope" aria-hidden="true"></i> hello@neotericera.com</a>
+        </div>
+    </div>
+</div>
+
+
+<main id="main">
+
+    <!-- 1. SERVICE HERO -->
+    <section class="page-hero" aria-labelledby="pageTitle">
+        <div class="bg-decor" aria-hidden="true">
+            <span class="orb orb-brand orb-1"></span>
+            <span class="orb orb-violet orb-2"></span>
+            <div class="bg-grid"></div>
+        </div>
+        <div class="shell page-hero__inner">
+            <nav class="breadcrumbs u-mb-6" aria-label="Breadcrumb">
+                <ol class="breadcrumbs__list" data-svc-breadcrumb>
+                    <li class="breadcrumbs__item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumbs__item"><a href="services.html">Services</a></li>
+                    <li class="breadcrumbs__item"><a href="service-web-development.html">Website Development</a></li>
+                    <li class="breadcrumbs__item"><span aria-current="page">WordPress Development</span></li>
+                </ol>
+            </nav>
+
+            <div class="page-hero__layout">
+                <div>
+                    <p class="eyebrow reveal-up">
+                        <span data-svc-field="parent">Website Development</span>
+                    </p>
+                    <h1 class="heading-display reveal-lines" id="pageTitle" data-svc-field="name">WordPress Development</h1>
+                </div>
+                <div>
+                    <p class="page-hero__lead reveal-up" style="--reveal-delay: 180ms;" data-svc-field="blurb">
+                        Custom themes and structured content models, with a plugin set chosen
+                        deliberately rather than accumulated over five years of quick fixes.
+                    </p>
+                    <div class="page-hero__actions reveal-up" style="--reveal-delay: 280ms;">
+                        <a class="button-primary" href="contact.html">
+                            Get a Free Proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                        <a class="button-secondary" href="portfolio.html">
+                            See related work <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>        </div>
+    </section>
+
+    <!-- 2. OUTCOME-FOCUSED INTRODUCTION -->
+    <section class="section surface-white" aria-labelledby="outcomeHeading">
+        <div class="shell">
+            <div class="grid grid-editorial">
+                <div class="rail">
+                    <p class="section-index reveal-up">01 &mdash; Outcome</p>
+                    <h2 class="heading-subsection reveal-lines u-mt-4" id="outcomeHeading">What this service is for.</h2>
+                </div>
+                <div class="stack stack-lg">
+                    <p class="text-lead reveal-up u-mb-0" data-svc-field="outcome">
+                        A site your marketing team can genuinely operate — publishing pages, adjusting
+                        copy and launching campaign landing pages — without raising a developer ticket
+                        for every change.
+                    </p>
+                    <p class="reveal-up u-mb-0">
+                        Every engagement in this discipline is scoped against a named commercial metric
+                        before any work begins. We agree what should improve, how it will be measured,
+                        and what a reasonable timeframe looks like. If we cannot identify a metric this
+                        service will move, that is a useful signal in itself and we will say so.
+                    </p>
+
+                    <div class="callout reveal-up">
+                        <i class="bi bi-diagram-2" aria-hidden="true"></i>
+                        <p class="u-mb-0">
+                            <span class="callout__title">Part of a larger discipline</span>
+                            This sits within
+                            <a class="link-inline" href="service-web-development.html" data-svc-parent-link>Website Development</a>.
+                            Most clients combine it with one or two related services rather than buying it
+                            in isolation — the pairings that work are listed further down this page.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <dl class="page-hero__facts reveal-up" style="--reveal-delay: 380ms;">
+                <div>
+                    <dt class="page-hero__fact-label">Delivery</dt>
+                    <dd class="page-hero__fact-value">In-house</dd>
+                </div>
+                <div>
+                    <dt class="page-hero__fact-label">Scope</dt>
+                    <dd class="page-hero__fact-value">Fixed price</dd>
+                </div>
+                <div>
+                    <dt class="page-hero__fact-label">Ownership</dt>
+                    <dd class="page-hero__fact-value">Yours</dd>
+                </div>
+                <div>
+                    <dt class="page-hero__fact-label">Reply time</dt>
+                    <dd class="page-hero__fact-value">1 day</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- 3. SUITABILITY -->
+    <section class="section surface-tint rule-top" aria-labelledby="suitHeading">
+        <div class="shell">
+            <div class="section-header section-header-split">
+                <div>
+                    <p class="section-index reveal-up">02 &mdash; Suitability</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="suitHeading">Who this is the right answer for.</h2>
+                </div>
+                <div class="reveal-up" style="--reveal-delay: 160ms;">
+                    <p class="text-lead">
+                        And, just as usefully, who it is not. Recommending the wrong service costs both
+                        of us more than declining the work.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-split">
+                <div class="reveal-up">
+                    <h3 class="heading-card u-mb-5">A good fit when</h3>
+                    <ul class="check-list" data-svc-list="bestFor">
+                        <li>
+                            <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                            <span>Your team needs to publish and edit content without developer help</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                            <span>You need a large number of structured pages — services, locations, resources</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                            <span>Editorial and blog content is a meaningful part of your acquisition</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                            <span>An existing WordPress site has become slow or fragile through plugin sprawl</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="heading-card u-mt-8 u-mb-5">Probably not the right fit when</h3>
+                    <ul class="check-list" data-svc-list="notFor">
+                        <li>
+                            <i class="bi bi-dash-circle" aria-hidden="true" style="color: var(--slate-500);"></i>
+                            <span>You need a full transactional storefront with tax and fulfilment handled for you — consider <a class="link-inline" href="service-detail.html?service=shopify-development">Shopify</a></span>
+                        </li>
+                        <li>
+                            <i class="bi bi-dash-circle" aria-hidden="true" style="color: var(--slate-500);"></i>
+                            <span>Your core requirement is complex application logic rather than content — consider <a class="link-inline" href="service-detail.html?service=laravel-development">Laravel</a></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="reveal-up">
+                    <h3 class="heading-card u-mb-5">What is included</h3>
+                    <ul class="check-list" data-svc-list="includes">
+                        <li>
+                            <i class="bi bi-dot" aria-hidden="true"></i>
+                            <span>Custom theme built from your design system, no commercial multipurpose theme</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-dot" aria-hidden="true"></i>
+                            <span>Structured content models and reusable block patterns</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-dot" aria-hidden="true"></i>
+                            <span>Editor experience tested with the people who will actually use it</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-dot" aria-hidden="true"></i>
+                            <span>Performance budget enforced, including plugin weight review</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-dot" aria-hidden="true"></i>
+                            <span>Schema markup, clean URLs and Search Console verification</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-dot" aria-hidden="true"></i>
+                            <span>Security hardening, backup configuration and update policy</span>
+                        </li>
+                    </ul>
+
+                    <div class="cta-inline u-mt-8">
+                        <div>
+                            <p class="cta-inline__title u-mb-0">Not sure this is the right service?</p>
+                            <p class="cta-inline__text u-mb-0">
+                                Describe the outcome you need and we will point you at the right one —
+                                including when it is not us.
+                            </p>
+                        </div>
+                        <a class="button-secondary" href="contact.html">
+                            Ask us <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROCESS -->
+    <section class="section surface-brand-tint" aria-labelledby="processHeading">
+        <div class="shell">
+            <div class="section-header section-header-split">
+                <div>
+                    <p class="section-index reveal-up">03 &mdash; Process</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="processHeading">How the work runs.</h2>
+                </div>
+                <div class="reveal-up" style="--reveal-delay: 160ms;">
+                    <p class="text-lead">
+                        The five stages below apply across this discipline. Duration varies with scope;
+                        the sequence does not.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-editorial">
+                <div class="timeline reveal-up">
+                    <div class="timeline__item">
+                        <p class="timeline__period u-mb-0">Stage 1</p>
+                        <h3 class="timeline__title">Scope and success metric</h3>
+                        <p class="timeline__text u-mb-0">
+                            A written brief naming the commercial goal, the constraints, and the single
+                            number this work should move. Everything after this is measured against it.
+                        </p>
+                    </div>
+                    <div class="timeline__item">
+                        <p class="timeline__period u-mb-0">Stage 2</p>
+                        <h3 class="timeline__title">Audit and planning</h3>
+                        <p class="timeline__text u-mb-0">
+                            Technical review of what exists, competitor comparison, and a prioritised
+                            plan where each item states its expected effect rather than just its
+                            existence.
+                        </p>
+                    </div>
+                    <div class="timeline__item">
+                        <p class="timeline__period u-mb-0">Stage 3</p>
+                        <h3 class="timeline__title">Build or implement</h3>
+                        <p class="timeline__text u-mb-0">
+                            Executed by our own team against the agreed standards — performance budget,
+                            accessibility baseline and measurement configured as part of the work.
+                        </p>
+                    </div>
+                    <div class="timeline__item">
+                        <p class="timeline__period u-mb-0">Stage 4</p>
+                        <h3 class="timeline__title">Verify</h3>
+                        <p class="timeline__text u-mb-0">
+                            Cross-device and cross-browser testing, keyboard and screen-reader passes,
+                            Core Web Vitals verification, and a written checklist you sign off rather
+                            than take on trust.
+                        </p>
+                    </div>
+                    <div class="timeline__item">
+                        <p class="timeline__period u-mb-0">Stage 5</p>
+                        <h3 class="timeline__title">Measure and iterate</h3>
+                        <p class="timeline__text u-mb-0">
+                            Post-launch monitoring against the metric agreed in stage one, then a
+                            recommendation on what to do next — which is sometimes nothing.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reveal-up">
+                    <figure class="ratio-box ratio-3-4 reveal-mask">
+                        <img src="assets/images/hero/why-choose.webp"
+                             alt="Abstract composition representing structured technical delivery"
+                             width="1100" height="1300" loading="lazy" decoding="async">
+                    </figure>
+
+                    <div class="callout u-mt-6">
+                        <i class="bi bi-clock-history" aria-hidden="true"></i>
+                        <p class="u-mb-0">
+                            <span class="callout__title">On timelines</span>
+                            Build services typically run six to sixteen weeks depending on scope. Ongoing
+                            services (SEO, paid media, conversion work) run as monthly programmes with a
+                            six-month minimum for anything competitive. Exact timing is confirmed in the
+                            proposal, not estimated here.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. RELATED SERVICES (siblings, rendered from the taxonomy) -->
+    <section class="section surface-tint" aria-labelledby="siblingHeading">
+        <div class="shell">
+            <div class="section-header section-header-split">
+                <div>
+                    <p class="section-index reveal-up">04 &mdash; Related</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="siblingHeading">Other services in this discipline.</h2>
+                </div>
+                <div class="reveal-up" style="--reveal-delay: 160ms;">
+                    <p class="text-lead">
+                        Most engagements combine two or three. The list below is generated from the same
+                        taxonomy that drives the site navigation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="city-columns reveal-up" data-svc-siblings>
+                <a href="service-detail.html?service=shopify-development">Shopify Development</a>
+                <a href="service-detail.html?service=custom-website-development">Custom Website Development</a>
+                <a href="service-detail.html?service=laravel-development">Laravel Development</a>
+                <a href="service-detail.html?service=react-development">React Development</a>
+                <a href="service-detail.html?service=nextjs-development">Next.js Development</a>
+                <a href="service-detail.html?service=ecommerce-development">Ecommerce Development</a>
+                <a href="service-detail.html?service=website-redesign">Website Redesign</a>
+                <a href="service-detail.html?service=website-maintenance">Website Maintenance</a>
+            </div>
+
+            <div class="grid grid-4 u-mt-8 reveal-stagger-tight">
+                <a class="card-base reveal-up" href="service-web-development.html" style="padding: var(--s-5);">
+                    <h3 class="heading-card">Website Development</h3>
+                    <p class="text-small text-body-muted u-mt-3 u-mb-0">The full discipline overview.</p>
+                    <span class="link-underline u-mt-4">View <span class="arrow" aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a class="card-base reveal-up" href="service-seo.html" style="padding: var(--s-5);">
+                    <h3 class="heading-card">SEO</h3>
+                    <p class="text-small text-body-muted u-mt-3 u-mb-0">Visibility for what you have built.</p>
+                    <span class="link-underline u-mt-4">View <span class="arrow" aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a class="card-base reveal-up" href="service-google-ads.html" style="padding: var(--s-5);">
+                    <h3 class="heading-card">Google Ads</h3>
+                    <p class="text-small text-body-muted u-mt-3 u-mb-0">Enquiries from week one.</p>
+                    <span class="link-underline u-mt-4">View <span class="arrow" aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a class="card-base reveal-up" href="service-digital-marketing.html" style="padding: var(--s-5);">
+                    <h3 class="heading-card">Digital Marketing</h3>
+                    <p class="text-small text-body-muted u-mt-3 u-mb-0">More value per visitor.</p>
+                    <span class="link-underline u-mt-4">View <span class="arrow" aria-hidden="true">&rarr;</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FEATURED PROJECT -->
+    <section class="section surface-white" aria-labelledby="projHeading">
+        <div class="shell">
+            <div class="section-header section-header-split">
+                <div>
+                    <p class="section-index reveal-up">05 &mdash; Evidence</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="projHeading">Related work.</h2>
+                </div>
+                <div class="reveal-up" style="--reveal-delay: 160ms;">
+                    <p class="text-lead">
+                        A sample of live sites we have built. Open any of them and judge the
+                        structure, the speed and the clarity for yourself.
+                    </p>
+                </div>
+            </div>
+
+            <div class="work-grid work-grid-3 reveal-stagger-tight">
+                <article class="work-card reveal-up">
+                    <div class="work-card__frame">
+                        <div class="work-card__bar" aria-hidden="true">
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__url">workstaff360.com</span>
+                        </div>
+                        <div class="work-card__shot">
+                            <img src="assets/images/work/workstaff360.webp"
+                                 alt="Screenshot of the Workstaff360 website"
+                                 width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="tag tag-accent">WordPress</span>
+                            <span class="tag">Staffing</span>
+                        </div>
+                        <h3 class="work-card__title">Workstaff360</h3>
+                        <p class="work-card__text">
+                            Service and location architecture built to scale without duplicate content.
+                        </p>
+                        <div class="work-card__footer">
+                            <a class="work-card__visit" href="https://workstaff360.com/" target="_blank" rel="noopener noreferrer">
+                                Visit site <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal-up">
+                    <div class="work-card__frame">
+                        <div class="work-card__bar" aria-hidden="true">
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__url">clearearservices.co.uk</span>
+                        </div>
+                        <div class="work-card__shot">
+                            <img src="assets/images/work/clear-ear-services.webp"
+                                 alt="Screenshot of the Clear Ear Services website"
+                                 width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="tag tag-accent">WordPress</span>
+                            <span class="tag">Healthcare</span>
+                        </div>
+                        <h3 class="work-card__title">Clear Ear Services</h3>
+                        <p class="work-card__text">
+                            A clinic site with a real page per location and a short path to booking.
+                        </p>
+                        <div class="work-card__footer">
+                            <a class="work-card__visit" href="https://clearearservices.co.uk/" target="_blank" rel="noopener noreferrer">
+                                Visit site <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal-up">
+                    <div class="work-card__frame">
+                        <div class="work-card__bar" aria-hidden="true">
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__dot"></span>
+                            <span class="work-card__url">corva.co.uk</span>
+                        </div>
+                        <div class="work-card__shot">
+                            <img src="assets/images/work/corva.webp"
+                                 alt="Screenshot of the Corva website"
+                                 width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="tag tag-accent">WordPress</span>
+                            <span class="tag">Technology</span>
+                        </div>
+                        <h3 class="work-card__title">Corva</h3>
+                        <p class="work-card__text">
+                            A corporate site rebuilt around a clear service taxonomy and fast templates.
+                        </p>
+                        <div class="work-card__footer">
+                            <a class="work-card__visit" href="https://corva.co.uk/" target="_blank" rel="noopener noreferrer">
+                                Visit site <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="u-text-centre u-mt-8 reveal-up">
+                <a class="button-secondary" href="portfolio.html">
+                    View complete portfolio <span class="arrow" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQS -->
+    <section class="section surface-tint" id="faq" aria-labelledby="faqHeading">
+        <div class="shell">
+            <div class="grid grid-editorial">
+                <div class="rail">
+                    <p class="section-index reveal-up">06 &mdash; Questions</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="faqHeading">Common questions.</h2>
+                    <p class="text-lead u-mt-5 reveal-up">
+                        These apply across services in this discipline. Service-specific questions are
+                        best answered directly.
+                    </p>
+                    <div class="cluster u-mt-6 reveal-up">
+                        <a class="button-primary" href="contact.html">
+                            Ask a question <span class="arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                        <a class="link-underline" href="faq.html">Full FAQ <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+
+                <div class="faq-accordion reveal-up">
+                    <div class="faq-item">
+                        <h3><button class="faq-item__trigger" type="button" id="sd1-trigger" aria-controls="sd1" data-open>
+                            <span class="faq-item__question">How is this service priced?</span>
+                            <span class="faq-item__indicator" aria-hidden="true"></span>
+                        </button></h3>
+                        <div class="faq-item__panel" id="sd1" role="region" aria-labelledby="sd1-trigger">
+                            <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                <p>
+                                    Build services are quoted as a fixed scope with a fixed price after a
+                                    discovery call, so there are no hourly surprises. Ongoing services run as
+                                    monthly retainers sized to the competitiveness of your market.
+                                </p>
+                                <p>
+                                    Advertising spend, where relevant, is always paid directly to the platform
+                                    by you and never marked up through us.
+                                </p>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-item__trigger" type="button" id="sd2-trigger" aria-controls="sd2">
+                            <span class="faq-item__question">Can we buy this service on its own?</span>
+                            <span class="faq-item__indicator" aria-hidden="true"></span>
+                        </button></h3>
+                        <div class="faq-item__panel" id="sd2" role="region" aria-labelledby="sd2-trigger">
+                            <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                <p>
+                                    Yes. We do not bundle services to inflate scope. That said, we will tell
+                                    you when a single service is unlikely to move your target metric on its
+                                    own — for example, paid search landing on a slow site, or content
+                                    published to a site that cannot be crawled properly.
+                                </p>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-item__trigger" type="button" id="sd3-trigger" aria-controls="sd3">
+                            <span class="faq-item__question">Who will we actually work with?</span>
+                            <span class="faq-item__indicator" aria-hidden="true"></span>
+                        </button></h3>
+                        <div class="faq-item__panel" id="sd3" role="region" aria-labelledby="sd3-trigger">
+                            <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                <p>
+                                    A named contact who works on delivery, not an account manager relaying
+                                    messages. You will also have direct contact with the specialist doing the
+                                    work — the developer, SEO lead or campaign manager, depending on the
+                                    service.
+                                </p>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-item__trigger" type="button" id="sd4-trigger" aria-controls="sd4">
+                            <span class="faq-item__question">What do you need from us?</span>
+                            <span class="faq-item__indicator" aria-hidden="true"></span>
+                        </button></h3>
+                        <div class="faq-item__panel" id="sd4" role="region" aria-labelledby="sd4-trigger">
+                            <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                <p>
+                                    Analytics access, a decision-maker available for scheduled reviews, and
+                                    timely responses on content and approvals. The third is the most common
+                                    cause of a slipped timeline, which is why we agree a content schedule in
+                                    week one.
+                                </p>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3><button class="faq-item__trigger" type="button" id="sd5-trigger" aria-controls="sd5">
+                            <span class="faq-item__question">Do we own everything you produce?</span>
+                            <span class="faq-item__indicator" aria-hidden="true"></span>
+                        </button></h3>
+                        <div class="faq-item__panel" id="sd5" role="region" aria-labelledby="sd5-trigger">
+                            <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                <p>
+                                    Yes. Code, designs, content, hosting, domain, analytics and advertising
+                                    accounts are all in your name. If you leave, you leave with everything and
+                                    a documented handover. See our
+                                    <a class="link-inline" href="terms.html">terms</a> for the detail.
+                                </p>
+                            </div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA -->
+    <section class="cta-band" aria-labelledby="sdCta">
+        <div class="cta-band__media">
+            <img src="assets/images/hero/cta-background.webp" alt="" width="1920" height="900" loading="lazy" decoding="async">
+        </div>
+        <div class="shell cta-band__inner">
+            <div>
+                <p class="eyebrow reveal-up">Next step</p>
+                <h2 class="heading-display reveal-lines u-mt-4" id="sdCta">
+                    Discuss <span data-svc-field="name">WordPress Development</span> for your business.
+                </h2>
+                <p class="cta-band__text reveal-up">
+                    Tell us the outcome you need. You will get a scoped proposal and an honest view on
+                    whether this is the right service to start with.
+                </p>
+                <div class="cta-band__actions reveal-up">
+                    <a class="button-primary button-lg" href="contact.html">
+                        Get a Free Proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a class="button-secondary button-lg" href="https://wa.me/923090155045" target="_blank">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp Our Team
+                    </a>
+                </div>
+            </div>
+            <div class="cta-details reveal-up">
+                <a class="cta-details__item" href="tel:+923090155045">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-telephone"></i></span>
+                    <span>
+                        <span class="cta-details__label">Call us</span>
+                        <span class="cta-details__value">+92 309 0155045</span>
+                    </span>
+                </a>
+                <a class="cta-details__item" href="mailto:hello@neotericera.com">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-envelope"></i></span>
+                    <span>
+                        <span class="cta-details__label">Email us</span>
+                        <span class="cta-details__value">hello@neotericera.com</span>
+                    </span>
+                </a>
+                <a class="cta-details__item" href="services.html">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-grid-3x3-gap"></i></span>
+                    <span>
+                        <span class="cta-details__label">Compare options</span>
+                        <span class="cta-details__value">All services</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==========================================================================
+     SITE FOOTER
+     ========================================================================== -->
+<footer class="site-footer">
+
+    <div class="footer-newsletter">
+        <div class="shell footer-newsletter__inner">
+            <div>
+                <p class="footer-newsletter__title u-mb-0">One useful email a month. No campaigns, no filler.</p>
+                <p class="footer-newsletter__text">
+                    What actually changed in search and paid media, and what it means for a business
+                    like yours. Unsubscribe in one click.
+                </p>
+            </div>
+
+            <form class="newsletter-form" data-newsletter novalidate>
+                <div class="newsletter-form__field form-field">
+                    <label class="visually-hidden" for="footerEmail">Email address</label>
+                    <input class="form-input" type="email" id="footerEmail" name="email"
+                           placeholder="you@company.com" autocomplete="email"
+                           aria-describedby="footerEmail-error" required>
+                    <p class="form-error" id="footerEmail-error" role="alert"></p>
+                </div>
+                <button class="button-primary" type="submit">
+                    <span class="button-spinner" aria-hidden="true"></span>
+                    <span class="button-label">Subscribe</span>
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
+                </button>
+                <p class="newsletter-form__note u-mb-0">
+                    By subscribing you agree to our <a class="link-inline" href="privacy-policy.html">privacy policy</a>.
+                </p>
+                <p class="newsletter-form__success" data-newsletter-success>
+                    Thank you — please check your inbox to confirm your subscription.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-main">
+        <div class="shell footer-grid">
+
+            <div class="footer-brand">
+                <a class="footer-brand__logo" href="index.html" aria-label="Neoteric ERA — home">
+                    <img src="assets/images/branding/logo-light.svg" alt="Neoteric ERA" width="295" height="72">
+                </a>
+                <p class="footer-brand__text">
+                    A digital growth partner for ambitious US businesses. We connect strategy, design,
+                    development and acquisition so the whole system moves together rather than in
+                    separate directions.
+                </p>
+
+                <div class="footer-contact">
+                    <a class="footer-contact__item" href="tel:+923090155045">
+                        <i class="bi bi-telephone" aria-hidden="true"></i>
+                        <span>+92 309 0155045</span>
+                    </a>
+                    <!-- COMPANY EMAIL PLACEHOLDER -->
+                    <a class="footer-contact__item" href="mailto:hello@neotericera.com">
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <span>hello@neotericera.com</span>
+                    </a>
+                    <p class="footer-contact__item u-mb-0">
+                        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                        <span>Muslim Town, Lahore, Pakistan</span>
+                    </p>
+                    <p class="footer-contact__item u-mb-0">
+                        <i class="bi bi-globe" aria-hidden="true"></i>
+                        <span>Serving businesses across the United States</span>
+                    </p>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/neotericera" target="_blank" aria-label="Neoteric ERA on LinkedIn">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/neotericera" target="_blank" aria-label="Neoteric ERA on Facebook">
+                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/neotericera" target="_blank" aria-label="Neoteric ERA on Instagram">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/923090155045" target="_blank" aria-label="Message Neoteric ERA on WhatsApp">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-column">
+                    <h2 class="footer-column__title">Services</h2>
+                    <ul class="footer-links">
+                        <li><a href="service-web-development.html">Website Development</a></li>
+                        <li><a href="service-seo.html">SEO</a></li>
+                        <li><a href="service-google-ads.html">Google Ads</a></li>
+                        <li><a href="service-digital-marketing.html">Digital Marketing</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-column-stacked">
+                    <h2 class="footer-column__title">Popular Solutions</h2>
+                    <ul class="footer-links">
+                        <li><a href="service-detail.html?service=wordpress-development">WordPress Development</a></li>
+                        <li><a href="service-detail.html?service=shopify-development">Shopify Development</a></li>
+                        <li><a href="service-detail.html?service=local-seo">Local SEO</a></li>
+                        <li><a href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a></li>
+                        <li><a href="service-detail.html?service=ppc-management">PPC Management</a></li>
+                        <li><a href="service-detail.html?service=website-redesign">Website Redesign</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="footer-column__title">Company</h2>
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Insights</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="footer-column__title">Legal</h2>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="sitemap.xml">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="shell footer-bottom__inner">
+            <p class="u-mb-0">&copy; <span data-current-year>2026</span> Neoteric ERA. All rights reserved.</p>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="sitemap.xml">Sitemap</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/923090155045" target="_blank" aria-label="Message us on WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+</a>
+<button class="back-to-top" type="button" aria-label="Back to top">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Scripts deferred so parsing is never blocked -->
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/form-validation.js" defer></script>
+<script src="assets/js/location-data.js" defer></script>
+
+</body>
+</html>

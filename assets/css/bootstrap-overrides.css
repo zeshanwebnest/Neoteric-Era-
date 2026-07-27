@@ -1,0 +1,534 @@
+/* ==========================================================================
+   Neoteric ERA — Bootstrap 5 Overrides
+   --------------------------------------------------------------------------
+   Bootstrap supplies the container/grid system, form layout, responsive
+   utilities and breakpoints. Everything with a default visual signature is
+   re-skinned so the finished site does not read as a Bootstrap template.
+
+   Two rules govern this file:
+     1. Colour values are pulled from the design-system tokens defined in
+        style.css wherever a Bootstrap variable will accept a var(). Literals
+        appear only where Bootstrap needs a resolvable colour at parse time
+        (SVG data URIs, rgb() channel triplets).
+     2. Nothing here defines layout the project owns. Header, drawer, mega
+        menu, cards, accordions and buttons are bespoke; these rules exist so
+        that a stray Bootstrap class inherits the brand rather than fighting it.
+
+   Load order: bootstrap.min.css -> THIS FILE -> style.css -> components.css
+               -> animations.css -> responsive.css
+
+   Note that this file loads BEFORE style.css, so the var() references below
+   resolve against tokens declared later in the cascade. That is legal — custom
+   properties are resolved at use time, not at parse time — and it is the
+   reason the fallbacks are present for the handful of values Bootstrap reads
+   during its own computation.
+   ========================================================================== */
+
+/* ==========================================================================
+   01. CORE VARIABLE REMAP
+   ========================================================================== */
+
+:root {
+    --bs-body-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.7;
+    --bs-body-color: #334155;
+    --bs-body-bg: #FFFFFF;
+
+    --bs-heading-color: #0F172A;
+    --bs-font-sans-serif: var(--bs-body-font-family);
+
+    --bs-primary: #4F46E5;
+    --bs-primary-rgb: 79, 70, 229;
+    --bs-secondary: #64748B;
+    --bs-secondary-rgb: 100, 116, 139;
+    --bs-success: #10B981;
+    --bs-success-rgb: 16, 185, 129;
+    --bs-danger: #E11D48;
+    --bs-danger-rgb: 225, 29, 72;
+    --bs-warning: #FF6B35;
+    --bs-warning-rgb: 255, 107, 53;
+    --bs-dark: #0A0E1C;
+    --bs-dark-rgb: 10, 14, 28;
+    --bs-light: #F8FAFC;
+    --bs-light-rgb: 248, 250, 252;
+
+    --bs-link-color: #4338CA;
+    --bs-link-hover-color: #0F172A;
+    --bs-link-color-rgb: 67, 56, 202;
+    --bs-link-hover-color-rgb: 15, 23, 42;
+
+    --bs-border-color: rgba(15, 23, 42, 0.10);
+
+    /* Radii mirror the project scale: --r-xs/sm/md/lg/xl */
+    --bs-border-radius: 14px;
+    --bs-border-radius-sm: 8px;
+    --bs-border-radius-lg: 22px;
+    --bs-border-radius-xl: 32px;
+    --bs-border-radius-2xl: 32px;
+    --bs-border-radius-pill: 999px;
+
+    --bs-emphasis-color: #0F172A;
+    --bs-secondary-color: #64748B;
+
+    --bs-gutter-x: var(--gutter);
+
+    --bs-focus-ring-color: rgba(79, 70, 229, 0.28);
+    --bs-focus-ring-width: 3px;
+    --bs-focus-ring-offset: 2px;
+}
+
+/* ==========================================================================
+   02. CONTAINERS
+   --------------------------------------------------------------------------
+   Aligned to the project's --content-max so `.container` and `.shell` can be
+   mixed on the same page without a visible seam in the left/right rhythm.
+   ========================================================================== */
+
+.container, .container-fluid,
+.container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+    padding-right: var(--gutter);
+    padding-left: var(--gutter);
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1400px) {
+    .container, .container-sm, .container-md,
+    .container-lg, .container-xl, .container-xxl { max-width: var(--content-max); }
+}
+
+/* ==========================================================================
+   03. BUTTONS
+   --------------------------------------------------------------------------
+   Project buttons are `.button-primary` / `.button-secondary` / `.button-accent`
+   / `.button-ghost`. These rules exist so a stray `.btn` speaks the same
+   language rather than reverting to Bootstrap blue.
+   ========================================================================== */
+
+.btn {
+    --bs-btn-padding-y: 0.9rem;
+    --bs-btn-padding-x: 1.9rem;
+    --bs-btn-font-family: var(--font-display, var(--bs-body-font-family));
+    --bs-btn-font-size: 0.9375rem;
+    --bs-btn-font-weight: 600;
+    --bs-btn-line-height: 1.4;
+    --bs-btn-border-radius: 999px;
+    --bs-btn-border-width: 1px;
+    --bs-btn-box-shadow: none;
+    --bs-btn-focus-box-shadow: none;
+    letter-spacing: -0.005em;
+    transition: background-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:focus, .btn:active:focus { box-shadow: none; }
+
+.btn:focus-visible {
+    outline: 3px solid var(--focus-ring, rgba(79, 70, 229, 0.55));
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+.btn-primary {
+    --bs-btn-color: #FFFFFF;
+    --bs-btn-bg: #4F46E5;
+    --bs-btn-border-color: #4F46E5;
+    --bs-btn-hover-color: #FFFFFF;
+    --bs-btn-hover-bg: #4338CA;
+    --bs-btn-hover-border-color: #4338CA;
+    --bs-btn-active-color: #FFFFFF;
+    --bs-btn-active-bg: #3730A3;
+    --bs-btn-active-border-color: #3730A3;
+    --bs-btn-disabled-color: #FFFFFF;
+    --bs-btn-disabled-bg: #94A3B8;
+    --bs-btn-disabled-border-color: #94A3B8;
+}
+
+.btn-primary:hover { box-shadow: 0 12px 32px -12px rgba(79, 70, 229, 0.45); }
+
+.btn-warning {
+    --bs-btn-color: #FFFFFF;
+    --bs-btn-bg: #FF6B35;
+    --bs-btn-border-color: #FF6B35;
+    --bs-btn-hover-color: #FFFFFF;
+    --bs-btn-hover-bg: #E14E1D;
+    --bs-btn-hover-border-color: #E14E1D;
+    --bs-btn-active-color: #FFFFFF;
+    --bs-btn-active-bg: #C43F14;
+    --bs-btn-active-border-color: #C43F14;
+}
+
+.btn-dark {
+    --bs-btn-color: #FFFFFF;
+    --bs-btn-bg: #0A0E1C;
+    --bs-btn-border-color: #0A0E1C;
+    --bs-btn-hover-color: #FFFFFF;
+    --bs-btn-hover-bg: #1B2338;
+    --bs-btn-hover-border-color: #1B2338;
+}
+
+.btn-outline-dark, .btn-outline-secondary {
+    --bs-btn-color: #0F172A;
+    --bs-btn-border-color: rgba(15, 23, 42, 0.18);
+    --bs-btn-bg: transparent;
+    --bs-btn-hover-color: #0F172A;
+    --bs-btn-hover-bg: rgba(15, 23, 42, 0.04);
+    --bs-btn-hover-border-color: #0F172A;
+    --bs-btn-active-color: #0F172A;
+    --bs-btn-active-bg: rgba(15, 23, 42, 0.07);
+    --bs-btn-active-border-color: #0F172A;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #4338CA;
+    --bs-btn-border-color: rgba(79, 70, 229, 0.35);
+    --bs-btn-bg: transparent;
+    --bs-btn-hover-color: #FFFFFF;
+    --bs-btn-hover-bg: #4F46E5;
+    --bs-btn-hover-border-color: #4F46E5;
+}
+
+.btn-link {
+    --bs-btn-color: #4338CA;
+    --bs-btn-hover-color: #0F172A;
+    text-decoration: none;
+}
+
+.btn-close {
+    --bs-btn-close-color: #0F172A;
+    --bs-btn-close-opacity: 0.65;
+    --bs-btn-close-hover-opacity: 1;
+    --bs-btn-close-focus-shadow: none;
+}
+
+.btn-close:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.55); outline-offset: 2px; }
+
+/* ==========================================================================
+   04. FORMS
+   --------------------------------------------------------------------------
+   Written against the surface tokens so a Bootstrap form dropped onto a dark
+   band inverts correctly instead of punching a white hole in the section.
+   ========================================================================== */
+
+.form-control, .form-select {
+    min-height: 3.35rem;
+    padding: 0.85rem 1.1rem;
+    background-color: var(--field-bg, #FFFFFF);
+    border: 1px solid var(--border-strong, rgba(15, 23, 42, 0.18));
+    border-radius: 12px;
+    color: var(--on-surface, #0F172A);
+    font-family: var(--bs-body-font-family);
+    font-size: 0.9375rem;
+    box-shadow: none;
+    transition: border-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--field-bg, #FFFFFF);
+    border-color: var(--accent-contextual, #4F46E5);
+    color: var(--on-surface, #0F172A);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.16);
+}
+
+.form-control::placeholder { color: var(--on-surface-muted, #64748B); opacity: 0.75; }
+
+.form-label {
+    margin-bottom: 0.45rem;
+    font-family: var(--font-display, inherit);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--on-surface, #0F172A);
+}
+
+.form-text { color: var(--on-surface-muted, #64748B); font-size: 0.8125rem; }
+
+.form-check-input {
+    background-color: var(--field-bg, #FFFFFF);
+    border: 1px solid var(--border-strong, rgba(15, 23, 42, 0.24));
+    border-radius: 5px;
+    width: 1.15em;
+    height: 1.15em;
+    margin-top: 0.28em;
+}
+
+.form-check-input:checked { background-color: #4F46E5; border-color: #4F46E5; }
+.form-check-input:focus { border-color: #4F46E5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.16); }
+.form-check-input:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.55); outline-offset: 2px; }
+
+/* Bootstrap's own validation chrome is unused — the project's form module
+   renders its own inline messages, and the background icons collide with the
+   custom right-hand padding. */
+.was-validated .form-control:invalid,
+.was-validated .form-control:valid,
+.form-control.is-invalid,
+.form-control.is-valid { background-image: none; padding-right: 1.1rem; }
+
+/* ==========================================================================
+   05. ACCORDION
+   ========================================================================== */
+
+.accordion {
+    --bs-accordion-bg: transparent;
+    --bs-accordion-border-color: var(--border, rgba(15, 23, 42, 0.10));
+    --bs-accordion-border-width: 0;
+    --bs-accordion-border-radius: 0;
+    --bs-accordion-inner-border-radius: 0;
+    --bs-accordion-btn-padding-x: 0;
+    --bs-accordion-btn-padding-y: 1.4rem;
+    --bs-accordion-btn-color: var(--on-surface, #0F172A);
+    --bs-accordion-btn-bg: transparent;
+    --bs-accordion-btn-focus-border-color: transparent;
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-body-padding-x: 0;
+    --bs-accordion-body-padding-y: 0 1.4rem;
+    --bs-accordion-active-color: var(--accent-contextual, #4338CA);
+    --bs-accordion-active-bg: transparent;
+    border-top: 1px solid var(--border, rgba(15, 23, 42, 0.10));
+}
+
+.accordion-item {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--border, rgba(15, 23, 42, 0.10));
+    color: inherit;
+}
+
+.accordion-button {
+    font-family: var(--font-display, var(--bs-body-font-family));
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) { box-shadow: none; }
+
+/* Chevron replaced with the project's plus/minus glyph. Two data URIs rather
+   than one rotated glyph, because a rotated plus is still a plus. */
+.accordion-button::after {
+    width: 1rem; height: 1rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%234F46E5' stroke-width='1.75' stroke-linecap='round' d='M8 1.5v13M1.5 8h13'/%3E%3C/svg%3E");
+    background-size: 1rem;
+    transition: transform 340ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%234F46E5' stroke-width='1.75' stroke-linecap='round' d='M1.5 8h13'/%3E%3C/svg%3E");
+    transform: rotate(180deg);
+}
+
+.accordion-button:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.55); outline-offset: 2px; }
+
+.accordion-body {
+    max-width: 68ch;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--on-surface-muted, #64748B);
+}
+
+/* ==========================================================================
+   06. OFF-CANVAS, MODAL, DROPDOWN
+   ========================================================================== */
+
+.offcanvas, .offcanvas-start, .offcanvas-end,
+.offcanvas-top, .offcanvas-bottom {
+    --bs-offcanvas-bg: #FFFFFF;
+    --bs-offcanvas-color: #0F172A;
+    --bs-offcanvas-border-color: rgba(15, 23, 42, 0.10);
+    --bs-offcanvas-border-width: 1px;
+    --bs-offcanvas-width: min(440px, 92vw);
+    --bs-offcanvas-transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    --bs-offcanvas-padding-x: var(--gutter);
+    --bs-offcanvas-padding-y: 1.5rem;
+}
+
+.offcanvas-header { border-bottom: 1px solid rgba(15, 23, 42, 0.10); }
+
+.offcanvas-title {
+    font-family: var(--font-display, inherit);
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.offcanvas-backdrop.show {
+    background-color: rgba(10, 14, 28, 0.55);
+    opacity: 1;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.modal {
+    --bs-modal-bg: #FFFFFF;
+    --bs-modal-color: #0F172A;
+    --bs-modal-border-color: rgba(15, 23, 42, 0.10);
+    --bs-modal-border-width: 1px;
+    --bs-modal-border-radius: 22px;
+    --bs-modal-inner-border-radius: 22px;
+    --bs-modal-header-border-color: rgba(15, 23, 42, 0.10);
+    --bs-modal-footer-border-color: rgba(15, 23, 42, 0.10);
+    --bs-modal-box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05), 0 32px 64px -28px rgba(15, 23, 42, 0.22);
+}
+
+.modal-backdrop.show { background-color: rgba(10, 14, 28, 0.6); opacity: 1; }
+
+.modal-title {
+    font-family: var(--font-display, inherit);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.dropdown-menu {
+    --bs-dropdown-bg: #FFFFFF;
+    --bs-dropdown-color: #334155;
+    --bs-dropdown-border-color: rgba(15, 23, 42, 0.10);
+    --bs-dropdown-border-radius: 14px;
+    --bs-dropdown-link-color: #334155;
+    --bs-dropdown-link-hover-color: #0F172A;
+    --bs-dropdown-link-hover-bg: #EEF2FF;
+    --bs-dropdown-link-active-color: #4338CA;
+    --bs-dropdown-link-active-bg: #EEF2FF;
+    --bs-dropdown-font-size: 0.9375rem;
+    --bs-dropdown-padding-y: 0.5rem;
+    box-shadow: 0 4px 8px rgba(15, 23, 42, 0.04), 0 16px 32px -16px rgba(15, 23, 42, 0.16);
+}
+
+/* ==========================================================================
+   07. NAVBAR NEUTRALISATION
+   --------------------------------------------------------------------------
+   The project header is bespoke. These rules strip Bootstrap's chrome should
+   `.navbar` markup ever be introduced by a future editor.
+   ========================================================================== */
+
+.navbar {
+    --bs-navbar-padding-y: 0;
+    --bs-navbar-color: #334155;
+    --bs-navbar-hover-color: #0F172A;
+    --bs-navbar-active-color: #4338CA;
+    --bs-navbar-brand-font-size: 1rem;
+    --bs-navbar-toggler-border-color: rgba(15, 23, 42, 0.18);
+    --bs-navbar-toggler-focus-width: 0;
+}
+
+.navbar-toggler { border-radius: 999px; padding: 0.6rem; }
+.navbar-toggler:focus { box-shadow: none; }
+.navbar-toggler:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.55); outline-offset: 2px; }
+
+/* ==========================================================================
+   08. MISCELLANEOUS COMPONENTS
+   ========================================================================== */
+
+.card {
+    --bs-card-bg: var(--surface-raised, #FFFFFF);
+    --bs-card-color: var(--on-surface, #0F172A);
+    --bs-card-border-color: var(--border, rgba(15, 23, 42, 0.10));
+    --bs-card-border-radius: 22px;
+    --bs-card-inner-border-radius: 22px;
+    --bs-card-cap-bg: transparent;
+    --bs-card-spacer-x: 1.75rem;
+    --bs-card-spacer-y: 1.75rem;
+}
+
+.badge {
+    --bs-badge-font-size: 0.6875rem;
+    --bs-badge-font-weight: 600;
+    --bs-badge-padding-x: 0.7rem;
+    --bs-badge-padding-y: 0.32rem;
+    --bs-badge-border-radius: 999px;
+    font-family: var(--font-display, inherit);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.alert {
+    --bs-alert-border-radius: 14px;
+    --bs-alert-border: 1px solid var(--border, rgba(15, 23, 42, 0.10));
+    --bs-alert-padding-x: 1.25rem;
+    --bs-alert-padding-y: 1rem;
+    font-size: 0.9375rem;
+}
+
+.nav-link {
+    --bs-nav-link-color: #334155;
+    --bs-nav-link-hover-color: #4338CA;
+    --bs-nav-link-font-size: 0.9375rem;
+    --bs-nav-link-font-weight: 500;
+}
+
+.nav-link:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.55); outline-offset: 2px; box-shadow: none; }
+
+.breadcrumb {
+    --bs-breadcrumb-divider-color: rgba(15, 23, 42, 0.28);
+    --bs-breadcrumb-item-active-color: #0F172A;
+    --bs-breadcrumb-font-size: 0.8125rem;
+    --bs-breadcrumb-margin-bottom: 0;
+}
+
+.page-link {
+    background-color: transparent;
+    border-color: rgba(15, 23, 42, 0.14);
+    color: #64748B;
+    border-radius: 999px;
+}
+
+.page-link:hover { background-color: #EEF2FF; border-color: #4F46E5; color: #4338CA; }
+.active > .page-link { background-color: #4F46E5; border-color: #4F46E5; color: #FFFFFF; }
+
+.tooltip {
+    --bs-tooltip-bg: #0A0E1C;
+    --bs-tooltip-color: #FFFFFF;
+    --bs-tooltip-border-radius: 8px;
+    --bs-tooltip-font-size: 0.8125rem;
+    --bs-tooltip-opacity: 1;
+}
+
+.table {
+    --bs-table-color: var(--on-surface, #0F172A);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--border, rgba(15, 23, 42, 0.10));
+    --bs-table-striped-bg: rgba(79, 70, 229, 0.03);
+    --bs-table-hover-bg: rgba(79, 70, 229, 0.05);
+}
+
+body.modal-open.is-scroll-locked { overflow: hidden; }
+
+/* ==========================================================================
+   09. UTILITY ADDITIONS
+   --------------------------------------------------------------------------
+   Surface-aware equivalents of the Bootstrap colour utilities. These read the
+   contextual tokens, so `.text-accent` is indigo on a light band and the
+   lighter large-text-safe variant on a dark band without any extra class.
+   ========================================================================== */
+
+.text-accent  { color: var(--accent-contextual) !important; }
+.text-on-surface { color: var(--on-surface) !important; }
+.text-muted-brand { color: var(--on-surface-muted) !important; }
+
+.bg-tint      { background-color: var(--slate-50) !important; }
+.bg-brand-50  { background-color: var(--brand-50) !important; }
+.bg-white-brand { background-color: var(--white) !important; }
+.bg-ink       { background-color: var(--ink-900) !important; }
+
+.border-brand { border-color: var(--border) !important; }
+.border-brand-strong { border-color: var(--border-strong) !important; }
+
+.rounded-brand { border-radius: var(--r-lg) !important; }
+.shadow-brand-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow-brand-md { box-shadow: var(--shadow-md) !important; }
+
+/* Gutter preset matching the project's card rhythm, so Bootstrap rows and the
+   bespoke grids line up when both appear on one page. */
+.g-brand {
+    --bs-gutter-x: clamp(1rem, 0.55rem + 1.5vw, 1.75rem);
+    --bs-gutter-y: clamp(1rem, 0.55rem + 1.5vw, 1.75rem);
+}

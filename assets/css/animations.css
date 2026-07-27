@@ -1,0 +1,355 @@
+/* ==========================================================================
+   Neoteric ERA — Animation System
+   --------------------------------------------------------------------------
+   Contract for every entrance animation:
+     1. The element carries a `reveal-*` class in the markup.
+     2. CSS defines its resting (hidden) state.
+     3. animations.js adds `.is-revealed` via Intersection Observer.
+     4. If JavaScript never runs, the `.no-js` block at the foot of this file
+        makes everything visible. Content is never trapped.
+
+   Timing tiers:
+     micro-interaction   200ms
+     component           400ms
+     section reveal      820ms
+   ========================================================================== */
+
+/* ==========================================================================
+   01. REVEAL PRIMITIVES
+   ========================================================================== */
+
+[class*="reveal-"] {
+    transition-property: opacity, transform, clip-path;
+    transition-duration: var(--d-reveal);
+    transition-timing-function: var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-up { opacity: 0; transform: translate3d(0, 2.5rem, 0); }
+.reveal-up.is-revealed { opacity: 1; transform: translate3d(0, 0, 0); }
+
+.reveal-fade { opacity: 0; }
+.reveal-fade.is-revealed { opacity: 1; }
+
+.reveal-left { opacity: 0; transform: translate3d(-2.25rem, 0, 0); }
+.reveal-right { opacity: 0; transform: translate3d(2.25rem, 0, 0); }
+.reveal-left.is-revealed,
+.reveal-right.is-revealed { opacity: 1; transform: translate3d(0, 0, 0); }
+
+.reveal-scale { opacity: 0; transform: scale(0.975); }
+.reveal-scale.is-revealed { opacity: 1; transform: scale(1); }
+
+/* ==========================================================================
+   02. IMAGE MASK REVEAL
+   --------------------------------------------------------------------------
+   The wrapper wipes open while the image un-scales, so the crop appears to
+   settle rather than slide. This is the single most "premium-feeling" of the
+   reveals and is reserved for large editorial figures.
+   ========================================================================== */
+
+.reveal-mask { clip-path: inset(0 0 100% 0); will-change: clip-path; }
+.reveal-mask.is-revealed { clip-path: inset(0 0 0 0); }
+
+.reveal-mask > img,
+.reveal-mask > picture > img {
+    transform: scale(1.14);
+    transition: transform 1500ms var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-mask.is-revealed > img,
+.reveal-mask.is-revealed > picture > img { transform: scale(1); }
+
+.reveal-wipe { clip-path: inset(0 100% 0 0); }
+.reveal-wipe.is-revealed { clip-path: inset(0 0 0 0); }
+
+/* ==========================================================================
+   03. TEXT-LINE REVEAL
+   --------------------------------------------------------------------------
+   animations.js wraps each visual line in `.line > .line__inner`. The outer
+   element clips; the inner slides up. Degrades to plain text without JS.
+   ========================================================================== */
+
+.reveal-lines .line {
+    display: block;
+    overflow: hidden;
+    /* Prevents descenders (g, y, p) being clipped by the mask */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+}
+
+.reveal-lines .line__inner {
+    display: block;
+    transform: translate3d(0, 105%, 0);
+    transition: transform 1000ms var(--ease-out);
+    transition-delay: var(--line-delay, 0ms);
+}
+
+.reveal-lines.is-revealed .line__inner { transform: translate3d(0, 0, 0); }
+
+.reveal-words .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+}
+
+.reveal-words .word__inner {
+    display: inline-block;
+    transform: translate3d(0, 105%, 0);
+    transition: transform 820ms var(--ease-out);
+    transition-delay: var(--word-delay, 0ms);
+}
+
+.reveal-words.is-revealed .word__inner { transform: translate3d(0, 0, 0); }
+
+/* ==========================================================================
+   04. STAGGER GROUPS
+   ========================================================================== */
+
+.reveal-stagger > *:nth-child(1)  { --reveal-delay: 0ms; }
+.reveal-stagger > *:nth-child(2)  { --reveal-delay: 95ms; }
+.reveal-stagger > *:nth-child(3)  { --reveal-delay: 190ms; }
+.reveal-stagger > *:nth-child(4)  { --reveal-delay: 285ms; }
+.reveal-stagger > *:nth-child(5)  { --reveal-delay: 380ms; }
+.reveal-stagger > *:nth-child(6)  { --reveal-delay: 475ms; }
+.reveal-stagger > *:nth-child(7)  { --reveal-delay: 570ms; }
+.reveal-stagger > *:nth-child(8)  { --reveal-delay: 665ms; }
+.reveal-stagger > *:nth-child(9)  { --reveal-delay: 760ms; }
+.reveal-stagger > *:nth-child(10) { --reveal-delay: 855ms; }
+
+.reveal-stagger-tight > *:nth-child(1)  { --reveal-delay: 0ms; }
+.reveal-stagger-tight > *:nth-child(2)  { --reveal-delay: 60ms; }
+.reveal-stagger-tight > *:nth-child(3)  { --reveal-delay: 120ms; }
+.reveal-stagger-tight > *:nth-child(4)  { --reveal-delay: 180ms; }
+.reveal-stagger-tight > *:nth-child(5)  { --reveal-delay: 240ms; }
+.reveal-stagger-tight > *:nth-child(6)  { --reveal-delay: 300ms; }
+.reveal-stagger-tight > *:nth-child(7)  { --reveal-delay: 360ms; }
+.reveal-stagger-tight > *:nth-child(8)  { --reveal-delay: 420ms; }
+.reveal-stagger-tight > *:nth-child(9)  { --reveal-delay: 480ms; }
+.reveal-stagger-tight > *:nth-child(10) { --reveal-delay: 540ms; }
+
+/* ==========================================================================
+   05. DECORATIVE RULE EXPANSION
+   ========================================================================== */
+
+.reveal-rule {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 950ms var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-rule.is-revealed { transform: scaleX(1); }
+
+.reveal-rule-vertical {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 950ms var(--ease-out);
+}
+
+.reveal-rule-vertical.is-revealed { transform: scaleY(1); }
+
+/* ==========================================================================
+   06. KEYFRAMES
+   ========================================================================== */
+
+@keyframes scroll-cue {
+    0%   { transform: translateY(0); }
+    55%  { transform: translateY(200%); }
+    100% { transform: translateY(200%); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Very slow ambient scale on the hero image */
+@keyframes hero-drift {
+    from { transform: scale(1.05); }
+    to   { transform: scale(1.13); }
+}
+
+.hero__media img { animation: hero-drift 26s var(--ease-subtle) alternate infinite; }
+
+@keyframes grid-drift {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 110px 110px, 110px 110px; }
+}
+
+.bg-grid-animated {
+    background-image:
+        linear-gradient(to right, rgba(21, 21, 15, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(21, 21, 15, 0.04) 1px, transparent 1px);
+    background-size: 110px 110px;
+    animation: grid-drift 44s linear infinite;
+}
+
+.surface-ink .bg-grid-animated,
+.surface-gradient .bg-grid-animated {
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+@keyframes soft-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.8); }
+}
+
+.topbar__dot { animation: soft-pulse 2.8s var(--ease-subtle) infinite; }
+
+/* Continuous logo marquee. The track is duplicated in the markup, so
+   translating by exactly -50% produces a seamless loop. */
+@keyframes marquee-slide {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* Lazy-loaded images fade in rather than snapping.
+   --------------------------------------------------------------------------
+   Gated behind `.has-imgfade`, which animations.js sets on <html> as its very
+   first action. If that script is blocked, fails to load, or throws before
+   running, the class is never added and every image simply renders normally.
+   An image that is invisible because a script did not arrive is a far worse
+   outcome than a missing fade. */
+.has-imgfade img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 600ms var(--ease-subtle);
+}
+
+.has-imgfade img[loading="lazy"].is-loaded { opacity: 1; }
+
+/* ==========================================================================
+   07. POINTER DETAIL
+   ========================================================================== */
+
+.pointer-parallax {
+    transform: translate3d(
+        calc(var(--pointer-x, 0px) * 0.5),
+        calc(var(--pointer-y, 0px) * 0.5),
+        0
+    );
+    transition: transform 900ms var(--ease-out);
+}
+
+.cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 2000;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-500);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 250ms var(--ease-subtle),
+                width 250ms var(--ease-out),
+                height 250ms var(--ease-out),
+                background-color 250ms var(--ease-subtle);
+    will-change: transform;
+    mix-blend-mode: multiply;
+}
+
+.cursor-dot.is-active { opacity: 1; }
+
+.cursor-dot.is-hovering {
+    width: 48px; height: 48px;
+    background-color: transparent;
+    border: 1px solid var(--accent-500);
+}
+
+@media (hover: none), (pointer: coarse) {
+    .cursor-dot { display: none; }
+}
+
+/* ==========================================================================
+   08. COUNTERS
+   ========================================================================== */
+
+[data-counter] { font-variant-numeric: lining-nums tabular-nums; }
+
+/* ==========================================================================
+   09. REDUCED MOTION
+   --------------------------------------------------------------------------
+   The user's preference always wins. Content becomes visible immediately,
+   ambient loops stop, and no transform-based motion remains.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    [class*="reveal-"],
+    .reveal-up, .reveal-fade, .reveal-left, .reveal-right,
+    .reveal-scale, .reveal-mask, .reveal-wipe {
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+    }
+
+    .reveal-mask > img,
+    .reveal-wipe > img,
+    .reveal-mask > picture > img { transform: none !important; }
+
+    .reveal-lines .line__inner,
+    .reveal-words .word__inner { transform: none !important; }
+
+    .reveal-rule, .reveal-rule-vertical { transform: none !important; }
+
+    .has-imgfade img[loading="lazy"] { opacity: 1 !important; }
+
+    .hero__media img,
+    .bg-grid-animated,
+    .topbar__dot,
+    .marquee__track,
+    .hero__scroll-line::after { animation: none !important; }
+
+    .hero__grid, .pointer-parallax { transform: none !important; }
+    .cursor-dot { display: none !important; }
+}
+
+/* ==========================================================================
+   10. NO-JAVASCRIPT FALLBACK
+   ========================================================================== */
+
+.no-js [class*="reveal-"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+}
+
+.no-js .reveal-mask > img,
+.no-js .reveal-mask > picture > img { transform: none !important; }
+
+.no-js .reveal-lines .line__inner,
+.no-js .reveal-words .word__inner { transform: none !important; }
+
+.no-js img[loading="lazy"],
+.no-js.has-imgfade img[loading="lazy"] { opacity: 1 !important; }
+
+.no-js .process__figure img:first-of-type { opacity: 1; transform: none; }
+
+.no-js .mega-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    display: none;
+    width: 100%;
+}
+
+.no-js .primary-nav__item:hover .mega-menu { display: block; position: absolute; }
+
+/* FAQ answers stay open so they remain readable and indexable */
+.no-js .faq-item__panel { grid-template-rows: 1fr; }
+
+.no-js .back-to-top,
+.no-js .reading-progress { display: none; }

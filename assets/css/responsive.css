@@ -1,0 +1,355 @@
+/* ==========================================================================
+   Neoteric ERA — Responsive Layer
+   --------------------------------------------------------------------------
+   Loaded last so breakpoint rules win without !important.
+   Verified at 320, 360, 375, 414, 430, 600, 768, 834, 1024, 1180, 1280, 1440,
+   1600 and 1920px, plus short landscape and coarse-pointer modes.
+
+   Principle: reorganise, never merely shrink.
+   ========================================================================== */
+
+/* ==========================================================================
+   01. ULTRA-WIDE
+   ========================================================================== */
+
+@media (min-width: 1800px) {
+    :root { --content-max: 1400px; --gutter: 3.5rem; }
+    .shell-wide { max-width: 1680px; }
+    .hero { min-height: min(86svh, 960px); }
+}
+
+/* ==========================================================================
+   02. LAPTOP — 1280px
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+    :root { --header-h: 74px; }
+    .footer-grid { grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+    .testimonial-card { grid-template-columns: minmax(0, 1fr) minmax(200px, 0.34fr); }
+    .article-layout { grid-template-columns: 230px minmax(0, 1fr); }
+    .article-layout-right { grid-template-columns: minmax(0, 1fr) 270px; }
+    .hero__visual-card { left: -4%; }
+}
+
+/* ==========================================================================
+   03. SMALL LAPTOP — 1180px
+   --------------------------------------------------------------------------
+   Mega menu columns already auto-fit, so they reflow rather than squash. Here
+   the feature panel moves below them so the link columns keep a usable width.
+   ========================================================================== */
+
+@media (max-width: 1180px) {
+    .primary-nav__link { font-size: 0.875rem; padding-inline: 0.6rem; }
+    .header-phone { display: none; }
+
+    /* Below this width the panel is wider than the content column anyway, so
+       it goes edge to edge and drops its radius rather than sitting in a
+       narrow inset that wastes the little width there is. */
+    .mega-menu { width: 100vw; max-width: 100vw; border-radius: 0; border-inline: 0; }
+    .mega-menu__inner { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; padding-inline: var(--gutter); }
+
+    .mega-menu__feature {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 1rem 1.75rem;
+    }
+
+    .mega-menu__feature .eyebrow { grid-column: 1 / -1; }
+    .mega-menu__feature-title { font-size: 1.125rem; }
+    .mega-menu__feature-meta { grid-column: 1 / -1; margin-top: 0; }
+    .mega-menu__columns { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+    .pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ==========================================================================
+   04. TABLET LANDSCAPE — 1080px
+   Navigation switches to the drawer.
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+    :root { --header-h: 70px; }
+
+    .primary-nav { display: none; }
+    .mega-menu { display: none; }
+    .nav-toggle { display: inline-flex; }
+
+    /* --- Hero ---------------------------------------------------------- */
+    .hero { min-height: auto; padding-top: calc(var(--header-h) + 3rem); padding-bottom: 3rem; }
+    .hero__layout { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+    .hero .heading-hero { max-width: 100%; }
+    .hero__visual { max-width: 620px; }
+    .hero__visual-card { left: auto; right: 4%; bottom: -1.5rem; }
+
+    /* --- Internal hero -------------------------------------------------- */
+    .page-hero__layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    .page-hero .heading-display { max-width: 100%; }
+
+    /* --- Layout primitives ---------------------------------------------- */
+    .grid-editorial, .grid-split { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .section-header-split { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+    .section-header .heading-section, .section-header-centred .heading-section { max-width: 26ch; }
+
+    /* --- Cards ----------------------------------------------------------- */
+    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .service-card-feature { grid-column: span 2; }
+    .service-card-feature .service-card__inner { grid-template-columns: minmax(0, 1fr); }
+    .service-card-feature .service-card__media { min-height: 0; aspect-ratio: 16/9; }
+
+    /* --- Process --------------------------------------------------------- */
+    .process { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .process__visual, .toc { position: static; }
+    .process__figure { aspect-ratio: 16/10; }
+
+    /* --- Testimonials ---------------------------------------------------- */
+    .testimonial-card { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+
+    .testimonial-card__meta {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-left: 0;
+        padding-top: 1.25rem;
+        border-left: 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .testimonial-card__tags { margin-top: 0; padding-top: 0; border-top: 0; width: 100%; }
+
+    /* --- Blog & article --------------------------------------------------- */
+    .post-card-featured { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    .article-layout, .article-layout-right { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .article-layout .article-sidebar { order: -1; }
+    .article-layout-right .article-sidebar { order: 0; }
+    .toc__list { max-height: none; }
+
+    /* --- CTA & footer ----------------------------------------------------- */
+    .cta-band__inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .footer-newsletter__inner { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-brand { grid-column: 1 / -1; padding-bottom: 1.75rem; border-bottom: 1px solid var(--line-dark); }
+}
+
+/* ==========================================================================
+   05. TABLET PORTRAIT — 900px
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .comparison { grid-template-columns: minmax(0, 1fr); }
+    .check-list-columns { grid-template-columns: minmax(0, 1fr); }
+    .spec-list > div { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; }
+    .author-box { grid-template-columns: 60px minmax(0, 1fr); gap: 1rem; }
+    .author-box img { width: 60px; height: 60px; }
+    .work-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+/* ==========================================================================
+   06. SMALL TABLET — 768px
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    :root { --header-h: 66px; --section-space: 3rem; --section-space-tight: 2.25rem; --section-space-lg: 3.75rem; }
+
+    .topbar__inner { padding-inline: 2.25rem; font-size: 0.6875rem; }
+    .topbar__close { right: 0.35rem; }
+
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: minmax(0, 1fr); }
+    .pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .service-card-feature { grid-column: span 1; }
+
+    .tech-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .form-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .form-submit-row { flex-direction: column; align-items: stretch; gap: 0.85rem; }
+    .form-submit-row .button-primary { width: 100%; }
+
+    .cta-inline { flex-direction: column; align-items: flex-start; }
+    .cta-inline .button-primary, .cta-inline .button-secondary { width: 100%; }
+
+    .footer-bottom__inner { flex-direction: column; align-items: flex-start; text-align: left; }
+    .testimonial-controls { flex-direction: column-reverse; align-items: stretch; gap: 1rem; }
+    .testimonial-buttons { justify-content: space-between; }
+    .slider-dots { justify-content: center; }
+
+    .process-step { grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0.85rem; }
+    .advantage-item { grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0.85rem; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+    .hero__visual-card { position: static; margin-top: 1rem; max-width: 100%; }
+}
+
+/* ==========================================================================
+   07. LARGE PHONE — 600px
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    :root { --gutter: 1.25rem; }
+
+    .hero { padding-top: calc(var(--header-h) + 2.5rem); padding-bottom: 2.5rem; }
+
+    .hero__actions, .page-hero__actions, .cta-band__actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .hero__actions .button-primary, .hero__actions .button-secondary,
+    .page-hero__actions .button-primary, .page-hero__actions .button-secondary,
+    .cta-band__actions .button-primary, .cta-band__actions .button-secondary { width: 100%; }
+
+    .hero__trust { gap: 1.25rem; }
+    .hero__trust-item { flex: 1 1 40%; }
+
+    .stats-strip { grid-template-columns: minmax(0, 1fr); }
+    .stat-item__value { font-size: 2.5rem; }
+    .pillar-grid { grid-template-columns: minmax(0, 1fr); }
+    .tech-groups { grid-template-columns: minmax(0, 1fr); }
+
+    .page-hero__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+
+    .work-grid { grid-template-columns: minmax(0, 1fr); }
+    .gallery-grid { grid-template-columns: minmax(0, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
+    .value-grid { grid-template-columns: minmax(0, 1fr); }
+    .footer-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form .button-primary { width: 100%; }
+
+    .filter-reset { margin-left: 0; }
+
+    /* Chip rows scroll rather than wrapping to four lines */
+    .filter-group-scroll {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.4rem;
+        margin-inline: calc(var(--gutter) * -1);
+        padding-inline: var(--gutter);
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+    }
+
+    .filter-group-scroll .filter-chip { scroll-snap-align: start; }
+    .filter-select { width: 100%; }
+
+    .mobile-nav__link, .mobile-nav__trigger { font-size: 1.125rem; min-height: 56px; padding-block: 0.75rem; }
+
+    .timeline { padding-left: 1.15rem; }
+    .timeline__item::before { left: calc(1.15rem * -1 - 5px); }
+    .pull-quote__attribution { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+
+    /* Both are purely decorative and both are expensive: the orbs cost a large
+       blur, the rings are a fixed 1100px overlay that is almost entirely
+       clipped at this width. Neither adds anything a phone user can see. */
+    .orb { display: none; }
+    .bg-rings { display: none; }
+}
+
+/* ==========================================================================
+   08. PHONE — 480px
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    :root { --header-h: 62px; --section-space: 2.75rem; }
+
+    .site-logo img { height: 34px; }
+    .mobile-nav__header .site-logo img { height: 32px; }
+    .header-actions { gap: 0.4rem; }
+    .header-actions .button-primary { padding-inline: 1rem; font-size: 0.75rem; min-height: 2.5rem; }
+    .nav-toggle { width: 2.6rem; height: 2.6rem; }
+
+    .team-grid { grid-template-columns: minmax(0, 1fr); }
+    .author-box { grid-template-columns: minmax(0, 1fr); }
+    .hero__trust-item { flex: 1 1 100%; }
+    .back-to-top, .whatsapp-float { width: 2.75rem; height: 2.75rem; }
+    .whatsapp-float { bottom: calc(clamp(1rem, 2vw, 1.75rem) + 3.35rem); }
+    .pagination__link { min-width: 2.5rem; height: 2.5rem; }
+    .cta-details__item { padding: 1rem; }
+    .form-panel { padding: 1.15rem; }
+    .callout { flex-direction: column; gap: 0.65rem; }
+    .work-card__url { max-width: 55%; }
+}
+
+/* ==========================================================================
+   09. SMALL PHONE — 380px / 340px
+   ========================================================================== */
+
+@media (max-width: 380px) {
+    :root { --gutter: 1rem; }
+
+    .heading-hero { font-size: 2.15rem; }
+    .heading-display { font-size: 1.95rem; }
+    .heading-section { font-size: 1.75rem; }
+    .statement-band { font-size: 1.6rem; max-width: 100%; }
+    .stat-item__value { font-size: 2.25rem; }
+    .page-hero__facts { grid-template-columns: minmax(0, 1fr); }
+    .topbar__inner { font-size: 0.625rem; gap: 0.4rem; }
+
+    /* Long strings wrap rather than overflow */
+    .cta-details__value, .footer-contact__item, .mobile-nav__contact a { word-break: break-word; overflow-wrap: anywhere; }
+
+    .button-primary, .button-secondary, .button-accent { padding-inline: 1.15rem; font-size: 0.8125rem; }
+    .filter-chip { padding-inline: 0.8rem; }
+    .mobile-nav__link, .mobile-nav__trigger { font-size: 1.0625rem; }
+    .testimonial-card, .pull-quote, .form-panel { padding: 1rem; }
+}
+
+@media (max-width: 340px) {
+    .heading-hero { font-size: 1.95rem; }
+    .header-actions .button-primary { display: none; }
+    .hero__service-chip { font-size: 0.6875rem; padding: 0.4rem 0.7rem; }
+}
+
+/* ==========================================================================
+   10. ORIENTATION & INPUT MODE
+   ========================================================================== */
+
+@media (max-height: 560px) and (orientation: landscape) {
+    .hero { min-height: auto; padding-top: calc(var(--header-h) + 1.75rem); padding-bottom: 1.75rem; }
+    .mobile-nav__link, .mobile-nav__trigger { font-size: 1rem; min-height: 46px; padding-block: 0.4rem; }
+    .mobile-nav__body { padding-block: 0.4rem 1.75rem; }
+}
+
+@media (pointer: coarse) {
+    .link-underline, .footer-links a, .mega-menu__link, .toc__list a { padding-block: 0.55rem; }
+    .service-card__children li a { padding-block: 0.5rem; }
+
+    /* Lift transforms feel unresponsive without a hovering cursor */
+    .card-base:hover, .work-card:hover, .pillar:hover, .value-item:hover,
+    .button-primary:hover, .button-secondary:hover, .button-accent:hover { transform: none; }
+
+    /* The screenshot scroll-on-hover has no touch equivalent */
+    .work-card:hover .work-card__shot img { object-position: top center; }
+}
+
+/* Blur is expensive on mid-range mobile hardware */
+@media (max-width: 768px) {
+    .cta-details__item { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    .orb { filter: blur(60px); }
+}
+
+/* ==========================================================================
+   11. PRINT
+   ========================================================================== */
+
+@media print {
+    .topbar, .site-header, .mobile-nav, .back-to-top, .whatsapp-float,
+    .reading-progress, .cursor-dot, .bg-decor, .filter-bar,
+    .testimonial-controls, .site-footer .footer-newsletter { display: none !important; }
+
+    body { background: #fff !important; color: #111 !important; font-size: 11pt; line-height: 1.5; }
+
+    .surface-ink, .surface-gradient, .hero, .page-hero, .cta-band, .site-footer {
+        background: #fff !important;
+        color: #111 !important;
+    }
+
+    a { color: #111 !important; text-decoration: underline; }
+    .article-body a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+    .section { padding-block: 1.25rem; break-inside: avoid; }
+    .faq-item__panel { grid-template-rows: 1fr !important; }
+    img { max-width: 100% !important; break-inside: avoid; }
+}

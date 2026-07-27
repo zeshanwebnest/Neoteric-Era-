@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Core Web Vitals: Which Fixes Actually Move the Number | Neoteric ERA</title>
+<meta name="description" content="Most sites fail LCP for one of four reasons, and only one is image size. A practical order of operations for teams without a performance engineer.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.neotericera.com/blog-detail.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Neoteric ERA">
+<meta property="og:url" content="https://www.neotericera.com/blog-detail.html">
+<meta property="og:title" content="Core Web Vitals: Which Fixes Actually Move the Number">
+<meta property="og:description" content="A practical order of operations for teams without a performance engineer.">
+<meta property="og:image" content="https://www.neotericera.com/assets/images/blog/core-web-vitals.webp">
+<meta property="article:published_time" content="2026-07-14">
+<meta property="article:modified_time" content="2026-07-20">
+<meta property="article:section" content="Performance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Core Web Vitals: Which Fixes Actually Move the Number">
+<meta name="twitter:description" content="A practical order of operations for teams without a performance engineer.">
+<meta name="twitter:image" content="https://www.neotericera.com/assets/images/blog/core-web-vitals.webp">
+
+<meta name="theme-color" content="#0A0E1C">
+<meta name="color-scheme" content="light">
+
+<!-- Favicons & manifest -->
+<link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/branding/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Typography. Plus Jakarta Sans carries display and headings; Inter carries
+     body copy and UI. Both hold tight, even colour at display sizes and stay
+     legible at 15-16px, which is where most of this site's reading happens.
+     Weights are enumerated rather than requested as a range to keep the
+     payload small. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<!--
+  Bootstrap 5 supplies the container/grid system, form layout, responsive
+  utilities and breakpoints. The Bootstrap JavaScript bundle is deliberately
+  NOT loaded: the header, drawer, mega menu, accordions and slider are custom
+  vanilla implementations, so the bundle would be dead weight on every page.
+-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISmX4MhbVJarPYFqjnJHDIe6Zn1BsrBn3aeRVIElYzXPU1PdKgm/H" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous">
+
+<link rel="stylesheet" href="assets/css/bootstrap-overrides.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.neotericera.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.neotericera.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Core Web Vitals", "item": "https://www.neotericera.com/blog-detail.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Core Web Vitals: which fixes actually move the number",
+  "description": "Most sites fail Largest Contentful Paint for one of four reasons, and only one of them is image size. A practical order of operations.",
+  "image": "https://www.neotericera.com/assets/images/blog/core-web-vitals.webp",
+  "datePublished": "2026-07-14",
+  "dateModified": "2026-07-20",
+  "wordCount": 1400,
+  "articleSection": "Performance",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Technical Lead",
+    "worksFor": { "@id": "https://www.neotericera.com/#organization" }
+  },
+  "publisher": { "@id": "https://www.neotericera.com/#organization" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.neotericera.com/blog-detail.html" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Do Core Web Vitals affect rankings?", "acceptedAnswer": { "@type": "Answer", "text": "They are a ranking signal, but a weak one relative to relevance and authority. A fast page about the wrong topic will not outrank a slower page that answers the query. The stronger business case for performance is conversion: page speed affects whether visitors stay long enough to convert, and that effect is far larger than the ranking effect." } },
+    { "@type": "Question", "name": "Why does Lighthouse disagree with Search Console?", "acceptedAnswer": { "@type": "Answer", "text": "Lighthouse is a lab test on a simulated device and network. Search Console reports field data from real Chrome users on their real devices and connections. Field data is what counts for the ranking signal. If they disagree, trust the field data and treat Lighthouse as a diagnostic tool for finding causes." } },
+    { "@type": "Question", "name": "How long before improvements appear in Search Console?", "acceptedAnswer": { "@type": "Answer", "text": "Field data uses a 28-day rolling window, so a fix deployed today will take roughly four weeks to be fully reflected. Partial movement appears sooner. This lag is the most common reason teams conclude a fix did not work when it simply has not surfaced yet." } }
+  ]
+}
+</script>
+</head>
+
+<body class="is-annotated">
+
+<!-- Reading progress indicator -->
+<div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress__bar"></div>
+</div>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ==========================================================================
+     TOPBAR
+     ========================================================================== -->
+<div class="topbar" id="topbar">
+    <div class="shell topbar__inner">
+        <p class="topbar__text u-mb-0">
+            <span class="topbar__dot" aria-hidden="true"></span>
+            Website Development &middot; SEO &middot; Google Ads &middot; Digital Marketing
+        </p>
+        <a class="topbar__link" href="contact.html">
+            Get a free proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <button class="topbar__close" type="button" aria-label="Dismiss announcement">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     SITE HEADER
+     --------------------------------------------------------------------------
+     `site-header--over-dark` is applied only on pages whose hero is a dark
+     full-bleed panel. Every other page gets the solid white header from the
+     top. Both converge on the same condensed state once scrolled.
+     ========================================================================== -->
+<header class="site-header" id="siteHeader">
+    <div class="shell site-header__inner">
+
+        <a class="site-logo" href="index.html" aria-label="Neoteric ERA IT Services — home">
+            <!-- Two lockups stacked and cross-faded, so the logo colour changes
+                 in step with the header's own background. -->
+            <img class="site-logo__light" src="assets/images/branding/logo-light.svg"
+                 alt="Neoteric ERA IT Services" width="295" height="72">
+            <img class="site-logo__dark" src="assets/images/branding/logo-dark.svg"
+                 alt="" aria-hidden="true" width="295" height="72">
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary">
+            <ul class="primary-nav__list">
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="index.html" data-nav="home">Home</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="about.html" data-nav="about">About</a>
+                </li>
+
+                <!-- Services mega menu -->
+                <li class="primary-nav__item" data-mega>
+                    <a class="primary-nav__link" href="services.html" data-nav="services">
+                        Services <i class="bi bi-chevron-down primary-nav__chevron" aria-hidden="true"></i>
+                    </a>
+                    <div class="mega-menu" role="group" aria-label="Services">
+                        <div class="shell mega-menu__inner">
+                            <div class="mega-menu__columns">
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-web-development.html">
+                                        <i class="bi bi-code-slash" aria-hidden="true"></i> Website Development
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=wordpress-development">WordPress Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=shopify-development">Shopify Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=custom-website-development">Custom Websites</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=laravel-development">Laravel Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=react-development">React Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=nextjs-development">Next.js Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ecommerce-development">Ecommerce Development</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=website-redesign">Website Redesign</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=website-maintenance">Website Maintenance</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-seo.html">
+                                        <i class="bi bi-graph-up-arrow" aria-hidden="true"></i> SEO
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=local-seo">Local SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=technical-seo">Technical SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=on-page-seo">On-Page SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=off-page-seo">Off-Page SEO</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=enterprise-seo">Enterprise SEO</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-google-ads.html">
+                                        <i class="bi bi-bullseye" aria-hidden="true"></i> Google Ads
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=search-ads">Search Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=shopping-ads">Shopping Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=display-ads">Display Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=performance-max">Performance Max</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=youtube-ads">YouTube Ads</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=ppc-management">PPC Management</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <a class="mega-menu__column-title" href="service-digital-marketing.html">
+                                        <i class="bi bi-broadcast" aria-hidden="true"></i> Digital Marketing
+                                    </a>
+                                    <ul class="mega-menu__list">
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=content-marketing">Content Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=conversion-rate-optimization">Conversion Optimisation</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=social-media-marketing">Social Media Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=email-marketing">Email Marketing</a></li>
+                                        <li><a class="mega-menu__link" href="service-detail.html?service=branding">Branding</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mega-menu__feature">
+                                <p class="eyebrow">Free review</p>
+                                <p class="mega-menu__feature-title">Find out what is actually holding your growth back.</p>
+                                <p class="mega-menu__feature-text">
+                                    We look at your site speed, search visibility and campaign structure,
+                                    then tell you which discipline will move your number first.
+                                </p>
+                                <a class="button-accent button-sm" href="contact.html">
+                                    Get a free proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+                                </a>
+                                <p class="mega-menu__feature-meta u-mb-0">No obligation &middot; Reply within 1 business day</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="portfolio.html" data-nav="portfolio">Portfolio</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="blog.html" data-nav="blog" aria-current="page">Insights</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="faq.html" data-nav="faq">FAQs</a>
+                </li>
+                <li class="primary-nav__item">
+                    <a class="primary-nav__link" href="contact.html" data-nav="contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a class="header-phone" href="tel:+923090155045">
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                <span>+92 309 0155045</span>
+            </a>
+            <a class="button-primary button-sm" href="contact.html"
+               data-cta-responsive
+               data-label-long="Get a Free Proposal"
+               data-label-short="Proposal">Get a Free Proposal</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation menu">
+                <span class="nav-toggle__bars" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MOBILE NAVIGATION DRAWER
+     Full-screen, scroll-locked, focus-trapped. 60px minimum touch targets and
+     a pinned CTA block so the primary action never needs scrolling to.
+     ========================================================================== -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-nav__header">
+        <a class="site-logo" href="index.html" aria-label="Neoteric ERA IT Services — home">
+            <img src="assets/images/branding/logo-dark.svg" alt="Neoteric ERA IT Services" width="295" height="72">
+        </a>
+        <button class="mobile-nav__close" type="button" aria-label="Close navigation menu">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="mobile-nav__body">
+        <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="index.html" data-nav="home">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="about.html" data-nav="about">About</a>
+            </li>
+
+            <li class="mobile-nav__item">
+                <button class="mobile-nav__trigger" type="button" aria-expanded="false" aria-controls="mobileServices">
+                    Services <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                </button>
+                <div class="mobile-nav__panel" id="mobileServices">
+                    <div class="mobile-nav__panel-inner">
+                        <div class="mobile-nav__sublist">
+                            <a class="mobile-nav__subgroup-title" href="service-web-development.html">Website Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=wordpress-development">WordPress Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=shopify-development">Shopify Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=custom-website-development">Custom Websites</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ecommerce-development">Ecommerce Development</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=website-redesign">Website Redesign</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=website-maintenance">Website Maintenance</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-seo.html">SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=local-seo">Local SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=technical-seo">Technical SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=on-page-seo">On-Page SEO</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=enterprise-seo">Enterprise SEO</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-google-ads.html">Google Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=search-ads">Search Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=shopping-ads">Shopping Ads</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=performance-max">Performance Max</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=ppc-management">PPC Management</a>
+
+                            <a class="mobile-nav__subgroup-title" href="service-digital-marketing.html">Digital Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=content-marketing">Content Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=conversion-rate-optimization">Conversion Optimisation</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=social-media-marketing">Social Media Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=email-marketing">Email Marketing</a>
+                            <a class="mobile-nav__sublink" href="service-detail.html?service=branding">Branding</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="portfolio.html" data-nav="portfolio">Portfolio</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="blog.html" data-nav="blog" aria-current="page">Insights</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="faq.html" data-nav="faq">FAQs</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav__link" href="contact.html" data-nav="contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mobile-nav__footer">
+        <a class="button-accent button-block" href="contact.html">
+            Get a Free Proposal <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="button-secondary button-block" href="https://wa.me/923090155045" target="_blank">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp Our Team
+        </a>
+        <div class="mobile-nav__contact">
+            <a href="tel:+923090155045"><i class="bi bi-telephone" aria-hidden="true"></i> +92 309 0155045</a>
+            <!-- COMPANY EMAIL PLACEHOLDER: confirm the address before launch -->
+            <a href="mailto:hello@neotericera.com"><i class="bi bi-envelope" aria-hidden="true"></i> hello@neotericera.com</a>
+        </div>
+    </div>
+</div>
+
+
+<main id="main">
+
+    <!-- ARTICLE HEADER -->
+    <article>
+        <header class="page-hero" aria-labelledby="pageTitle">
+            <div class="page-hero__media">
+                <img src="assets/images/blog/core-web-vitals.webp" alt="" width="1200" height="800" fetchpriority="high" decoding="async">
+            </div>
+            <div class="shell page-hero__inner">
+                <nav class="breadcrumbs u-mb-6" aria-label="Breadcrumb">
+                    <ol class="breadcrumbs__list">
+                        <li class="breadcrumbs__item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumbs__item"><a href="blog.html">Insights</a></li>
+                        <li class="breadcrumbs__item"><span aria-current="page">Core Web Vitals</span></li>
+                    </ol>
+                </nav>
+
+                <div class="shell-narrow" style="padding-inline: 0; margin-inline: 0;">
+                    <p class="eyebrow reveal-up">Performance</p>
+                    <h1 class="heading-display reveal-lines" id="pageTitle">Core Web Vitals: which fixes actually move the number</h1>
+
+                    <ul class="article-meta u-mt-6 reveal-up">
+                        <li><time datetime="2026-07-14">14 July 2026</time></li>
+                        <li>9 min read</li>
+                        <li>Updated <time datetime="2026-07-20">20 July 2026</time></li>
+                        <li>Technical Lead <span class="placeholder-note">Author</span></li>
+                    </ul>
+
+                    <div class="article-share u-mt-6 reveal-up">
+                        <span class="article-share__label">Share</span>
+                        <button class="share-button" type="button" data-share="linkedin" aria-label="Share on LinkedIn">
+                            <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </button>
+                        <button class="share-button" type="button" data-share="x" aria-label="Share on X">
+                            <i class="bi bi-twitter-x" aria-hidden="true"></i>
+                        </button>
+                        <button class="share-button" type="button" data-share="facebook" aria-label="Share on Facebook">
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </button>
+                        <button class="share-button" type="button" data-share="copy" aria-label="Copy link">
+                            <i class="bi bi-link-45deg" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ARTICLE BODY WITH STICKY CONTENTS -->
+        <section class="section surface-white">
+            <div class="shell">
+                <div class="article-layout">
+
+                    <!-- Sticky table of contents, built by main.js from the article headings -->
+                    <aside class="article-sidebar">
+                        <nav class="toc" data-toc aria-labelledby="tocTitle">
+                            <p class="toc__title u-mb-0" id="tocTitle">Contents</p>
+                            <ul class="toc__list">
+                                <!-- Populated from the article's h2 and h3 elements -->
+                            </ul>
+                        </nav>
+
+                        <div class="widget">
+                            <h2 class="widget__title">Related service</h2>
+                            <div class="widget-list">
+                                <a href="service-web-development.html">
+                                    <span>Development</span>
+                                    Website Development
+                                </a>
+                                <a href="service-detail.html?service=technical-seo">
+                                    <span>SEO</span>
+                                    Technical SEO
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <div class="article-body" data-reading-target>
+                        <p>
+                            Every few months a client forwards a Lighthouse report with a red score and
+                            asks what it will cost to fix. The honest answer is usually that the report is
+                            listing thirty issues of which two matter, and identifying which two is most
+                            of the work.
+                        </p>
+                        <p>
+                            This is the order of operations we actually use. It assumes you have no
+                            dedicated performance engineer and a finite number of sprints, which describes
+                            most marketing teams.
+                        </p>
+
+                        <h2 id="what-is-measured">What is actually being measured</h2>
+                        <p>
+                            Three metrics carry weight. It is worth being precise about them, because a
+                            lot of wasted effort comes from optimising the wrong one.
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Largest Contentful Paint (LCP)</strong> — how long until the biggest
+                                element in the initial viewport finishes rendering. Usually a hero image,
+                                sometimes a heading. Target is under 2.5 seconds.
+                            </li>
+                            <li>
+                                <strong>Interaction to Next Paint (INP)</strong> — how long the page takes to
+                                visually respond after a user interacts. This replaced First Input Delay and
+                                is considerably harder to pass. Target is under 200 milliseconds.
+                            </li>
+                            <li>
+                                <strong>Cumulative Layout Shift (CLS)</strong> — how much content moves around
+                                during load. Target is under 0.1.
+                            </li>
+                        </ul>
+                        <p>
+                            Note that none of these measure "how fast the page feels" in the abstract.
+                            They measure three specific, separately caused things, and the fixes for each
+                            barely overlap.
+                        </p>
+
+                        <div class="callout">
+                            <i class="bi bi-exclamation-triangle" aria-hidden="true"></i>
+                            <p class="u-mb-0">
+                                <span class="callout__title">Lab data is not field data</span>
+                                Lighthouse runs a simulated device on a simulated network. Search Console
+                                reports what real Chrome users experienced. When they disagree, the field data
+                                is the one that counts — use Lighthouse to find causes, not to judge whether
+                                you have a problem.
+                            </p>
+                        </div>
+
+                        <h2 id="lcp-four-causes">LCP: the four causes, in order of frequency</h2>
+                        <p>
+                            Most teams assume a failing LCP means the hero image is too large. In our
+                            audits that is the cause roughly a quarter of the time. The other three are
+                            more common and less obvious.
+                        </p>
+
+                        <h3 id="lcp-cause-one">Resource load delay</h3>
+                        <p>
+                            The browser does not discover the LCP image until late, because it is set in
+                            CSS as a background, injected by JavaScript, or lazy-loaded by a plugin that
+                            does not distinguish above-the-fold content from the rest.
+                        </p>
+                        <p>
+                            The fix is unglamorous and usually cheap: put the image in an
+                            <code>&lt;img&gt;</code> tag, give it <code>fetchpriority="high"</code>, and
+                            make certain it does <em>not</em> carry <code>loading="lazy"</code>. A
+                            surprising proportion of LCP failures are a single misapplied lazy-load
+                            attribute.
+                        </p>
+
+                        <h3 id="lcp-cause-two">Render-blocking resources</h3>
+                        <p>
+                            Stylesheets and synchronous scripts in the document head must download and
+                            execute before anything paints. Every third-party tag added in that position
+                            delays the first paint for every visitor.
+                        </p>
+                        <p>
+                            Audit what is actually in your head. Consent managers, chat widgets, heat-map
+                            tools and tag managers frequently sit there for no reason other than that the
+                            installation instructions said to put them there.
+                        </p>
+
+                        <h3 id="lcp-cause-three">Slow server response</h3>
+                        <p>
+                            If Time to First Byte is over 800 milliseconds, no amount of front-end
+                            optimisation will rescue LCP. Common causes are unindexed database queries, an
+                            uncached CMS, or hosting in the wrong region for your audience.
+                        </p>
+
+                        <h3 id="lcp-cause-four">Image size and format</h3>
+                        <p>
+                            The cause everyone assumes. It is real, and it is the easiest to fix: serve
+                            WebP or AVIF, size the asset to its rendered dimensions, and provide a
+                            <code>srcset</code> so mobile does not download a desktop-sized file. If this
+                            is your only problem, you have a good afternoon's work rather than a project.
+                        </p>
+
+                        <blockquote>
+                            The order matters more than the list. Compressing images on a site with an
+                            800ms server response is optimising the last 20% of a problem while ignoring
+                            the first 80%.
+                        </blockquote>
+
+                        <h2 id="inp-the-hard-one">INP: the metric most sites now fail</h2>
+                        <p>
+                            INP is stricter than the metric it replaced, and it punishes a pattern that is
+                            extremely common: a page that loads acceptably and then blocks the main thread
+                            whenever anyone touches it.
+                        </p>
+                        <p>The usual culprits, in order:</p>
+                        <ol>
+                            <li>
+                                <strong>Third-party scripts</strong> executing long tasks on the main thread.
+                                Chat widgets, analytics, A/B testing tools and personalisation engines are
+                                the frequent offenders.
+                            </li>
+                            <li>
+                                <strong>Large JavaScript bundles</strong> that must be parsed before any
+                                interaction can be handled.
+                            </li>
+                            <li>
+                                <strong>Expensive event handlers</strong> doing layout-triggering work
+                                synchronously on scroll or input.
+                            </li>
+                            <li>
+                                <strong>Excessive DOM size.</strong> Style recalculation cost scales with node
+                                count, and page builders routinely produce 3,000-node pages.
+                            </li>
+                        </ol>
+                        <p>
+                            The most effective single action is usually removal rather than optimisation.
+                            Audit your third-party tags and delete the ones nobody has looked at in six
+                            months. We have never run this audit without finding at least two.
+                        </p>
+
+                        <h2 id="cls-mostly-solved">CLS: mostly a solved problem</h2>
+                        <p>
+                            CLS is the easiest of the three to fix because the causes are few and
+                            mechanical:
+                        </p>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <caption class="visually-hidden">Common causes of layout shift and their fixes</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Cause</th>
+                                        <th scope="col">Fix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Images without dimensions</td>
+                                        <td>Always set <code>width</code> and <code>height</code>, or use <code>aspect-ratio</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Webfonts causing reflow</td>
+                                        <td><code>font-display: swap</code> plus a metrics-matched fallback</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Injected banners and notices</td>
+                                        <td>Reserve the space, or overlay rather than push content</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Embeds and iframes</td>
+                                        <td>Wrap in a container with a fixed aspect ratio</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Late-loading ad slots</td>
+                                        <td>Reserve the largest expected size for the slot</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>
+                            If CLS is failing, the cause is almost always the first row of that table.
+                        </p>
+
+                        <h2 id="the-order">The order we work in</h2>
+                        <p>
+                            Given a failing site and a limited budget, this is the sequence. It is
+                            deliberately front-loaded with cheap diagnostic work.
+                        </p>
+                        <ol>
+                            <li><strong>Get field data.</strong> Search Console and the CrUX report. Establish whether there is a real problem before spending anything.</li>
+                            <li><strong>Identify the LCP element per template.</strong> It differs between homepage, product and article pages.</li>
+                            <li><strong>Check for lazy-loading on the LCP image.</strong> Free to fix, and it is the cause more often than anyone expects.</li>
+                            <li><strong>Measure TTFB.</strong> If it is over 800ms, stop and fix the back end first.</li>
+                            <li><strong>Audit third-party tags.</strong> Delete what is unused. This helps LCP and INP simultaneously.</li>
+                            <li><strong>Fix image dimensions and formats.</strong> Mechanical, reliable, helps LCP and CLS.</li>
+                            <li><strong>Then, and only then,</strong> consider code splitting, critical CSS and the more expensive interventions.</li>
+                        </ol>
+
+                        <div class="cta-inline">
+                            <div>
+                                <p class="cta-inline__title u-mb-0">Want us to run this on your site?</p>
+                                <p class="cta-inline__text u-mb-0">
+                                    We will identify the LCP element per template, the tags costing you INP,
+                                    and the fixes in priority order — with an honest note on which ones are
+                                    not worth the sprint.
+                                </p>
+                            </div>
+                            <a class="button-primary" href="contact.html">
+                                Request an audit <span class="arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+
+                        <h2 id="when-to-stop">When to stop</h2>
+                        <p>
+                            Passing all three thresholds is worth doing. Chasing a perfect Lighthouse
+                            score is not. Beyond the thresholds the returns fall off sharply, and the
+                            engineering effort is almost always better spent on conversion work — where
+                            the measurable business effect is larger.
+                        </p>
+                        <p>
+                            We set a performance budget at the start of a build precisely so this
+                            conversation happens once, in advance, rather than as an open-ended pursuit
+                            after launch.
+                        </p>
+
+                        <h2 id="faqs">Frequently asked</h2>
+
+                        <div class="faq-accordion" data-multiple>
+                            <div class="faq-item">
+                                <h3>
+                                    <button class="faq-item__trigger" type="button" id="bf1-trigger" aria-controls="bf1" data-open>
+                                        <span class="faq-item__question">Do Core Web Vitals affect rankings?</span>
+                                        <span class="faq-item__indicator" aria-hidden="true"></span>
+                                    </button>
+                                </h3>
+                                <div class="faq-item__panel" id="bf1" role="region" aria-labelledby="bf1-trigger">
+                                    <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                        <p>
+                                            They are a ranking signal, but a weak one relative to relevance and
+                                            authority. A fast page about the wrong topic will not outrank a slower
+                                            page that answers the query.
+                                        </p>
+                                        <p>
+                                            The stronger business case for performance is conversion: speed affects
+                                            whether visitors stay long enough to convert, and that effect is far
+                                            larger than the ranking effect.
+                                        </p>
+                                    </div></div>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <h3>
+                                    <button class="faq-item__trigger" type="button" id="bf2-trigger" aria-controls="bf2">
+                                        <span class="faq-item__question">Why does Lighthouse disagree with Search Console?</span>
+                                        <span class="faq-item__indicator" aria-hidden="true"></span>
+                                    </button>
+                                </h3>
+                                <div class="faq-item__panel" id="bf2" role="region" aria-labelledby="bf2-trigger">
+                                    <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                        <p>
+                                            Lighthouse is a lab test on a simulated device and network. Search
+                                            Console reports field data from real Chrome users on their real devices
+                                            and connections.
+                                        </p>
+                                        <p>
+                                            Field data is what counts for the ranking signal. If they disagree,
+                                            trust the field data and treat Lighthouse as a diagnostic tool.
+                                        </p>
+                                    </div></div>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <h3>
+                                    <button class="faq-item__trigger" type="button" id="bf3-trigger" aria-controls="bf3">
+                                        <span class="faq-item__question">How long before improvements appear in Search Console?</span>
+                                        <span class="faq-item__indicator" aria-hidden="true"></span>
+                                    </button>
+                                </h3>
+                                <div class="faq-item__panel" id="bf3" role="region" aria-labelledby="bf3-trigger">
+                                    <div class="faq-item__panel-inner"><div class="faq-item__answer">
+                                        <p>
+                                            Field data uses a 28-day rolling window, so a fix deployed today takes
+                                            roughly four weeks to be fully reflected. Partial movement appears sooner.
+                                        </p>
+                                        <p>
+                                            This lag is the most common reason teams conclude a fix did not work when
+                                            it simply has not surfaced yet.
+                                        </p>
+                                    </div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTHOR BOX -->
+        <section class="section section-tight surface-tint rule-top">
+            <div class="shell shell-narrow">
+                <div class="author-box reveal-up">
+                    <img src="assets/images/team/author-01.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+                    <div>
+                        <p class="author-box__name u-mb-0">Technical Lead <span class="placeholder-note">Author profile</span></p>
+                        <p class="author-box__role u-mb-0">Architecture and performance, Neoteric ERA</p>
+                        <p class="author-box__bio u-mb-0">
+                            Responsible for the performance budgets on every Neoteric ERA build and for
+                            signing off templates against the Core Web Vitals and accessibility targets
+                            agreed at the start of a project.
+                        </p>
+                        <div class="cluster u-mt-4">
+                            <a class="link-underline" href="contact.html">
+                                Get in touch <span class="arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <!-- RELATED POSTS -->
+    <section class="section surface-white" aria-labelledby="relatedHeading">
+        <div class="shell">
+            <div class="section-header section-header-split">
+                <div>
+                    <p class="section-index reveal-up">Related</p>
+                    <h2 class="heading-section reveal-lines u-mt-4" id="relatedHeading">Related reading.</h2>
+                </div>
+                <div class="reveal-up" style="--reveal-delay: 160ms;">
+                    <a class="link-underline" href="blog.html">All insights <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+
+            <div class="grid grid-3 reveal-stagger-tight">
+                <article class="post-card reveal-up">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/technical-seo-audit.webp" alt="Editorial composition illustrating a technical SEO audit" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">SEO</li>
+                        <li><time datetime="2026-04-24">24 Apr 2026</time></li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">What a technical SEO audit should actually deliver</a></h3>
+                    <p class="post-card__excerpt">A 200-page crawler export is not an audit. What a useful one contains.</p>
+                </article>
+                <article class="post-card reveal-up">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/website-redesign-seo.webp" alt="Editorial composition illustrating a website migration" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">SEO</li>
+                        <li><time datetime="2026-05-21">21 May 2026</time></li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">Redesigning without losing your rankings</a></h3>
+                    <p class="post-card__excerpt">The pre-launch checklist that prevents post-migration traffic collapse.</p>
+                </article>
+                <article class="post-card reveal-up">
+                    <div class="post-card__media">
+                        <img src="assets/images/blog/conversion-audit.webp" alt="Editorial composition illustrating a conversion funnel audit" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <ul class="post-card__meta">
+                        <li class="post-card__category">Conversion</li>
+                        <li><time datetime="2026-05-08">8 May 2026</time></li>
+                    </ul>
+                    <h3 class="post-card__title"><a href="blog-detail.html">A conversion audit you can run yourself in an afternoon</a></h3>
+                    <p class="post-card__excerpt">Six checks that find most funnel leaks without specialist tooling.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section section-tight surface-brand-tint" aria-labelledby="nlHeading">
+        <div class="shell shell-narrow">
+            <div class="form-panel reveal-up">
+                <p class="eyebrow eyebrow-plain u-mb-4">Newsletter</p>
+                <h2 class="heading-subsection u-mb-4" id="nlHeading">One useful email a month.</h2>
+                <p class="text-small text-body-muted u-mb-6">
+                    What actually changed in search and paid media, and what it means for a business
+                    like yours. Unsubscribe in one click.
+                </p>
+                <form class="newsletter-form" data-newsletter novalidate>
+                    <div class="newsletter-form__field form-field">
+                        <label class="form-label" for="articleNewsletterEmail">Work email</label>
+                        <input class="form-input" type="email" id="articleNewsletterEmail" name="email"
+                               placeholder="you@company.com" autocomplete="email"
+                               aria-describedby="articleNewsletterEmail-error" required>
+                        <p class="form-error" id="articleNewsletterEmail-error" role="alert"></p>
+                    </div>
+                    <button class="button-primary" type="submit">
+                        <span class="button-spinner" aria-hidden="true"></span>
+                        <span class="button-label">Subscribe</span>
+                        <span class="arrow" aria-hidden="true">&rarr;</span>
+                    </button>
+                    <p class="newsletter-form__note u-mb-0">
+                        By subscribing you agree to our
+                        <a class="link-inline" href="privacy-policy.html">privacy policy</a>.
+                    </p>
+                    <p class="newsletter-form__success" data-newsletter-success>
+                        Thank you — please check your inbox to confirm your subscription.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="bdCta">
+        <div class="cta-band__media">
+            <img src="assets/images/hero/cta-background.webp" alt="" width="1920" height="900" loading="lazy" decoding="async">
+        </div>
+        <div class="shell cta-band__inner">
+            <div>
+                <p class="eyebrow reveal-up">Next step</p>
+                <h2 class="heading-display reveal-lines u-mt-4" id="bdCta">Want this run on your site?</h2>
+                <p class="cta-band__text reveal-up">
+                    We will identify the LCP element per template, the third-party tags costing you INP,
+                    and the fixes in priority order — including which ones we would skip.
+                </p>
+                <div class="cta-band__actions reveal-up">
+                    <a class="button-primary button-lg" href="contact.html">
+                        Request a Performance Audit <span class="arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a class="button-secondary button-lg" href="https://wa.me/923090155045" target="_blank">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp Our Team
+                    </a>
+                </div>
+            </div>
+            <div class="cta-details reveal-up">
+                <a class="cta-details__item" href="tel:+923090155045">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-telephone"></i></span>
+                    <span>
+                        <span class="cta-details__label">Call us</span>
+                        <span class="cta-details__value">+92 309 0155045</span>
+                    </span>
+                </a>
+                <a class="cta-details__item" href="service-web-development.html">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-code-slash"></i></span>
+                    <span>
+                        <span class="cta-details__label">Related service</span>
+                        <span class="cta-details__value">Website Development</span>
+                    </span>
+                </a>
+                <a class="cta-details__item" href="service-detail.html?service=technical-seo">
+                    <span class="cta-details__icon" aria-hidden="true"><i class="bi bi-tools"></i></span>
+                    <span>
+                        <span class="cta-details__label">Related service</span>
+                        <span class="cta-details__value">Technical SEO</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==========================================================================
+     SITE FOOTER
+     ========================================================================== -->
+<footer class="site-footer">
+
+    <div class="footer-newsletter">
+        <div class="shell footer-newsletter__inner">
+            <div>
+                <p class="footer-newsletter__title u-mb-0">One useful email a month. No campaigns, no filler.</p>
+                <p class="footer-newsletter__text">
+                    What actually changed in search and paid media, and what it means for a business
+                    like yours. Unsubscribe in one click.
+                </p>
+            </div>
+
+            <form class="newsletter-form" data-newsletter novalidate>
+                <div class="newsletter-form__field form-field">
+                    <label class="visually-hidden" for="footerEmail">Email address</label>
+                    <input class="form-input" type="email" id="footerEmail" name="email"
+                           placeholder="you@company.com" autocomplete="email"
+                           aria-describedby="footerEmail-error" required>
+                    <p class="form-error" id="footerEmail-error" role="alert"></p>
+                </div>
+                <button class="button-primary" type="submit">
+                    <span class="button-spinner" aria-hidden="true"></span>
+                    <span class="button-label">Subscribe</span>
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
+                </button>
+                <p class="newsletter-form__note u-mb-0">
+                    By subscribing you agree to our <a class="link-inline" href="privacy-policy.html">privacy policy</a>.
+                </p>
+                <p class="newsletter-form__success" data-newsletter-success>
+                    Thank you — please check your inbox to confirm your subscription.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-main">
+        <div class="shell footer-grid">
+
+            <div class="footer-brand">
+                <a class="footer-brand__logo" href="index.html" aria-label="Neoteric ERA — home">
+                    <img src="assets/images/branding/logo-light.svg" alt="Neoteric ERA" width="295" height="72">
+                </a>
+                <p class="footer-brand__text">
+                    A digital growth partner for ambitious US businesses. We connect strategy, design,
+                    development and acquisition so the whole system moves together rather than in
+                    separate directions.
+                </p>
+
+                <div class="footer-contact">
+                    <a class="footer-contact__item" href="tel:+923090155045">
+                        <i class="bi bi-telephone" aria-hidden="true"></i>
+                        <span>+92 309 0155045</span>
+                    </a>
+                    <!-- COMPANY EMAIL PLACEHOLDER -->
+                    <a class="footer-contact__item" href="mailto:hello@neotericera.com">
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <span>hello@neotericera.com</span>
+                    </a>
+                    <p class="footer-contact__item u-mb-0">
+                        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                        <span>Muslim Town, Lahore, Pakistan</span>
+                    </p>
+                    <p class="footer-contact__item u-mb-0">
+                        <i class="bi bi-globe" aria-hidden="true"></i>
+                        <span>Serving businesses across the United States</span>
+                    </p>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/neotericera" target="_blank" aria-label="Neoteric ERA on LinkedIn">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/neotericera" target="_blank" aria-label="Neoteric ERA on Facebook">
+                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/neotericera" target="_blank" aria-label="Neoteric ERA on Instagram">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/923090155045" target="_blank" aria-label="Message Neoteric ERA on WhatsApp">
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-column">
+                    <h2 class="footer-column__title">Services</h2>
+                    <ul class="footer-links">
+                        <li><a href="service-web-development.html">Website Development</a></li>
+                        <li><a href="service-seo.html">SEO</a></li>
+                        <li><a href="service-google-ads.html">Google Ads</a></li>
+                        <li><a href="service-digital-marketing.html">Digital Marketing</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-column-stacked">
+                    <h2 class="footer-column__title">Popular Solutions</h2>
+                    <ul class="footer-links">
+                        <li><a href="service-detail.html?service=wordpress-development">WordPress Development</a></li>
+                        <li><a href="service-detail.html?service=shopify-development">Shopify Development</a></li>
+                        <li><a href="service-detail.html?service=local-seo">Local SEO</a></li>
+                        <li><a href="service-detail.html?service=ecommerce-seo">Ecommerce SEO</a></li>
+                        <li><a href="service-detail.html?service=ppc-management">PPC Management</a></li>
+                        <li><a href="service-detail.html?service=website-redesign">Website Redesign</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="footer-column__title">Company</h2>
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Insights</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="footer-column__title">Legal</h2>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="sitemap.xml">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="shell footer-bottom__inner">
+            <p class="u-mb-0">&copy; <span data-current-year>2026</span> Neoteric ERA. All rights reserved.</p>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="sitemap.xml">Sitemap</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/923090155045" target="_blank" aria-label="Message us on WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+</a>
+<button class="back-to-top" type="button" aria-label="Back to top">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Scripts deferred so parsing is never blocked -->
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/form-validation.js" defer></script>
+<script src="assets/js/location-data.js" defer></script>
+
+</body>
+</html>
