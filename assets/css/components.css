@@ -1008,7 +1008,7 @@
     align-items: center;
     justify-content: center;
     width: 2.5rem; height: 2.5rem;
-    background-color: var(--surface-raised);
+    background-color: #7928ca;
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
     color: var(--on-surface-muted);
