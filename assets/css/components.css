@@ -670,7 +670,7 @@
    08. PROCESS
    ========================================================================== */
 
-.process { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,0.9fr); gap: clamp(1.75rem,1rem+3vw,4rem); align-items: start; }
+.process { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,0.9fr); gap: clamp(1.75rem, calc(1rem + 3vw), 4rem) !important; align-items: start; }
 .process__visual { position: sticky; top: calc(var(--header-h) + var(--s-5)); align-self: start; }
 
 .process__figure {
