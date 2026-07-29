@@ -535,12 +535,12 @@
             liveUrl: 'https://nazirestate.com/'
         },
         {
-            title: 'Advantage Advokatbyra',
+            title: 'Personal Injury Law Firm',
             slug: 'advokat-dolda-fel',
             platform: 'wordpress',
             sector: 'legal',
             technology: ['wordpress', 'php', 'javascript'],
-            summary: 'Swedish law firm site built around one high-intent practice area.|1',
+            summary: 'SEO-driven legal website built to generate consistent organic case enquiries.|1',
             image: 'assets/images/work/advokat-dolda-fel.webp',
             liveUrl: 'https://advokatdoldafel.se/'
         },
@@ -573,6 +573,56 @@
             summary: 'Coaching funnel built around a low-ticket entry offer.|1',
             image: 'assets/images/work/daniel-raz-coaching.webp',
             liveUrl: 'https://danielrazcoaching.com/'
+        },
+        {
+            title: 'Family Law Website',
+            slug: 'family-law-website',
+            platform: 'wordpress',
+            sector: 'legal',
+            technology: ['wordpress', 'php', 'javascript'],
+            summary: 'Modern website redesign focused on improving trust, local visibility, and consultation bookings.|1',
+            image: 'assets/images/work/family-law-website.webp',
+            liveUrl: 'https://advantage.se/'
+        },
+        {
+            title: 'Criminal Defense Firm',
+            slug: 'criminal-defense-firm',
+            platform: 'custom',
+            sector: 'legal',
+            technology: ['laravel', 'php', 'mysql'],
+            summary: 'Conversion-focused website with Google Ads landing pages designed for high-intent legal searches.|1',
+            image: 'assets/images/work/criminal-defense-firm.webp',
+            liveUrl: 'https://www.opsahllaw.com/'
+        },
+        {
+            title: 'Estate Planning Law Firm',
+            slug: 'estate-planning-law-firm',
+            platform: 'wordpress',
+            sector: 'legal',
+            technology: ['wordpress', 'php', 'javascript'],
+            summary: 'Professional legal website designed to educate prospective clients and increase appointment requests.|1',
+            image: 'assets/images/work/estate-planning-law-firm.webp',
+            liveUrl: 'https://zallp.com/'
+        },
+        {
+            title: 'Immigration Law Firm',
+            slug: 'immigration-law-firm',
+            platform: 'custom',
+            sector: 'legal',
+            technology: ['laravel', 'php', 'mysql'],
+            summary: 'Multilingual legal website supported by local SEO and AI-assisted content workflows.|1',
+            image: 'assets/images/work/immigration-law-firm.webp',
+            liveUrl: 'https://darianlaw.com/aosdiscovery.html'
+        },
+        {
+            title: 'Corporate Law Practice',
+            slug: 'corporate-law-practice',
+            platform: 'wordpress',
+            sector: 'legal',
+            technology: ['wordpress', 'php', 'javascript'],
+            summary: 'Professional branding, technical SEO, and ongoing law firm internet marketing strategy for long-term growth.|1',
+            image: 'assets/images/work/corporate-law-practice.webp',
+            liveUrl: 'https://www.winwinlawfirm.com/'
         },
         {
             title: '1105 Social',
