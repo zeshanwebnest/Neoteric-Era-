@@ -664,6 +664,16 @@
             image: 'assets/images/work/anchilex.webp',
             liveUrl: 'https://anchilex.com/'
         },
+        {
+            title: 'Scoutcourt',
+            slug: 'scoutcourt',
+            platform: 'custom',
+            sector: 'sports',
+            technology: ['laravel', 'php', 'mysql'],
+            summary: 'Custom Laravel application with a bespoke back end and user accounts.|0',
+            image: 'assets/images/work/scoutcourt.webp',
+            liveUrl: 'https://scoutcourt.com/'
+        },
     ];
 
     /* Exposed for the console and for any future template that wants the set
