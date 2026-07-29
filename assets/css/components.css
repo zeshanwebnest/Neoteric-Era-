@@ -863,6 +863,20 @@
 
 .testimonial-card__meta { display: flex; flex-direction: column; gap: var(--s-3); padding-left: var(--s-5); border-left: 1px solid var(--border); }
 .testimonial-card__avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background-color: var(--surface-sunken); }
+
+/* Practice-area badge, used instead of a photograph while a quote is still
+   awaiting client approval. A stock portrait beside an unapproved quote reads
+   as a real person endorsing the firm, which is exactly the impression that
+   must not be created before the attribution is signed off. Swap this for the
+   real photograph at the same time as the real name. */
+.testimonial-card__avatar--icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    background: var(--grad-brand-soft);
+    color: var(--white);
+    font-size: 1.35rem;
+}
 .testimonial-card__name { font-family: var(--font-display); font-size: 1rem; font-weight: var(--w-bold); }
 .testimonial-card__role { margin-top: 0.2rem; font-size: var(--t-xs); color: var(--on-surface-muted); }
 .testimonial-card__company { color: var(--accent-contextual); }
