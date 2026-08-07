@@ -2110,3 +2110,132 @@ a.chip:hover, a.chip:focus-visible {
 }
 
 .cta-band__inner { position: relative; z-index: 1; }
+
+/* ==========================================================================
+   PRICING
+   Surface-context aware like every other component here, so the same cards
+   work on white, tint and ink without variants.
+
+   The featured card is raised by border and shadow rather than by scaling it.
+   Scaling a middle card shifts its text off the shared baseline and makes the
+   three price figures impossible to compare at a glance, which is the one job
+   this layout has.
+   ========================================================================== */
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+    gap: var(--s-5);
+    align-items: stretch;
+}
+
+.price-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 1.2rem + 1.1vw, 2.25rem);
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--card-shadow);
+    transition: border-color var(--d-component) var(--ease-subtle),
+                transform var(--d-component) var(--ease-out),
+                box-shadow var(--d-component) var(--ease-subtle);
+}
+
+.price-card:hover { transform: translateY(-4px); border-color: var(--border-strong); box-shadow: var(--card-shadow-hover); }
+
+.price-card--featured { border-color: var(--accent-contextual); box-shadow: var(--shadow-md); }
+
+.price-card__badge {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.3rem 0.8rem;
+    background-color: var(--accent-500);
+    color: var(--white);
+    border-radius: var(--r-pill);
+    font-family: var(--font-display);
+    font-size: var(--t-label);
+    font-weight: var(--w-bold);
+    letter-spacing: var(--tr-label);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.price-card__name {
+    font-family: var(--font-display);
+    font-size: var(--t-card);
+    font-weight: var(--w-bold);
+    letter-spacing: var(--tr-heading);
+    color: var(--on-surface);
+}
+
+.price-card__for { margin-top: 0.4rem; font-size: var(--t-xs); line-height: 1.55; color: var(--on-surface-muted); }
+
+.price-card__amount {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-top: var(--s-4);
+    font-family: var(--font-display);
+    letter-spacing: var(--tr-display);
+    color: var(--on-surface);
+}
+
+.price-card__prefix { font-size: var(--t-xs); font-weight: var(--w-semibold); letter-spacing: 0; color: var(--on-surface-muted); align-self: center; }
+.price-card__figure { font-size: clamp(2.125rem, 1.7rem + 1.8vw, 2.75rem); font-weight: var(--w-extrabold); line-height: 1; }
+.price-card__unit   { font-size: var(--t-small); font-weight: var(--w-semibold); letter-spacing: 0; color: var(--on-surface-muted); }
+
+.price-card__terms { margin-top: 0.55rem; font-size: var(--t-xs); color: var(--on-surface-muted); }
+
+.price-card__features { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: grid; gap: 0.7rem; }
+
+.price-card__features li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: var(--t-small);
+    line-height: 1.55;
+    color: var(--on-surface-soft);
+}
+
+.price-card__features li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.42em;
+    width: 0.95rem; height: 0.5rem;
+    border-left: 2px solid var(--accent-contextual);
+    border-bottom: 2px solid var(--accent-contextual);
+    transform: rotate(-45deg);
+}
+
+/* Marks a line as inherited from the tier below, so the columns read as a
+   ladder rather than three unrelated lists. */
+.price-card__features li[data-inherited]::before {
+    border-color: var(--on-surface-muted);
+    opacity: 0.55;
+}
+
+.price-card__cta { margin-top: auto; padding-top: var(--s-5); }
+.price-card__cta .button-primary, .price-card__cta .button-accent, .price-card__cta .button-secondary { width: 100%; justify-content: center; }
+
+/* The honest notes that sit under a price block. Deliberately plain: it is the
+   part a buyer checks for what has been left out. */
+.price-note {
+    margin-top: var(--s-6);
+    padding: var(--s-5);
+    background-color: var(--surface-sunken);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    font-size: var(--t-small);
+    line-height: 1.65;
+    color: var(--on-surface-soft);
+}
+
+.price-note strong { color: var(--on-surface); }
+.price-note ul { margin: 0.6rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; }
+
+/* Yes / no cells in the tier comparison. The word is kept for screen readers
+   and for anyone printing the page; the glyph alone would not survive either. */
+.price-yes, .price-no { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: var(--w-semibold); }
+.price-yes { color: var(--accent-contextual); }
+.price-no  { color: var(--on-surface-muted); }

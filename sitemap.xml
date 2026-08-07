@@ -91,6 +91,16 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- ===================== Commercial =====================
+       Pricing carries OfferCatalog and FAQPage schema and is a high intent
+       landing page, so it sits just under the service pages. -->
+  <url>
+    <loc>https://www.neotericera.com/pricing.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- ===================== Support =====================
        FAQs carries FAQPage schema and is eligible for rich results, so it is
        worth a higher priority than its position in the nav suggests. -->
