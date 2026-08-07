@@ -90,14 +90,17 @@ In `scratchpad/pages/index.html`, for that slide:
 
 1. Replace the role in `.testimonial-card__name` with the real name.
 2. Delete `<span class="placeholder-note">Sample copy</span>`.
-3. Swap the icon badge for the client's photograph:
+3. Swap the icon badge for the photograph the client supplied. Save it to
+   `assets/images/team/` at 200x200. Do not substitute a stock portrait: a
+   stock face beside a real name is the same misrepresentation the quote
+   itself would be.
 
 ```html
 <!-- from -->
 <span class="testimonial-card__avatar testimonial-card__avatar--icon" aria-hidden="true"><i class="bi bi-people"></i></span>
 
 <!-- to -->
-<img class="testimonial-card__avatar" src="assets/images/team/client-01.webp"
+<img class="testimonial-card__avatar" src="assets/images/team/CLIENT-PHOTO.webp"
      alt="" width="200" height="200" loading="lazy" decoding="async">
 ```
 

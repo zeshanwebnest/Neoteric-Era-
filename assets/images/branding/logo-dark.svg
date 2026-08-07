@@ -3,53 +3,54 @@
   <!--
     ===========================================================================
     NEOTERIC ERA DIGITAL SERVICES : PRIMARY LOCKUP
-    For LIGHT backgrounds (dark wordmark). This is the main logo.
+    For LIGHT backgrounds (ink wordmark). This is the main logo.
     ===========================================================================
-    MARK : "The Aperture"
-    Six tapered blades rotate around a common centre, each stepping down in
-    scale and opacity along the brand gradient. Read clockwise it describes
-    momentum; read whole it forms a soft hexagonal aperture around a dark core.
+    MARK : "The Aegis"
+    A shield with a balance knocked out of it. Shield for protection and
+    standing, balance for justice, and a stepped plinth that reads as the base
+    of a courthouse column. Three legal signals in one silhouette.
 
-    WORDMARK
-    Set in outlined geometric letterforms rather than live text, so it renders
-    identically with or without a webfont. Built on a 64 x 100 grid with a
-    13 unit stroke.
+    WHY IT IS BUILT AS A KNOCKOUT, NOT AS STROKES
+    The previous mark drew a balance with 5 unit strokes across seven separate
+    paths. At header size that is roughly 3px of line scattered over 44px of
+    space, and it read as specks rather than as a symbol. This version inverts
+    the approach: one solid mass, with the balance removed from it using
+    fill-rule="evenodd". The thinnest element is now 6 grid units:
 
-    METRICS : how the letter positions are derived
-    The stroke is centred on the path, so each glyph's visual ink extends half
-    a stroke width beyond its centreline on both sides. Advances are therefore
-    computed from INK extents, not from path coordinates:
+        44px tall  ->  3.7px      32px  ->  2.7px      24px  ->  2.0px
 
-        half stroke        = 6.5
-        standard glyph ink = -0.5 .. 64.5   (centreline 6 .. 58)
-        T ink              = -2.5 .. 66.5   (wider crossbar)
-        R ink              = -0.5 .. 66.5   (leg kicks right)
-        I ink              = -0.5 .. 12.5   (single stem)
+    A solid shape also means the knockouts are genuinely transparent, so the
+    identical mark sits on white, on ink, or on a photograph with no variant
+    needed. Only the wordmark colour changes between lockups.
 
-        x(n) = inkEnd(n-1) + gap - inkStart(n)
+    COLOUR
+    The grad-brand token, exactly as the site defines it and uses it seventeen times
+    across headings, buttons and cards:
 
-    with gap = 19 between letters and 46 between words. Every optical gap in
-    the lockup is therefore identical, which is what makes the line read as
-    evenly set rather than as a row of separate glyphs. Deriving the advances
-    from path coordinates instead produces gaps of 13 to 19 and a word space
-    barely wider than a letter space, so NEOTERIC and ERA run together.
+        #4F46E5  ->  #7C3AED  ->  #22D3EE
+
+    No colour is introduced that is not already in the stylesheet. The wordmark
+    is slate-900 and the descriptor slate-500, which are the site's own
+    primary and tertiary text colours.
+
+    GEOMETRY
+    Everything is centred on x=36. The pans are a mirrored pair at 36 +- 12.
+    Verify symmetry numerically after any edit; it is the first thing to go
+    when paths are nudged by eye.
 
     NOTE FOR EDITORS
     Do not use a run of two or more hyphens anywhere in this file, including
     inside comments. XML forbids it, and an SVG loaded through an img element
-    is parsed strictly, so a single occurrence turns the whole logo into a
-    broken image icon while leaving the surrounding HTML page fine.
+    is parsed strictly, so one occurrence turns the whole logo into a broken
+    image icon while leaving the surrounding HTML page fine.
     ===========================================================================
   -->
   <defs>
-    <linearGradient id="ntGradA" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="ntBrand" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0"    stop-color="#4F46E5"/>
       <stop offset="0.55" stop-color="#7C3AED"/>
       <stop offset="1"    stop-color="#22D3EE"/>
     </linearGradient>
-
-    <!-- One blade, drawn pointing up from the centre -->
-    <path id="ntBlade" d="M0 -30C7.2 -30 12 -23.5 12 -15.5 12 -7 6.5 -1.6 0 0-6.5 -1.6 -12 -7 -12 -15.5-12 -23.5 -7.2 -30 0 -30Z"/>
 
     <!-- Geometric monoline letterforms. Every glyph spans y 6 to 100 so the
          cap height and baseline are shared across the whole alphabet. -->
@@ -62,32 +63,30 @@
     <path id="ntC" d="M58 24a26 47 0 1 0 0 58"/>
     <path id="ntA" d="m6 100 26-94 26 94M17 68h30"/>
     <path id="ntV" d="m6 6 26 94 26-94"/>
-    <!-- S drawn as cubics so it fills the same 6 to 100 band as the rest of
-         the set. The previous arc based version ran 22 to 72, which left it
-         floating at half height and off the baseline. -->
     <path id="ntS" d="M58 27C58 15 47 6 32 6 17 6 6 15 6 27 6 39 17 46 32 51 47 56 58 63 58 77 58 89 47 100 32 100 17 100 6 91 6 79"/>
     <path id="ntD" d="M6 100V6h20a32 47 0 0 1 0 94H6"/>
     <path id="ntG" d="M58 24a26 47 0 1 0 0 58V60H36"/>
     <path id="ntL" d="M6 6v94h52"/>
   </defs>
 
-  <!-- ===== Mark ===== -->
-  <g transform="translate(36 36)">
-    <g fill="url(#ntGradA)">
-      <use href="#ntBlade" transform="rotate(0)   scale(1)"    opacity="1"/>
-      <use href="#ntBlade" transform="rotate(60)  scale(0.92)" opacity="0.88"/>
-      <use href="#ntBlade" transform="rotate(120) scale(0.84)" opacity="0.76"/>
-      <use href="#ntBlade" transform="rotate(180) scale(0.76)" opacity="0.64"/>
-      <use href="#ntBlade" transform="rotate(240) scale(0.68)" opacity="0.52"/>
-      <use href="#ntBlade" transform="rotate(300) scale(0.60)" opacity="0.40"/>
-    </g>
-    <circle r="4.6" fill="#0F172A"/>
-  </g>
+  <!-- ===== Mark: the aegis =====
+       One path. Sub path 1 is the shield, sub paths 2 to 4 are the balance and
+       its two pans. evenodd turns them into holes rather than filled shapes. -->
+  <path fill="url(#ntBrand)" fill-rule="evenodd" d="
+    M18 6H54A6 6 0 0 1 60 12V34C60 48 50 58.5 36 66 22 58.5 12 48 12 34V12A6 6 0 0 1 18 6Z
+    M33 20H39V26H55V32H39V47H47V53H25V47H33V32H17V26H33Z
+    M18 36H30L24 44Z
+    M42 36H54L48 44Z"/>
 
   <!-- ===== Wordmark: NEOTERIC =====
-       Ink starts at x 80.0 and the whole two line block is vertically centred
-       in the 72 unit height. ERA below shares this transform exactly, so both
-       words sit on one baseline with no possibility of drift. -->
+       Ink starts at x 80.0 and the two line block is vertically centred in the
+       72 unit height. ERA below shares this transform exactly, so both words
+       sit on one baseline with no possibility of drift.
+
+       Advances are computed from INK extents, not path coordinates, because
+       the stroke is centred on the path and extends half a width past it:
+           x(n) = inkEnd(n-1) + gap - inkStart(n)
+       with gap 19 between letters and 46 between words. -->
   <g transform="translate(80.1 14.2) scale(0.235)" fill="none" stroke="#0F172A"
      stroke-width="13" stroke-linecap="square" stroke-linejoin="miter">
     <use href="#ntN" x="0"/>
@@ -101,10 +100,9 @@
   </g>
 
   <!-- ===== Wordmark: ERA =====
-       Same transform as NEOTERIC; only the x offsets and the stroke differ.
-       The 46 unit word gap is 2.4x the 19 unit letter gap, so the two words
-       read as two words rather than as NEOTERICERA. -->
-  <g transform="translate(80.1 14.2) scale(0.235)" fill="none" stroke="url(#ntGradA)"
+       Gradient filled, mirroring how the site sets accent words in headings
+       with .heading-accent. Same transform as NEOTERIC, so no drift. -->
+  <g transform="translate(80.1 14.2) scale(0.235)" fill="none" stroke="url(#ntBrand)"
      stroke-width="13" stroke-linecap="square" stroke-linejoin="miter">
     <use href="#ntE" x="653"/>
     <use href="#ntR" x="737"/>
@@ -112,10 +110,9 @@
   </g>
 
   <!-- ===== Descriptor: DIGITAL SERVICES =====
-       Left edge aligned to the wordmark at x 80.0. Tracking is opened to 44
-       units (105 between words) because small caps need more air than display
-       caps to stay legible at header size. Half stroke here is 7.5, so the
-       advances differ from the wordmark's. -->
+       Tracking is opened to 44 units (105 between words) because small caps
+       need more air than display caps to stay legible at header size. Half
+       stroke here is 7.5, so the advances differ from the wordmark's. -->
   <g transform="translate(80.2 46.4) scale(0.107)" fill="none" stroke="#64748B"
      stroke-width="15" stroke-linecap="square" stroke-linejoin="miter">
     <use href="#ntD" x="0"/>

@@ -1,26 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="ntFavTitle">
   <title id="ntFavTitle">Neoteric ERA</title>
-  <!-- Favicon build. Blade count is unchanged but the scale steps are
-       compressed and the centre opening enlarged, so the aperture still reads
-       as one deliberate shape at 16px. -->
+  <!--
+    Favicon build. Deliberately NOT the lockup mark scaled down.
+
+    On the 72 grid the balance is 6 units thick, which is 1.3px at 16 and the
+    beam disappears. This is redrawn on a 64 grid at 8 units, giving 2px at
+    16px, and the shield outline is replaced by a filled tile because a shield
+    silhouette and a rounded square are indistinguishable at that size anyway.
+    Detail that cannot be resolved is not detail, it is noise.
+
+    Same knockout construction, so the balance stays transparent and the tile
+    carries the brand gradient. Symmetrical about x=32.
+  -->
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#818CF8"/>
-      <stop offset="0.55" stop-color="#A78BFA"/>
-      <stop offset="1" stop-color="#67E8F9"/>
+      <stop offset="0"    stop-color="#4F46E5"/>
+      <stop offset="0.55" stop-color="#7C3AED"/>
+      <stop offset="1"    stop-color="#22D3EE"/>
     </linearGradient>
-    <path id="b" d="M0 -30C7.2 -30 12 -23.5 12 -15.5 12 -7 6.5 -1.6 0 0-6.5 -1.6 -12 -7 -12 -15.5-12 -23.5 -7.2 -30 0 -30Z"/>
   </defs>
-  <rect width="64" height="64" rx="15" fill="#0A0E1C"/>
-  <g transform="translate(32 32) scale(0.84)">
-    <g fill="url(#g)">
-      <use href="#b" transform="rotate(0)   scale(1)"    opacity="1"/>
-      <use href="#b" transform="rotate(60)  scale(0.94)" opacity="0.9"/>
-      <use href="#b" transform="rotate(120) scale(0.88)" opacity="0.8"/>
-      <use href="#b" transform="rotate(180) scale(0.82)" opacity="0.7"/>
-      <use href="#b" transform="rotate(240) scale(0.76)" opacity="0.6"/>
-      <use href="#b" transform="rotate(300) scale(0.70)" opacity="0.5"/>
-    </g>
-    <circle r="6" fill="#0A0E1C"/>
-  </g>
+  <path fill="url(#g)" fill-rule="evenodd" d="
+    M14 0H50A14 14 0 0 1 64 14V50A14 14 0 0 1 50 64H14A14 14 0 0 1 0 50V14A14 14 0 0 1 14 0Z
+    M28 13H36V21H54V29H36V44H45V52H19V44H28V29H10V21H28Z
+    M12 33H24L18 41Z
+    M40 33H52L46 41Z"/>
 </svg>

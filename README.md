@@ -8,7 +8,7 @@ Built with HTML5, CSS3, vanilla JavaScript (ES6+) and Bootstrap 5. No build step
 no framework, no dependencies to install.
 
 > **Status: front-end complete, backend pending.** Every page is finished and
-> functional. The portfolio is real: 33 client projects, 24 of them showing a
+> functional. The portfolio is real: 39 client projects, 29 of them showing a
 > screenshot verified by eye against the live site. The forms are not yet
 > connected to a backend, and the remaining unverified claims are visibly
 > flagged.
@@ -76,7 +76,7 @@ anywhere, but it is not the argument. The argument is the service pages.
 | Display font  | Plus Jakarta Sans (500–800)            | Headings, display, UI                        |
 | Body font     | Inter (400–700)                        | Body copy, forms, small text                 |
 | Animation     | CSS transforms + Intersection Observer | No animation library                         |
-| Imagery       | 72 files                               | 24 verified client screenshots + licensed stock |
+| Imagery       | 87 files                               | 29 verified client screenshots + licensed stock |
 
 ### Deliberate omissions
 
@@ -103,7 +103,7 @@ Neoteric-era/
 ├── service-google-ads.html           Pillar service page
 ├── service-digital-marketing.html    Pillar service page
 ├── service-detail.html               ★ Template — 26 child services
-├── portfolio.html                    33 projects, filterable
+├── portfolio.html                    39 projects, filterable
 ├── blog.html                         Listing with search + filters
 ├── blog-detail.html                  Single article
 ├── faq.html                          Four topics, FAQPage schema
@@ -113,6 +113,8 @@ Neoteric-era/
 ├── 404.html
 │
 ├── robots.txt · sitemap.xml · site.webmanifest · README.md
+├── brand-preview.html                Internal logo sheet (noindex, unlinked)
+├── TESTIMONIAL-COLLECTION.md         How to replace the sample testimonials
 │
 └── assets/
     ├── css/
@@ -131,11 +133,12 @@ Neoteric-era/
     │
     ├── images/
     │   ├── branding/    (4)          Logo suite — dark, light, mark, favicon
-    │   ├── work/       (24)          Verified screenshots of live client sites
-    │   ├── team/       (15)          Team, author and client portraits
-    │   ├── services/   (12)          Service and process imagery
-    │   ├── hero/        (9)          Page heroes and CTA backgrounds
-    │   └── blog/        (8)          Article imagery
+    │   ├── work/       (29)          Verified screenshots of live client sites
+    │   ├── team/       (12)          Team and author portraits
+    │   ├── services/   (19)          Service and process imagery
+    │   ├── hero/       (10)          Page heroes and CTA backgrounds
+    │   ├── blog/        (8)          Article imagery
+    │   └── work-legal/ (5)          Law firm screenshots (homepage)
     │
     └── fonts/                        Reserved for self-hosted fonts
 ```
@@ -175,7 +178,7 @@ Then open `http://localhost:8000`.
 
 ## Page list
 
-**16 HTML pages · 72 images · 4 logo files · 5 stylesheets · 5 JS modules**
+**16 HTML pages · 87 images · 4 logo files · 5 stylesheets · 5 JS modules**
 
 ### Homepage — 11 sections
 
@@ -208,7 +211,7 @@ answers *what do you do* and *why you*.
 | `service-google-ads.html`        | Pillar — same structure, paid-specific                  |
 | `service-digital-marketing.html` | Pillar — same structure, marketing-specific             |
 | `service-detail.html`            | Template — hydrates 26 child services from a query string |
-| `portfolio.html`                 | 33 projects, filter by platform and sector              |
+| `portfolio.html`                 | 39 projects, filter by platform and sector              |
 | `blog.html` / `blog-detail.html` | Listing with live search; one complete article          |
 | `faq.html`                       | 14 questions across four topics, with `FAQPage` schema  |
 | `contact.html`                   | Consultation form, contact detail, FAQ                  |
@@ -386,15 +389,55 @@ Four files in `assets/images/branding/`:
 | `logo-mark.svg`  | Symbol alone — app icons, avatars, watermarks, small sizes |
 | `favicon.svg`    | Browser tab, bookmarks, PWA icon                           |
 
-### The mark — "The Aperture"
+### The mark — "The Aegis"
 
-Six tapered blades rotated at 0°, 60°, 120°, 180°, 240° and 300°, each scaled
-progressively from 1.0 down to 0.60 with opacity falling from 1.0 to 0.40,
-filled with the brand gradient and centred on a dark dot.
+A shield with a balance **knocked out** of it. Shield for standing, balance for
+justice, stepped plinth for the base of a courthouse column: three legal signals
+in one silhouette.
 
-It reads three ways, all of them on-message: a camera aperture (focus), a
-rotating system (technology), and forward motion (growth). It survives at 16px,
-where a literal illustration would not.
+#### Why it is a knockout rather than strokes
+
+The first attempt drew a balance with 5 unit strokes across seven separate
+paths. At header size that is about 3px of line scattered over 44px of space,
+and it read as specks, not as a symbol. This version inverts the approach: one
+solid mass with the balance removed from it via `fill-rule="evenodd"`.
+
+| Mark height | Thinnest element |
+|-------------|------------------|
+| 44px (header) | 3.7px |
+| 32px | 2.7px |
+| 24px | 2.0px |
+| 16px | 1.3px — use `favicon.svg` instead |
+
+A knockout also means the holes are genuinely transparent, so **one file works
+on white, on ink, or over a photograph**. Only the wordmark colour differs
+between the two lockups.
+
+`fill-rule="evenodd"` fails silently if a sub-path winds the wrong way, so the
+geometry is verified by crossing-count at nine sample points rather than by eye.
+
+#### Palette: the site's own, nothing new
+
+| Role | Value | Site token |
+|------|-------|------------|
+| Mark, and "ERA" | `#4F46E5` to `#7C3AED` to `#22D3EE` | `grad-brand` |
+| Wordmark, light backgrounds | `#0F172A` | `slate-900` |
+| Wordmark, dark backgrounds | `#FFFFFF` | — |
+| Descriptor | `#64748B` / white 62% | `slate-500` |
+
+The gradient is the same one the site already uses seventeen times across
+headings, buttons and cards, so the logo speaks the page's existing language
+rather than importing a second palette.
+
+#### Geometry
+
+Everything is centred on x=36; the pans are a mirrored pair at 36 +- 12. Verify
+symmetry numerically after any edit, it is the first thing to go when paths are
+nudged by eye.
+
+The favicon is **redrawn, not scaled**: 8 units on a 64 grid instead of 6 on a
+72 grid, and a rounded tile instead of a shield, because the two silhouettes are
+indistinguishable at 16px.
 
 ### The wordmark
 
@@ -638,7 +681,7 @@ pwsh scratchpad/build.ps1           # assembles the page from partials
 
 #### Cards with and without a screenshot
 
-Of the 33 projects, **24 carry a verified screenshot** and 9 do not. The nine
+Of the 39 projects, **29 carry a verified screenshot** and 10 do not. The ten
 are real, live client sites whose stores block automated renderers; rather than
 drop them or fake an image, they get a gradient tile carrying the domain
 (`.work-card__shot--none`) and the same "Visit site" link as every other card.
