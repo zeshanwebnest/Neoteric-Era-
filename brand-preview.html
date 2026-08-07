@@ -258,6 +258,31 @@
     </p>
   </div>
 
+  <h2>High resolution · print, slides and large screens</h2>
+  <div class="panel light">
+    <table>
+      <thead><tr><th>File</th><th>Pixels</th><th>Size</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td><code>logo-lockup-hd.png</code></td><td>1920×668</td><td>530&nbsp;KB</td><td>Transparent, light grounds. Print, banners, large placements.</td></tr>
+        <tr><td><code>logo-lockup-on-dark-hd.png</code></td><td>1920×668</td><td>538&nbsp;KB</td><td>Transparent, dark grounds.</td></tr>
+        <tr><td><code>logo-mark-hd.png</code></td><td>423×344</td><td>259&nbsp;KB</td><td>The mark alone at its true ceiling, no resampling at all.</td></tr>
+        <tr><td><code>logo-fullhd-1920x1080.png</code></td><td>1920×1080</td><td>240&nbsp;KB</td><td>Slides, screens, video backplates. On the brand navy.</td></tr>
+      </tbody>
+    </table>
+    <p class="cap" style="margin:1rem 0 0">
+      <strong>Where the real ceiling is.</strong> The type in these is vector, rasterised at
+      size, so it is genuinely sharp at any dimension. The mark is not: the artwork supplied
+      crops to <strong>423×344</strong>, and that is the most detail that exists in it. The
+      1920 wide lockups upscale it <strong>1.20×</strong>, which is mild enough not to read as
+      soft. Past roughly 2300px wide it will start to.
+    </p>
+    <p class="cap" style="margin:.75rem 0 0">
+      None of these are referenced by any page, so they add nothing to what the site loads.
+      If you need the mark larger than 423px with real detail, it has to be redrawn as vector
+      or regenerated at a higher resolution at source.
+    </p>
+  </div>
+
 </div>
 </body>
 </html>

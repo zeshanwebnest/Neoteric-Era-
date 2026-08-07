@@ -444,6 +444,23 @@ ends at y 482 and x 593, the shadow sits at y 518–528, the wordmark starts at 
 | `apple-touch-icon.png` | 29 KB | iOS home screen, 180×180. |
 | `og-image.jpg` | 48 KB | Open Graph and Twitter cards, 1200×630. |
 
+High resolution, for print, slides and large placements. None are referenced by
+any page, so they add nothing to what the site loads:
+
+| File | Pixels | Size | Used for |
+|---|---|---|---|
+| `logo-lockup-hd.png` | 1920×668 | 530 KB | Transparent, light grounds |
+| `logo-lockup-on-dark-hd.png` | 1920×668 | 538 KB | Transparent, dark grounds |
+| `logo-mark-hd.png` | 423×344 | 259 KB | The mark alone, no resampling at all |
+| `logo-fullhd-1920x1080.png` | 1920×1080 | 240 KB | Slides, screens, video backplates |
+
+**Where the real ceiling is.** The type in these is vector, rasterised at size,
+so it is sharp at any dimension. The mark is not. The supplied artwork crops to
+**423×344**, and that is all the detail that exists in it. The 1920 wide lockups
+upscale it **1.20×**, mild enough not to read as soft; past roughly 2300px wide
+it will start to. To go larger with real detail the mark has to be redrawn as
+vector or regenerated at higher resolution at source.
+
 PNG rather than WebP because no WebP encoder is available in this environment.
 The mark is one cached request shared by every page.
 
