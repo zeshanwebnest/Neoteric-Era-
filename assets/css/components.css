@@ -243,7 +243,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10, 14, 28, 0.72), rgba(10, 14, 28, 0.05) 60%);
+    background: linear-gradient(to top, rgba(10, 23, 48, 0.72), rgba(10, 23, 48, 0.05) 60%);
 }
 
 .service-card__number {
@@ -702,7 +702,7 @@
     justify-content: space-between;
     gap: var(--s-4);
     padding: var(--s-5);
-    background: linear-gradient(to top, rgba(10,14,28,0.92), transparent);
+    background: linear-gradient(to top, rgba(10, 23, 48,0.92), transparent);
     color: var(--white);
     font-family: var(--font-display);
     font-size: var(--t-label);
@@ -1022,7 +1022,7 @@
     align-items: center;
     justify-content: center;
     width: 2.5rem; height: 2.5rem;
-    background-color: #7928ca;
+    background-color: #1B3A6B;
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
     color: var(--on-surface-muted);
@@ -2101,9 +2101,9 @@ a.chip:hover, a.chip:focus-visible {
     position: absolute;
     inset: 0;
     background: linear-gradient(150deg,
-        rgba(10, 14, 28, 0.94) 0%,
+        rgba(10, 23, 48, 0.94) 0%,
         rgba(20, 27, 51, 0.86) 55%,
-        rgba(10, 14, 28, 0.94) 100%);
+        rgba(10, 23, 48, 0.94) 100%);
 }
 
 .cta-band__inner { position: relative; z-index: 1; }

@@ -250,40 +250,62 @@ makes a page feel designed.
 
 ### Colour
 
+Derived from the logo. The navy is the ground the artwork was drawn on, the
+bronze is its copper, the neutrals are its silver.
+
 ```css
-/* Ink — dark surfaces and text */
---ink-950: #05070F;   --ink-900: #0A0E1C;   --ink-800: #111729;
---ink-700: #1B2338;   --ink-600: #2A3450;
+/* Ink — dark surfaces, deep navy from the artwork ground */
+--ink-950: #050B1B;   --ink-900: #0A1730;   --ink-800: #102141;
+--ink-700: #182F58;   --ink-600: #274166;
 
-/* Slate — light surfaces and body copy */
---slate-900: #0F172A;  --slate-700: #334155;  --slate-500: #64748B;
---slate-50:  #F8FAFC;  --white:     #FFFFFF;
+/* Neutrals — warm grey off the mark's silver, not a cool slate */
+--slate-900: #1F1D1A;  --slate-700: #46403A;  --slate-500: #6E665F;
+--slate-50:  #FAF8F5;  --white:     #FFFFFF;
 
-/* Brand — indigo, the primary identity colour */
---brand-500: #4F46E5;  --brand-600: #4338CA;
---brand-300: #818CF8;  --brand-50:  #EEF2FF;
+/* Brand — navy, carrying structure, links and headings */
+--brand-500: #1B3A6B;  --brand-600: #12294F;
+--brand-300: #5B84BE;  --brand-50:  #F0F5FB;
 
 /* Support */
---violet-500: #7C3AED;  --cyan-400: #22D3EE;
+--navy-400: #2F5C94;  --copper-500: #A65D2E;
 
-/* Accent — coral, reserved for conversion */
---accent-500: #FF6B35;  --accent-600: #E14E1D;  --accent-100: #FFE8DF;
+/* Accent — bronze, reserved for conversion */
+--accent-500: #A65D2E;  --accent-600: #8A4A22;  --accent-100: #F7E7D8;
 
 /* Gradients */
---grad-brand:      linear-gradient(135deg, #4F46E5 0%, #7C3AED 55%, #22D3EE 100%);
---grad-brand-soft: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
---grad-accent:     linear-gradient(135deg, #FF6B35 0%, #FF4E88 100%);
---grad-ink:        linear-gradient(165deg, #0A0E1C 0%, #141B33 55%, #0A0E1C 100%);
+--grad-brand:      linear-gradient(135deg, #1B3A6B 0%, #2F5C94 55%, #A65D2E 100%);
+--grad-brand-soft: linear-gradient(135deg, #2A5490 0%, #274166 100%);
+--grad-accent:     linear-gradient(135deg, #A65D2E 0%, #C99A63 100%);
+--grad-ink:        linear-gradient(165deg, #0A1730 0%, #142A55 55%, #0A1730 100%);
 ```
 
-**Indigo is the brand; coral is the conversion.** Coral appears only on primary
+**Navy is the brand; bronze is the conversion.** Bronze appears only on primary
 CTAs and on the single most important tag in a group. If it starts appearing
 everywhere it stops meaning anything.
 
 **Two-value accent for contrast.** `--brand-600` is used for small text on light
-surfaces (meets 4.5:1); `--brand-500` and `--brand-300` are reserved for large
-text, icons and fills. This is why `--accent-contextual` exists per surface
-rather than as a single global value.
+surfaces (14.4:1); `--brand-500` and `--brand-300` are reserved for large text,
+icons and fills. This is why `--accent-contextual` exists per surface rather
+than as a single global value.
+
+#### How the rescheme was done
+
+The names were kept and only the values changed, so all ~130 usages moved at
+once. `--violet-500` and `--cyan-400` were renamed to `--navy-400` and
+`--copper-500`, which was safe because neither had a single `var()` reference —
+they existed only as literals inside the gradients.
+
+Everything that bypassed the tokens was remapped alongside: the orb gradients,
+`bootstrap-overrides.css` (which mirrors the same hexes into `--bs-*`), the
+`theme-color` meta and the manifest. What was deliberately **not** touched:
+`--success`, `--danger`, the WhatsApp green and the macOS window dots on the
+portfolio mockups. Those encode meaning or imitate someone else's brand, so they
+are not the site's palette to change.
+
+Contrast improved rather than degraded. Seventeen text and fill pairs were
+checked before anything was applied and all pass; the gradient stop that was
+replaced was a cyan at **1.8:1** on white, and the weakest stop now is **4.97:1**.
+
 
 ### Surface contexts
 
@@ -476,8 +498,9 @@ Three locally scoped tokens carry the whole switch:
 `--logo-fallback` is a flat colour for browsers without `background-clip: text`,
 where a transparent fill would otherwise erase the name entirely.
 
-Worth being aware of: the logo is warm metal and the site is cool indigo. If that
-reads as a clash, the fix is to warm the site accents — not to recolour the mark.
+This was the tension when the logo first went in: warm metal against a cool
+indigo site. It is resolved the way that was recommended then — by moving the
+site onto the logo, not the mark onto the site. See the Colour section.
 
 #### If the artwork is ever replaced
 

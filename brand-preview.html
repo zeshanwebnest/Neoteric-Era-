@@ -18,31 +18,31 @@
   body {
     margin: 0; padding: 3rem 1.5rem;
     font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: #F8FAFC; color: #0F172A;
+    background: #FAF8F5; color: #1F1D1A;
   }
   .wrap { max-width: 1040px; margin-inline: auto; }
   h1 { font-size: 1.5rem; margin: 0 0 .35rem; letter-spacing: -.02em; }
-  .sub { margin: 0 0 2.5rem; color: #64748B; max-width: 68ch; }
+  .sub { margin: 0 0 2.5rem; color: #6E665F; max-width: 68ch; }
   h2 { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
-       color: #64748B; margin: 2.5rem 0 .85rem; }
-  .panel { padding: 2.25rem; border-radius: 16px; border: 1px solid rgba(15,23,42,.1); }
+       color: #6E665F; margin: 2.5rem 0 .85rem; }
+  .panel { padding: 2.25rem; border-radius: 16px; border: 1px solid rgba(31,29,26,.1); }
   .light { background: #FFFFFF; }
-  .dark  { background: #0A0E1C; border-color: rgba(255,255,255,.12); }
-  .cap { font-size: .72rem; letter-spacing: .04em; color: #94A3B8; }
+  .dark  { background: #0A1730; border-color: rgba(255,255,255,.12); }
+  .cap { font-size: .72rem; letter-spacing: .04em; color: #A29A91; }
   .dark .cap { color: rgba(255,255,255,.5); }
   .swatches { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
   .sw { width: 118px; }
-  .chipc { height: 52px; border-radius: 10px; border: 1px solid rgba(15,23,42,.12); }
-  .sw code { font-size: .68rem; color: #64748B; }
+  .chipc { height: 52px; border-radius: 10px; border: 1px solid rgba(31,29,26,.12); }
+  .sw code { font-size: .68rem; color: #6E665F; }
   .sizes { display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
   .sizes figure { margin: 0; text-align: center; }
-  .sizes figcaption { margin-top: .5rem; font-size: .7rem; color: #94A3B8; }
+  .sizes figcaption { margin-top: .5rem; font-size: .7rem; color: #A29A91; }
   table { border-collapse: collapse; width: 100%; font-size: .82rem; }
-  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid rgba(15,23,42,.09); vertical-align: top; }
-  th { font-weight: 600; color: #64748B; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid rgba(31,29,26,.09); vertical-align: top; }
+  th { font-weight: 600; color: #6E665F; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; }
   code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; }
-  .rule { display: inline-block; border-top: 1px solid #94A3B8; font-size: .68rem;
-          color: #94A3B8; padding-top: .3rem; margin-top: .9rem; }
+  .rule { display: inline-block; border-top: 1px solid #A29A91; font-size: .68rem;
+          color: #A29A91; padding-top: .3rem; margin-top: .9rem; }
 
   /* The live component, copied from style.css so this sheet shows the real
      thing rather than a picture of it. */
@@ -205,19 +205,37 @@
     </p>
   </div>
 
-  <h2>Site palette · unchanged, still carries everything else</h2>
+  <h2>Site palette · now derived from the logo</h2>
   <div class="panel light">
+    <p class="cap" style="margin:0 0 1rem; color:#64748B">Brand · navy, the ground the artwork was drawn on</p>
     <div class="swatches">
-      <div class="sw"><div class="chipc" style="background:#4F46E5"></div><code>#4F46E5 brand-500</code></div>
-      <div class="sw"><div class="chipc" style="background:#7C3AED"></div><code>#7C3AED violet-500</code></div>
-      <div class="sw"><div class="chipc" style="background:#22D3EE"></div><code>#22D3EE cyan-400</code></div>
-      <div class="sw"><div class="chipc" style="background:#0F172A"></div><code>#0F172A slate-900</code></div>
-      <div class="sw"><div class="chipc" style="background:#64748B"></div><code>#64748B slate-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#0B1A3B"></div><code>#0B1A3B brand-700</code></div>
+      <div class="sw"><div class="chipc" style="background:#12294F"></div><code>#12294F brand-600</code></div>
+      <div class="sw"><div class="chipc" style="background:#1B3A6B"></div><code>#1B3A6B brand-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#2A5490"></div><code>#2A5490 brand-400</code></div>
+      <div class="sw"><div class="chipc" style="background:#5B84BE"></div><code>#5B84BE brand-300</code></div>
     </div>
+    <p class="cap" style="margin:1.5rem 0 1rem; color:#64748B">Accent · bronze, reserved for action</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#8A4A22"></div><code>#8A4A22 accent-600</code></div>
+      <div class="sw"><div class="chipc" style="background:#A65D2E"></div><code>#A65D2E accent-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#C07A48"></div><code>#C07A48 accent-400</code></div>
+      <div class="sw"><div class="chipc" style="background:#F7E7D8"></div><code>#F7E7D8 accent-100</code></div>
+    </div>
+    <p class="cap" style="margin:1.5rem 0 1rem; color:#64748B">Neutrals · warm grey off the silver, and the ink spine</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#0A1730"></div><code>#0A1730 ink-900</code></div>
+      <div class="sw"><div class="chipc" style="background:#1F1D1A"></div><code>#1F1D1A slate-900</code></div>
+      <div class="sw"><div class="chipc" style="background:#46403A"></div><code>#46403A slate-700</code></div>
+      <div class="sw"><div class="chipc" style="background:#6E665F"></div><code>#6E665F slate-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#FAF8F5"></div><code>#FAF8F5 slate-50</code></div>
+    </div>
+    <div class="chipc" style="margin-top:1.5rem;height:60px;background:linear-gradient(135deg,#1B3A6B 0%,#2F5C94 55%,#A65D2E 100%)"></div>
+    <p class="cap" style="margin:.6rem 0 0"><code>grad-brand</code> — navy into bronze, the logo read left to right.</p>
     <p class="cap" style="margin:1.25rem 0 0">
-      Worth being aware of: the logo is now warm metal and the site is cool indigo. That is a
-      deliberate contrast, not an accident — but if it reads as a clash to you, the fix is to
-      warm the site accents, not to recolour the mark.
+      The whole site now runs on these. The gradient stop this replaced was a cyan at
+      <strong>1.8:1</strong> on white; the weakest stop here is <strong>4.97:1</strong>, so the
+      rescheme improved legibility rather than trading it away.
     </p>
   </div>
 

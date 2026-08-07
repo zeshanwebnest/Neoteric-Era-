@@ -35,50 +35,63 @@
    ========================================================================== */
 
 :root {
-    /* --- Neutral spine -----------------------------------------------------
-       Cool navy rather than pure grey. Reads as technology, not newsprint. */
-    --ink-950: #05070F;
-    --ink-900: #0A0E1C;   /* deepest — hero, footer                        */
-    --ink-800: #111729;   /* dark section base                             */
-    --ink-700: #1B2338;   /* dark panels                                   */
-    --ink-600: #2A3450;   /* dark borders                                  */
+    /* --- Ink spine -----------------------------------------------------------
+       Deep navy, sampled from the ground the logo artwork was drawn on. The
+       previous build was a near black blue that read as technology; this reads
+       as the profession the site sells to. */
+    --ink-950: #050B1B;
+    --ink-900: #0A1730;   /* deepest — hero, footer                        */
+    --ink-800: #102141;   /* dark section base                             */
+    --ink-700: #182F58;   /* dark panels                                   */
+    --ink-600: #274166;   /* dark borders                                  */
 
-    --slate-900: #0F172A; /* primary text on light                         */
-    --slate-700: #334155; /* secondary text                                */
-    --slate-500: #64748B; /* tertiary text — 4.8:1 on white                */
-    --slate-300: #CBD5E1;
-    --slate-200: #E2E8F0;
-    --slate-100: #F1F5F9;
-    --slate-50:  #F8FAFC; /* page base                                     */
+    /* --- Neutral spine -------------------------------------------------------
+       Warm grey, taken from the silver in the mark rather than a cool slate.
+       Kept under the slate-* names because they are used in over sixty places;
+       the values are what changed, not the roles. */
+    --slate-900: #1F1D1A; /* primary text on light — 15.9:1 on the page base */
+    --slate-700: #46403A; /* secondary text                                */
+    --slate-500: #6E665F; /* tertiary text — 5.6:1 on white                */
+    --slate-300: #C9C3BB;
+    --slate-200: #E5E0D9;
+    --slate-100: #F3EFEA;
+    --slate-50:  #FAF8F5; /* page base                                     */
     --white:     #FFFFFF;
 
-    /* --- Brand: indigo → violet -------------------------------------------- */
-    --brand-700: #3730A3;
-    --brand-600: #4338CA;
-    --brand-500: #4F46E5;  /* primary brand                                */
-    --brand-400: #6366F1;
-    --brand-300: #818CF8;
-    --brand-100: #E0E7FF;
-    --brand-50:  #EEF2FF;
+    /* --- Brand: navy ---------------------------------------------------------
+       Structure, links and headings. Navy and bronze is the pairing the logo
+       already makes, so the site now makes the same one. */
+    --brand-700: #0B1A3B;
+    --brand-600: #12294F;
+    --brand-500: #1B3A6B;  /* primary brand                                */
+    --brand-400: #2A5490;
+    --brand-300: #5B84BE;
+    --brand-100: #DCE6F4;
+    --brand-50:  #F0F5FB;
 
-    --violet-500: #7C3AED;
-    --cyan-400:   #22D3EE;
+    --navy-400:   #2F5C94;  /* gradient mid                                 */
+    --copper-500: #A65D2E;  /* gradient end, and the accent fill             */
 
-    /* --- Accent: coral — reserved for action -------------------------------- */
-    --accent-600: #E14E1D;
-    --accent-500: #FF6B35;  /* CTA fill                                    */
-    --accent-400: #FF8A5C;
-    --accent-100: #FFE8DF;
+    /* --- Accent: bronze — reserved for action --------------------------------
+       Carries more chroma than the copper sampled off the mark, which the
+       metallic rendering desaturates into something too dusty to act as a
+       call to action. White on accent-500 is 4.97:1. */
+    --accent-600: #8A4A22;
+    --accent-500: #A65D2E;  /* CTA fill                                    */
+    --accent-400: #C07A48;
+    --accent-100: #F7E7D8;
 
     /* --- Signature gradients ------------------------------------------------ */
-    --grad-brand: linear-gradient(135deg, #4F46E5 0%, #7C3AED 55%, #22D3EE 100%);
-    --grad-brand-soft: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-    --grad-accent: linear-gradient(135deg, #FF6B35 0%, #FF4E88 100%);
-    --grad-ink: linear-gradient(165deg, #0A0E1C 0%, #141B33 55%, #0A0E1C 100%);
+    /* Navy into bronze, which is the logo read left to right. The stop this
+       replaces was a cyan at 1.8:1 on white; the weakest stop here is 4.97:1. */
+    --grad-brand: linear-gradient(135deg, #1B3A6B 0%, #2F5C94 55%, #A65D2E 100%);
+    --grad-brand-soft: linear-gradient(135deg, #2A5490 0%, #274166 100%);
+    --grad-accent: linear-gradient(135deg, #A65D2E 0%, #C99A63 100%);
+    --grad-ink: linear-gradient(165deg, #0A1730 0%, #142A55 55%, #0A1730 100%);
 
     /* --- Lines --------------------------------------------------------------- */
-    --line-light:        rgba(15, 23, 42, 0.09);
-    --line-light-strong: rgba(15, 23, 42, 0.18);
+    --line-light:        rgba(31, 29, 26, 0.09);
+    --line-light-strong: rgba(31, 29, 26, 0.18);
     --line-dark:         rgba(255, 255, 255, 0.10);
     --line-dark-strong:  rgba(255, 255, 255, 0.22);
 
@@ -159,10 +172,10 @@
     --d-micro: 180ms; --d-component: 340ms; --d-reveal: 720ms;
 
     /* --- Elevation — cool-tinted, never neutral grey ------------------------ */
-    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
-    --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04), 0 6px 16px -8px rgba(15, 23, 42, 0.10);
-    --shadow-md: 0 4px 8px rgba(15, 23, 42, 0.04), 0 16px 32px -16px rgba(15, 23, 42, 0.16);
-    --shadow-lg: 0 8px 16px rgba(15, 23, 42, 0.05), 0 32px 64px -28px rgba(15, 23, 42, 0.22);
+    --shadow-xs: 0 1px 2px rgba(31, 29, 26, 0.05);
+    --shadow-sm: 0 2px 4px rgba(31, 29, 26, 0.04), 0 6px 16px -8px rgba(31, 29, 26, 0.10);
+    --shadow-md: 0 4px 8px rgba(31, 29, 26, 0.04), 0 16px 32px -16px rgba(31, 29, 26, 0.16);
+    --shadow-lg: 0 8px 16px rgba(31, 29, 26, 0.05), 0 32px 64px -28px rgba(31, 29, 26, 0.22);
     --shadow-brand: 0 12px 32px -12px rgba(79, 70, 229, 0.45);
     --shadow-accent: 0 12px 32px -12px rgba(255, 107, 53, 0.45);
 
@@ -449,7 +462,7 @@ p:last-child { margin-bottom: 0; }
 .surface-ink .heading-accent,
 .surface-gradient .heading-accent,
 .hero .heading-accent {
-    background: linear-gradient(135deg, #818CF8 0%, #C4B5FD 50%, #67E8F9 100%);
+    background: linear-gradient(135deg, #5B84BE 0%, #8FB0D8 50%, #D9B98F 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -689,10 +702,11 @@ p:last-child { margin-bottom: 0; }
     opacity: 0.5;
 }
 
-.orb-brand  { background: radial-gradient(circle, #4F46E5 0%, transparent 70%); }
-.orb-violet { background: radial-gradient(circle, #7C3AED 0%, transparent 70%); }
-.orb-cyan   { background: radial-gradient(circle, #22D3EE 0%, transparent 70%); }
-.orb-accent { background: radial-gradient(circle, #FF6B35 0%, transparent 70%); }
+/* Renamed with the palette. orb-cyan and orb-accent had collapsed onto the
+   same bronze, so they are one class now rather than two identical ones. */
+.orb-brand  { background: radial-gradient(circle, #1B3A6B 0%, transparent 70%); }
+.orb-navy   { background: radial-gradient(circle, #2F5C94 0%, transparent 70%); }
+.orb-copper { background: radial-gradient(circle, #A65D2E 0%, transparent 70%); }
 
 .orb-1 { width: 480px; height: 480px; top: -160px; right: -120px; }
 .orb-2 { width: 380px; height: 380px; bottom: -140px; left: -110px; }
@@ -708,8 +722,8 @@ p:last-child { margin-bottom: 0; }
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(to right, var(--grid-line, rgba(15,23,42,0.045)) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line, rgba(15,23,42,0.045)) 1px, transparent 1px);
+        linear-gradient(to right, var(--grid-line, rgba(31, 29, 26,0.045)) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line, rgba(31, 29, 26,0.045)) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 20%, transparent 78%);
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 20%, transparent 78%);
@@ -735,7 +749,7 @@ p:last-child { margin-bottom: 0; }
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid var(--ring-line, rgba(15, 23, 42, 0.06));
+    border: 1px solid var(--ring-line, rgba(31, 29, 26, 0.06));
     border-radius: 50%;
 }
 
@@ -1680,8 +1694,8 @@ a.mega-menu__column-title:hover { color: var(--accent-500); }
     background:
         linear-gradient(100deg,
             rgba(5, 7, 15, 0.96) 0%,
-            rgba(10, 14, 28, 0.88) 46%,
-            rgba(10, 14, 28, 0.55) 100%),
+            rgba(10, 23, 48, 0.88) 46%,
+            rgba(10, 23, 48, 0.55) 100%),
         linear-gradient(to top, rgba(5, 7, 15, 0.9) 0%, transparent 55%);
 }
 
