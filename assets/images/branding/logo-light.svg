@@ -50,13 +50,21 @@
     <path id="ntY" d="M6 6 32 53 58 6M32 53v47"/>
   </defs>
 
-  <!-- ===== Mark: the gavel =====
-       Two sub paths only: the crest, and one classical column cut out of it.
-       Geometry is identical to logo-dark.svg; the two must never diverge. -->
+  <!-- ===== Mark: the N monogram =====
+       Three sub paths: the crest, a bold N cut out of it, and a plinth bar.
+
+       The N is a Helvetica style construction. The diagonal offset is 14 units,
+       chosen so the diagonal's PERPENDICULAR thickness comes out at 8.75, matching
+       the 8 unit stems. A steep diagonal offset by the stem width looks starved.
+
+       The plinth is doing real work. A letter cannot denote law on its own; the
+       crest and the plinth are what read as heraldic and inscriptional, and the
+       letter carries the brand. Remove the plinth and this becomes a generic
+       monogram badge. -->
   <path fill="url(#ntBrand)" fill-rule="evenodd" d="
     M18 6H54A6 6 0 0 1 60 12V40C60 52 50 60 36 66 22 60 12 52 12 40V12A6 6 0 0 1 18 6Z
-    M34 14 52 24 46 35 40.1 31.7 31.8 46.5 25.6 43.1 33.9 28.3 28 25Z
-    M27 50H45V55H27Z"/>
+    M24 18H32L40 28V18H48V42H40L32 32V42H24Z
+    M26 46H46V50H26Z"/>
 
   <!-- ===== Wordmark: NEOTERIC ===== -->
   <g transform="translate(80.1 5.10) scale(0.195)" fill="none" stroke="#FFFFFF"

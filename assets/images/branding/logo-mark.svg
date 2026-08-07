@@ -1,18 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="72" height="72" role="img" aria-labelledby="ntMarkTitle">
-  <title id="ntMarkTitle">Neoteric ERA gavel mark</title>
+  <title id="ntMarkTitle">Neoteric ERA monogram mark</title>
   <!--
-    A crest with one classical column cut out of it: capital, shaft, base,
-    drawn as a single continuous outline.
+    A crest with a bold N cut out of it, sitting on a plinth bar.
 
-    An earlier build put a whole portico in here, six separate knockouts. At
-    the size a logo is actually seen that reads as clutter rather than as a
-    symbol. One column says the same thing and survives being small, which is
-    what restraint buys.
+    Three sub paths. The letter carries the brand; the crest and the plinth are
+    what read as heraldic and inscriptional. A letter on its own cannot denote
+    law, and earlier builds that tried a pictorial symbol instead kept failing
+    for the opposite reason: detail that cannot be resolved at 24px is noise.
 
-    Two sub paths total. The knockout is transparent, so this one file works on
-    light backgrounds, dark ones, or over a photograph.
+    The N is a Helvetica style construction. The diagonal is offset 14 units so
+    its perpendicular thickness lands at 8.75, matching the 8 unit stems.
 
-    Symmetrical about x=36. Holds to about 20px; below that use favicon.svg.
+    Knockouts are transparent, so this one file works on light backgrounds, dark
+    ones, or over a photograph. Symmetrical about x=36 apart from the diagonal,
+    which is what stops it reading as a mirrored ornament.
+
+    Holds to about 20px; below that use favicon.svg.
   -->
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -23,6 +26,6 @@
   </defs>
   <path fill="url(#g)" fill-rule="evenodd" d="
     M18 6H54A6 6 0 0 1 60 12V40C60 52 50 60 36 66 22 60 12 52 12 40V12A6 6 0 0 1 18 6Z
-    M34 14 52 24 46 35 40.1 31.7 31.8 46.5 25.6 43.1 33.9 28.3 28 25Z
-    M27 50H45V55H27Z"/>
+    M24 18H32L40 28V18H48V42H40L32 32V42H24Z
+    M26 46H46V50H26Z"/>
 </svg>

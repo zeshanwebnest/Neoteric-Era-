@@ -389,32 +389,39 @@ Four files in `assets/images/branding/`:
 | `logo-mark.svg`  | Symbol alone — app icons, avatars, watermarks, small sizes |
 | `favicon.svg`    | Browser tab, bookmarks, PWA icon                           |
 
-### The mark — "The Gavel"
+### The mark â the N monogram
 
-A crest with a gavel and sound block knocked out of it. Head and handle are one
-continuous outline; the block is a second shape.
+A crest with a bold **N** cut out of it, sitting on a plinth bar.
 
-The gavel sits at **29 degrees, deliberately**. Drawn upright, a mallet head on
-a vertical handle is a T silhouette — the same letterform trap that killed an
-earlier version.
+The division of labour is the point, and it is what four earlier attempts got
+wrong: **the letter carries the brand, the frame carries the meaning.** A
+letterform cannot denote law by itself. The crest reads heraldic, the plinth
+reads inscriptional, and between them the mark is legible as a legal identity
+without leaning on a pictorial symbol that has to survive being 24px tall.
 
-Four attempts got here, and the failures are worth keeping:
+The N is a Helvetica style construction. The diagonal is offset **14 units**, not
+the 8 of the stem width, so its *perpendicular* thickness comes out at 8.75 and
+matches the stems. Offset a steep diagonal by the stem width and it measures
+thinner than the stems and looks starved.
+
+Four pictorial attempts came before this. The failures are worth keeping:
 
 | Attempt | Why it failed |
 |---------|---------------|
 | Thin-stroke balance | 5 unit strokes across seven paths, about 3px of hairline over 44px. Read as specks. |
-| Full portico | Six knockouts — pediment, architrave, three columns, stylobate — in 27px. Read as clutter. |
+| Full portico | Six knockouts â pediment, architrave, three columns, stylobate â in 27px. Read as clutter. |
 | Single column | Wide top, narrow shaft, wide base **is** a serif capital I. Read as a letter. |
-| Upright gavel | Rejected at the design stage for the same reason: it is a T. |
+| Gavel | Legible, but a picture competing with the wordmark rather than reinforcing it. |
 
-Two rules came out of it, and they are worth applying to anything that replaces
-this mark:
+Three rules came out of it, worth applying to whatever replaces this mark:
 
 1. **Few bold masses, one object.** Detail that cannot be resolved at the size a
    logo is actually seen is not detail, it is noise.
-2. **Check the silhouette against the alphabet.** A shape that happens to match a
-   letterform will be read as that letter, whatever it was meant to be. Tilting
-   is often the cheapest fix.
+2. **Check the silhouette against the alphabet.** A shape that matches a letterform
+   will be read as that letter, whatever it was meant to be.
+3. **Verify knockouts numerically.** `fill-rule="evenodd"` fails silently when a
+   sub path winds the wrong way: a hole quietly becomes solid and nothing warns you.
+
 
 #### Why it is a knockout rather than strokes
 

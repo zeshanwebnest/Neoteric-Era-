@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="ntFavTitle">
   <title id="ntFavTitle">Neoteric ERA</title>
   <!--
-    Favicon build. Deliberately NOT the lockup mark scaled down: the crest and a
-    rounded square are indistinguishable at 16px, and the gavel is redrawn
-    heavier so the head still separates from the handle.
+    Favicon build. Deliberately NOT the lockup scaled down. Two changes: the crest
+    becomes a rounded tile, because the two silhouettes are indistinguishable at
+    16px, and the plinth is dropped, because a 4 unit bar disappears entirely at
+    that size and only muddies the letter. The N is left to carry it alone.
 
-    Same construction, same brand gradient. The gavel is angled on purpose;
-    upright it becomes a T silhouette and reads as a letter.
+    Same brand gradient, same evenodd knockout.
   -->
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -17,6 +17,5 @@
   </defs>
   <path fill="url(#g)" fill-rule="evenodd" d="
     M14 0H50A14 14 0 0 1 64 14V50A14 14 0 0 1 50 64H14A14 14 0 0 1 0 50V14A14 14 0 0 1 14 0Z
-    M29 9 50 20 43 34 36.4 30.6 26.6 49.6 19.6 46 29.4 27 22 23.2Z
-    M20 51H44V58H20Z"/>
+    M17 14H27L37 28V14H47V50H37L27 36V50H17Z"/>
 </svg>
