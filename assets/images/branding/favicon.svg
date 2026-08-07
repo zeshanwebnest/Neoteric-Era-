@@ -1,16 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="ntFavTitle">
   <title id="ntFavTitle">Neoteric ERA</title>
   <!--
-    Favicon build. Deliberately NOT the lockup mark scaled down.
+    Favicon build. Deliberately NOT the lockup mark scaled down: the crest and a
+    rounded square are indistinguishable at 16px, and the gavel is redrawn
+    heavier so the head still separates from the handle.
 
-    On the 72 grid the balance is 6 units thick, which is 1.3px at 16 and the
-    beam disappears. This is redrawn on a 64 grid at 8 units, giving 2px at
-    16px, and the shield outline is replaced by a filled tile because a shield
-    silhouette and a rounded square are indistinguishable at that size anyway.
-    Detail that cannot be resolved is not detail, it is noise.
-
-    Same knockout construction, so the balance stays transparent and the tile
-    carries the brand gradient. Symmetrical about x=32.
+    Same construction, same brand gradient. The gavel is angled on purpose;
+    upright it becomes a T silhouette and reads as a letter.
   -->
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -21,7 +17,6 @@
   </defs>
   <path fill="url(#g)" fill-rule="evenodd" d="
     M14 0H50A14 14 0 0 1 64 14V50A14 14 0 0 1 50 64H14A14 14 0 0 1 0 50V14A14 14 0 0 1 14 0Z
-    M28 13H36V21H54V29H36V44H45V52H19V44H28V29H10V21H28Z
-    M12 33H24L18 41Z
-    M40 33H52L46 41Z"/>
+    M29 9 50 20 43 34 36.4 30.6 26.6 49.6 19.6 46 29.4 27 22 23.2Z
+    M20 51H44V58H20Z"/>
 </svg>

@@ -71,6 +71,10 @@
 @media (max-width: 1080px) {
     :root { --header-h: 70px; }
 
+    /* The lockup carries a two line descriptor, so it needs headroom. Step it
+       down in line with the header height rather than letting it crowd. */
+    .site-logo img { height: 46px; }
+
     .primary-nav { display: none; }
     .mega-menu { display: none; }
     .nav-toggle { display: inline-flex; }
@@ -152,6 +156,8 @@
 
 @media (max-width: 768px) {
     :root { --header-h: 66px; --section-space: 3rem; --section-space-tight: 2.25rem; --section-space-lg: 3.75rem; }
+
+    .site-logo img { height: 42px; }
 
     .topbar__inner { padding-inline: 2.25rem; font-size: 0.6875rem; }
     .topbar__close { right: 0.35rem; }

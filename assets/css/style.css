@@ -1030,7 +1030,7 @@ p:last-child { margin-bottom: 0; }
 
 /* --- Logo -------------------------------------------------------------- */
 .site-logo { display: inline-flex; align-items: center; flex: none; line-height: 0; position: relative; }
-.site-logo img { height: 44px; width: auto; }
+.site-logo img { height: 50px; width: auto; }
 
 .site-logo__light, .site-logo__dark { transition: opacity var(--d-component) var(--ease-subtle); }
 

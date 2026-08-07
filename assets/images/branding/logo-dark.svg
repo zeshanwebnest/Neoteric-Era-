@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295 72" width="295" height="72" role="img" aria-labelledby="ntLogoDarkTitle">
-  <title id="ntLogoDarkTitle">Neoteric ERA Digital Services</title>
+  <title id="ntLogoDarkTitle">Neoteric ERA — Law Firm Digital Marketing Agency</title>
   <!--
     ===========================================================================
     NEOTERIC ERA DIGITAL SERVICES : PRIMARY LOCKUP
@@ -67,16 +67,21 @@
     <path id="ntD" d="M6 100V6h20a32 47 0 0 1 0 94H6"/>
     <path id="ntG" d="M58 24a26 47 0 1 0 0 58V60H36"/>
     <path id="ntL" d="M6 6v94h52"/>
+    <path id="ntW" d="M6 6 19 100 32 30 45 100 58 6"/>
+    <path id="ntF" d="M6 100V6h52M6 53h40"/>
+    <path id="ntM" d="M6 100V6l26 64 26-64v94"/>
+    <path id="ntK" d="M6 6v94M58 6 6 53M24 39 58 100"/>
+    <path id="ntY" d="M6 6 32 53 58 6M32 53v47"/>
   </defs>
 
-  <!-- ===== Mark: the aegis =====
-       One path. Sub path 1 is the shield, sub paths 2 to 4 are the balance and
-       its two pans. evenodd turns them into holes rather than filled shapes. -->
+  <!-- ===== Mark: the gavel =====
+       Two sub paths only: the crest, and one classical column cut out of it.
+       The previous build had six separate knockouts and read as clutter at
+       header size rather than as a single symbol. -->
   <path fill="url(#ntBrand)" fill-rule="evenodd" d="
-    M18 6H54A6 6 0 0 1 60 12V34C60 48 50 58.5 36 66 22 58.5 12 48 12 34V12A6 6 0 0 1 18 6Z
-    M33 20H39V26H55V32H39V47H47V53H25V47H33V32H17V26H33Z
-    M18 36H30L24 44Z
-    M42 36H54L48 44Z"/>
+    M18 6H54A6 6 0 0 1 60 12V40C60 52 50 60 36 66 22 60 12 52 12 40V12A6 6 0 0 1 18 6Z
+    M34 14 52 24 46 35 40.1 31.7 31.8 46.5 25.6 43.1 33.9 28.3 28 25Z
+    M27 50H45V55H27Z"/>
 
   <!-- ===== Wordmark: NEOTERIC =====
        Ink starts at x 80.0 and the two line block is vertically centred in the
@@ -87,7 +92,7 @@
        the stroke is centred on the path and extends half a width past it:
            x(n) = inkEnd(n-1) + gap - inkStart(n)
        with gap 19 between letters and 46 between words. -->
-  <g transform="translate(80.1 14.2) scale(0.235)" fill="none" stroke="#0F172A"
+  <g transform="translate(80.1 5.10) scale(0.195)" fill="none" stroke="#0F172A"
      stroke-width="13" stroke-linecap="square" stroke-linejoin="miter">
     <use href="#ntN" x="0"/>
     <use href="#ntE" x="84"/>
@@ -102,33 +107,52 @@
   <!-- ===== Wordmark: ERA =====
        Gradient filled, mirroring how the site sets accent words in headings
        with .heading-accent. Same transform as NEOTERIC, so no drift. -->
-  <g transform="translate(80.1 14.2) scale(0.235)" fill="none" stroke="url(#ntBrand)"
+  <g transform="translate(80.1 5.10) scale(0.195)" fill="none" stroke="url(#ntBrand)"
      stroke-width="13" stroke-linecap="square" stroke-linejoin="miter">
     <use href="#ntE" x="653"/>
     <use href="#ntR" x="737"/>
     <use href="#ntA" x="823"/>
   </g>
 
-  <!-- ===== Descriptor: DIGITAL SERVICES =====
+  <!-- ===== Descriptor line 1: LAW FIRM DIGITAL =====
        Tracking is opened to 44 units (105 between words) because small caps
        need more air than display caps to stay legible at header size. Half
        stroke here is 7.5, so the advances differ from the wordmark's. -->
-  <g transform="translate(80.2 46.4) scale(0.107)" fill="none" stroke="#64748B"
+  <g transform="translate(80.2 31.08) scale(0.14)" fill="none" stroke="#64748B"
      stroke-width="15" stroke-linecap="square" stroke-linejoin="miter">
-    <use href="#ntD" x="0"/>
-    <use href="#ntI" x="111"/>
-    <use href="#ntG" x="170"/>
-    <use href="#ntI" x="281"/>
-    <use href="#ntT" x="342"/>
-    <use href="#ntA" x="455"/>
-    <use href="#ntL" x="566"/>
-    <use href="#ntS" x="738"/>
-    <use href="#ntE" x="849"/>
-    <use href="#ntR" x="960"/>
-    <use href="#ntV" x="1073"/>
-    <use href="#ntI" x="1184"/>
-    <use href="#ntC" x="1243"/>
-    <use href="#ntE" x="1354"/>
-    <use href="#ntS" x="1465"/>
+    <use href="#ntL" x="0"/>
+    <use href="#ntA" x="93"/>
+    <use href="#ntW" x="186"/>
+    <use href="#ntF" x="315"/>
+    <use href="#ntI" x="408"/>
+    <use href="#ntR" x="449"/>
+    <use href="#ntM" x="544"/>
+    <use href="#ntD" x="673"/>
+    <use href="#ntI" x="766"/>
+    <use href="#ntG" x="807"/>
+    <use href="#ntI" x="900"/>
+    <use href="#ntT" x="943"/>
+    <use href="#ntA" x="1038"/>
+    <use href="#ntL" x="1131"/>
+  </g>
+
+  <!-- ===== Descriptor line 2: MARKETING AGENCY ===== -->
+  <g transform="translate(80.2 52.84) scale(0.14)" fill="none" stroke="#64748B"
+     stroke-width="15" stroke-linecap="square" stroke-linejoin="miter">
+    <use href="#ntM" x="0"/>
+    <use href="#ntA" x="93"/>
+    <use href="#ntR" x="186"/>
+    <use href="#ntK" x="281"/>
+    <use href="#ntE" x="374"/>
+    <use href="#ntT" x="469"/>
+    <use href="#ntI" x="564"/>
+    <use href="#ntN" x="605"/>
+    <use href="#ntG" x="698"/>
+    <use href="#ntA" x="827"/>
+    <use href="#ntG" x="920"/>
+    <use href="#ntE" x="1013"/>
+    <use href="#ntN" x="1106"/>
+    <use href="#ntC" x="1199"/>
+    <use href="#ntY" x="1292"/>
   </g>
 </svg>

@@ -389,24 +389,49 @@ Four files in `assets/images/branding/`:
 | `logo-mark.svg`  | Symbol alone — app icons, avatars, watermarks, small sizes |
 | `favicon.svg`    | Browser tab, bookmarks, PWA icon                           |
 
-### The mark — "The Aegis"
+### The mark — "The Gavel"
 
-A shield with a balance **knocked out** of it. Shield for standing, balance for
-justice, stepped plinth for the base of a courthouse column: three legal signals
-in one silhouette.
+A crest with a gavel and sound block knocked out of it. Head and handle are one
+continuous outline; the block is a second shape.
+
+The gavel sits at **29 degrees, deliberately**. Drawn upright, a mallet head on
+a vertical handle is a T silhouette — the same letterform trap that killed an
+earlier version.
+
+Four attempts got here, and the failures are worth keeping:
+
+| Attempt | Why it failed |
+|---------|---------------|
+| Thin-stroke balance | 5 unit strokes across seven paths, about 3px of hairline over 44px. Read as specks. |
+| Full portico | Six knockouts — pediment, architrave, three columns, stylobate — in 27px. Read as clutter. |
+| Single column | Wide top, narrow shaft, wide base **is** a serif capital I. Read as a letter. |
+| Upright gavel | Rejected at the design stage for the same reason: it is a T. |
+
+Two rules came out of it, and they are worth applying to anything that replaces
+this mark:
+
+1. **Few bold masses, one object.** Detail that cannot be resolved at the size a
+   logo is actually seen is not detail, it is noise.
+2. **Check the silhouette against the alphabet.** A shape that happens to match a
+   letterform will be read as that letter, whatever it was meant to be. Tilting
+   is often the cheapest fix.
 
 #### Why it is a knockout rather than strokes
 
-The first attempt drew a balance with 5 unit strokes across seven separate
-paths. At header size that is about 3px of line scattered over 44px of space,
-and it read as specks, not as a symbol. This version inverts the approach: one
-solid mass with the balance removed from it via `fill-rule="evenodd"`.
+Strokes at this scale are hairlines. The mark is one solid mass with the
+balance removed from it via `fill-rule="evenodd"`, which also makes the holes
+genuinely transparent, so a single file works on white, on ink, or over a
+photograph.
+
+`fill-rule="evenodd"` fails silently if a sub-path winds the wrong way, so the
+geometry is verified by crossing-count at eleven sample points rather than by
+eye.
 
 | Mark height | Thinnest element |
 |-------------|------------------|
-| 44px (header) | 3.7px |
-| 32px | 2.7px |
-| 24px | 2.0px |
+| 50px (header) | 3.5px |
+| 42px | 2.9px |
+| 32px | 2.2px |
 | 16px | 1.3px — use `favicon.svg` instead |
 
 A knockout also means the holes are genuinely transparent, so **one file works
@@ -435,9 +460,33 @@ Everything is centred on x=36; the pans are a mirrored pair at 36 +- 12. Verify
 symmetry numerically after any edit, it is the first thing to go when paths are
 nudged by eye.
 
-The favicon is **redrawn, not scaled**: 8 units on a 64 grid instead of 6 on a
-72 grid, and a rounded tile instead of a shield, because the two silhouettes are
-indistinguishable at 16px.
+The favicon is **redrawn, not scaled**: 8 unit columns on a 64 grid instead of
+6 on a 72 grid, and a rounded tile instead of a crest, because the two
+silhouettes are indistinguishable at 16px.
+
+### The descriptor is on two lines, deliberately
+
+"LAW FIRM DIGITAL MARKETING AGENCY" is 29 letters. On one line it would have to
+drop to scale 0.065 to fit beside the mark, giving a cap height **28 percent**
+of the name — smaller than the descriptor it replaced, and the opposite of
+readable. Split across two lines with tighter tracking it sits at 0.145, or
+**70 percent** of the name.
+
+The header lockup also grew from 44px to 50px, which is what takes the
+descriptor from 8.3px to **11px** on screen. It steps back down to 46, 42 and
+34px as the header shrinks, so it never crowds:
+
+| Breakpoint | Logo | Name | Descriptor |
+|------------|------|------|------------|
+| desktop | 50px | 15.6px | 11.0px |
+| 1080px | 46px | 14.4px | 10.1px |
+| 768px | 42px | 13.1px | 9.2px |
+| 380px | 34px | 10.6px | 7.5px |
+
+The tagline "Helping Law Firms Win More Cases." is **not** in the logo file. At
+a 44px header the descriptor already renders near 8px; a tagline beneath it
+would land near 5px and be decoration pretending to be a message. It lives in
+the topbar, on every page, where it can be set at a legible size.
 
 ### The wordmark
 

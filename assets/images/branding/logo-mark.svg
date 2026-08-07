@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="72" height="72" role="img" aria-labelledby="ntMarkTitle">
-  <title id="ntMarkTitle">Neoteric ERA aegis mark</title>
+  <title id="ntMarkTitle">Neoteric ERA gavel mark</title>
   <!--
-    Standalone aegis mark: a shield with a balance knocked out of it. Identical
-    geometry to the mark inside the full lockups, so the two never drift.
+    A crest with one classical column cut out of it: capital, shaft, base,
+    drawn as a single continuous outline.
 
-    Because the balance is a knockout rather than a drawn shape, the holes are
-    transparent and this single file works on light backgrounds, dark ones, or
-    over a photograph. There is no separate light or dark variant to maintain.
+    An earlier build put a whole portico in here, six separate knockouts. At
+    the size a logo is actually seen that reads as clutter rather than as a
+    symbol. One column says the same thing and survives being small, which is
+    what restraint buys.
 
-    Use where the wordmark will not fit: app icons, avatars, watermarks,
-    social profile images. Holds down to about 24px. Below that use
-    favicon.svg, which is redrawn with heavier elements.
+    Two sub paths total. The knockout is transparent, so this one file works on
+    light backgrounds, dark ones, or over a photograph.
 
-    Everything is centred on x=36; the pans are a mirrored pair at 36 +- 12.
+    Symmetrical about x=36. Holds to about 20px; below that use favicon.svg.
   -->
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -22,8 +22,7 @@
     </linearGradient>
   </defs>
   <path fill="url(#g)" fill-rule="evenodd" d="
-    M18 6H54A6 6 0 0 1 60 12V34C60 48 50 58.5 36 66 22 58.5 12 48 12 34V12A6 6 0 0 1 18 6Z
-    M33 20H39V26H55V32H39V47H47V53H25V47H33V32H17V26H33Z
-    M18 36H30L24 44Z
-    M42 36H54L48 44Z"/>
+    M18 6H54A6 6 0 0 1 60 12V40C60 52 50 60 36 66 22 60 12 52 12 40V12A6 6 0 0 1 18 6Z
+    M34 14 52 24 46 35 40.1 31.7 31.8 46.5 25.6 43.1 33.9 28.3 28 25Z
+    M27 50H45V55H27Z"/>
 </svg>
