@@ -380,141 +380,111 @@ Motion: `--d-micro: 180ms`, `--d-component: 340ms`, `--d-reveal: 720ms`, with
 
 ## The logo system
 
-Four files in `assets/images/branding/`:
+Six files in `assets/images/branding/`, listed under Files below.
 
-| File             | Use                                                        |
-|------------------|------------------------------------------------------------|
-| `logo-dark.svg`  | **Primary.** Full lockup for light backgrounds             |
-| `logo-light.svg` | White version for dark backgrounds and the ink hero        |
-| `logo-mark.svg`  | Symbol alone — app icons, avatars, watermarks, small sizes |
-| `favicon.svg`    | Browser tab, bookmarks, PWA icon                           |
+The mark is the supplied artwork — a ribboned N fused with a fluted column and a
+scale of justice — with its navy background keyed out. The name and tagline are
+**live text**, not part of the image.
 
-### The mark â the N monogram
+That split is the whole design. Rasterised at the reference's proportions, a
+32-character tagline lands at **3.3px** in a 50px header. Text renders crisp at
+any size, steps down per breakpoint, is selectable, and can be broken onto two
+lines to control the lockup width. It also removed a second lockup file, since
+only the type colour differed between light and dark.
 
-A crest with a bold **N** cut out of it, sitting on a plinth bar.
+#### How the background was removed
 
-The division of labour is the point, and it is what four earlier attempts got
-wrong: **the letter carries the brand, the frame carries the meaning.** A
-letterform cannot denote law by itself. The crest reads heraldic, the plinth
-reads inscriptional, and between them the mark is legible as a legal identity
-without leaning on a pictorial symbol that has to survive being 24px tall.
+Colour distance would have clipped the dark coppers, which sit close to navy in
+absolute terms. The reliable key is **B minus R**:
 
-The N is a Helvetica style construction. The diagonal is offset **14 units**, not
-the 8 of the stem width, so its *perpendicular* thickness comes out at 8.75 and
-matches the stems. Offset a steep diagonal by the stem width and it measures
-thinner than the stems and looks starved.
+| | B minus R |
+|---|---|
+| Background navy | +53 to +64 |
+| Artwork, silver through dark copper | −39 to −7 |
 
-Four pictorial attempts came before this. The failures are worth keeping:
+Alpha ramps between 40 and 15. Edge pixels are then **unpremultiplied against the
+row's own background colour**, sampled per row so the vertical gradient is
+followed. Without that step every edge keeps a share of navy and the mark carries
+a blue halo on white.
 
-| Attempt | Why it failed |
-|---------|---------------|
-| Thin-stroke balance | 5 unit strokes across seven paths, about 3px of hairline over 44px. Read as specks. |
-| Full portico | Six knockouts â pediment, architrave, three columns, stylobate â in 27px. Read as clutter. |
-| Single column | Wide top, narrow shaft, wide base **is** a serif capital I. Read as a letter. |
-| Gavel | Legible, but a picture competing with the wordmark rather than reinforcing it. |
+The drop shadow and a sliver of the blue "N" from the original wordmark were both
+excluded by cropping to the gap found in a row and column profile: the artwork
+ends at y 482 and x 593, the shadow sits at y 518–528, the wordmark starts at x 645.
 
-Three rules came out of it, worth applying to whatever replaces this mark:
+#### Files
 
-1. **Few bold masses, one object.** Detail that cannot be resolved at the size a
-   logo is actually seen is not detail, it is noise.
-2. **Check the silhouette against the alphabet.** A shape that matches a letterform
-   will be read as that letter, whatever it was meant to be.
-3. **Verify knockouts numerically.** `fill-rule="evenodd"` fails silently when a
-   sub path winds the wrong way: a hole quietly becomes solid and nothing warns you.
+| File | Size | Used for |
+|---|---|---|
+| `logo-mark.png` | 73 KB | The mark, in the header, footer and mobile nav. 207×168, transparent. |
+| `logo-lockup.png` | 69 KB | Portable lockup for light grounds, and the schema.org logo. |
+| `logo-lockup-on-dark.png` | 69 KB | Portable lockup for dark grounds. |
+| `favicon-64.png` | 5 KB | Browser tab and manifest. |
+| `apple-touch-icon.png` | 29 KB | iOS home screen, 180×180. |
+| `og-image.jpg` | 48 KB | Open Graph and Twitter cards, 1200×630. |
 
+PNG rather than WebP because no WebP encoder is available in this environment.
+The mark is one cached request shared by every page.
 
-#### Why it is a knockout rather than strokes
+The icons sit on a slate-900 tile. Silver and copper vanish against dark browser
+chrome and wash out on white, so this is the one place a plate is correct.
 
-Strokes at this scale are hairlines. The mark is one solid mass with the
-balance removed from it via `fill-rule="evenodd"`, which also makes the holes
-genuinely transparent, so a single file works on white, on ink, or over a
-photograph.
+`og-image.jpg` replaced an `og:image` that pointed at an SVG. Most platforms will
+not render SVG, so every social card was silently blank.
 
-`fill-rule="evenodd"` fails silently if a sub-path winds the wrong way, so the
-geometry is verified by crossing-count at eleven sample points rather than by
-eye.
+#### Sizing
 
-| Mark height | Thinnest element |
-|-------------|------------------|
-| 50px (header) | 3.5px |
-| 42px | 2.9px |
-| 32px | 2.2px |
-| 16px | 1.3px — use `favicon.svg` instead |
+The tagline sets **two lines**. On one it was wider than the name, so the tagline
+rather than the name decided the lockup width and pushed it to 294px:
 
-A knockout also means the holes are genuinely transparent, so **one file works
-on white, on ink, or over a photograph**. Only the wordmark colour differs
-between the two lockups.
+| Breakpoint | Mark | Name | Tagline | Two lines | One line |
+|---|---|---|---|---|---|
+| Base | 44px | 18px | 9px | **201px** | 269px |
+| ≤1180px | 42px | 17px | 8.5px | **191px** | 255px |
+| ≤768px | 40px | 16px | 8px | **181px** | 241px |
+| ≤480px | 34px | 15px | 7.5px | **166px** | 223px |
 
-`fill-rule="evenodd"` fails silently if a sub-path winds the wrong way, so the
-geometry is verified by crossing-count at nine sample points rather than by eye.
+201px is a standard header lockup width, and the name decides it, which is how a
+lockup should behave.
 
-#### Palette: the site's own, nothing new
+1180px is the tightest case, not the narrowest: the nav is still on screen and at
+its smallest. Below 1080px the nav is hidden and the pressure comes off. The
+tagline now fits at every breakpoint, where on one line it had to be dropped
+below 480px.
 
-| Role | Value | Site token |
-|------|-------|------------|
-| Mark, and "ERA" | `#4F46E5` to `#7C3AED` to `#22D3EE` | `grad-brand` |
-| Wordmark, light backgrounds | `#0F172A` | `slate-900` |
-| Wordmark, dark backgrounds | `#FFFFFF` | — |
-| Descriptor | `#64748B` / white 62% | `slate-500` |
+#### Colour
 
-The gradient is the same one the site already uses seventeen times across
-headings, buttons and cards, so the logo speaks the page's existing language
-rather than importing a second palette.
+Sampled from the artwork itself, not taken from the site palette. Percentiles of
+the opaque pixels, split by saturation — near-neutral is the silver, red-over-blue
+is the copper:
 
-#### Geometry
+| | p12 | p30 | p50 | p70 | p90 |
+|---|---|---|---|---|---|
+| Copper | `#422214` | `#544237` | `#7C6355` | `#AF8D79` | `#F1C8B1` |
+| Silver | `#3B3634` | `#5F5B57` | `#828385` | `#B5B1AD` | `#E3E4DE` |
 
-Everything is centred on x=36; the pans are a mirrored pair at 36 +- 12. Verify
-symmetry numerically after any edit, it is the first thing to go when paths are
-nudged by eye.
+On white only the copper half has contrast; on ink only the silver half does. So
+each ground gets the family that works on it rather than one gradient forced to
+serve both. Every stop clears 3:1 for large text, and both tagline colours clear
+4.5:1 for small text.
 
-The favicon is **redrawn, not scaled**: 8 unit columns on a 64 grid instead of
-6 on a 72 grid, and a rounded tile instead of a crest, because the two
-silhouettes are indistinguishable at 16px.
+Three locally scoped tokens carry the whole switch:
 
-### The descriptor is on two lines, deliberately
+```css
+.site-logo { --logo-grad: …; --logo-fallback: …; --logo-tag-fg: …; }
+```
 
-"LAW FIRM DIGITAL MARKETING AGENCY" is 29 letters. On one line it would have to
-drop to scale 0.065 to fit beside the mark, giving a cap height **28 percent**
-of the name — smaller than the descriptor it replaced, and the opposite of
-readable. Split across two lines with tighter tracking it sits at 0.145, or
-**70 percent** of the name.
+`--logo-fallback` is a flat colour for browsers without `background-clip: text`,
+where a transparent fill would otherwise erase the name entirely.
 
-The header lockup also grew from 44px to 50px, which is what takes the
-descriptor from 8.3px to **11px** on screen. It steps back down to 46, 42 and
-34px as the header shrinks, so it never crowds:
+Worth being aware of: the logo is warm metal and the site is cool indigo. If that
+reads as a clash, the fix is to warm the site accents — not to recolour the mark.
 
-| Breakpoint | Logo | Name | Descriptor |
-|------------|------|------|------------|
-| desktop | 50px | 15.6px | 11.0px |
-| 1080px | 46px | 14.4px | 10.1px |
-| 768px | 42px | 13.1px | 9.2px |
-| 380px | 34px | 10.6px | 7.5px |
+#### If the artwork is ever replaced
 
-The tagline "Helping Law Firms Win More Cases." is **not** in the logo file. At
-a 44px header the descriptor already renders near 8px; a tagline beneath it
-would land near 5px and be decoration pretending to be a message. It lives in
-the topbar, on every page, where it can be set at a legible size.
-
-### The wordmark
-
-Reads **NEOTERIC** in ink, **ERA** in the brand gradient, with **DIGITAL SERVICES**
-below as a spaced-out descriptor. Two weights of information in one lockup: the
-name, and what the company actually does. A visitor who sees only the logo still
-learns the business.
-
-The letterforms are drawn as outlined geometric monoline paths on a 64×100 grid
-with a 13-unit stroke — **not live `<text>`**. The logo therefore renders
-identically everywhere regardless of installed fonts or a failed webfont load,
-which is the whole point of a logo file.
-
-### Header behaviour
-
-Both the dark and light lockups are present in the header markup, stacked, and
-cross-faded with CSS opacity. The transparent-over-dark header shows the white
-version; once condensed on scroll, it swaps to the dark one. No JavaScript, no
-flash, no second network request.
-
----
+The mark stops resolving below about 40px — the fluting, chains and filigree are
+finer than the pixels available. That is inherent to an illustrated mark, not to
+the export. A flat, few-mass symbol would survive smaller; this one trades that
+for presence at large sizes.
 
 ## Imagery
 

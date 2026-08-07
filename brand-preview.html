@@ -7,8 +7,8 @@
 <title>Neoteric ERA — logo sheet</title>
 <!--
   Internal reference sheet, not part of the site. Excluded from the sitemap and
-  set to noindex. Open it to check the mark on both backgrounds and at the sizes
-  it will actually be used, before signing the logo off.
+  set to noindex. Open it to check the logo on both backgrounds and at the sizes
+  it will actually be used, before signing anything off.
 
   Delete this file before launch, or leave it: it is noindex and unlinked.
 -->
@@ -20,95 +20,223 @@
     font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     background: #F8FAFC; color: #0F172A;
   }
-  .wrap { max-width: 980px; margin-inline: auto; }
+  .wrap { max-width: 1040px; margin-inline: auto; }
   h1 { font-size: 1.5rem; margin: 0 0 .35rem; letter-spacing: -.02em; }
-  .sub { margin: 0 0 2.5rem; color: #64748B; }
+  .sub { margin: 0 0 2.5rem; color: #64748B; max-width: 68ch; }
   h2 { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
        color: #64748B; margin: 2.5rem 0 .85rem; }
   .panel { padding: 2.25rem; border-radius: 16px; border: 1px solid rgba(15,23,42,.1); }
   .light { background: #FFFFFF; }
   .dark  { background: #0A0E1C; border-color: rgba(255,255,255,.12); }
-  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 2.5rem; }
-  .stack { display: grid; gap: 1.25rem; }
-  .cap { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: #94A3B8; }
+  .cap { font-size: .72rem; letter-spacing: .04em; color: #94A3B8; }
   .dark .cap { color: rgba(255,255,255,.5); }
   .swatches { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
-  .sw { width: 108px; }
-  .chip { height: 56px; border-radius: 10px; border: 1px solid rgba(15,23,42,.12); }
-  .sw code { font-size: .7rem; color: #64748B; }
+  .sw { width: 118px; }
+  .chipc { height: 52px; border-radius: 10px; border: 1px solid rgba(15,23,42,.12); }
+  .sw code { font-size: .68rem; color: #64748B; }
   .sizes { display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
   .sizes figure { margin: 0; text-align: center; }
   .sizes figcaption { margin-top: .5rem; font-size: .7rem; color: #94A3B8; }
+  table { border-collapse: collapse; width: 100%; font-size: .82rem; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid rgba(15,23,42,.09); vertical-align: top; }
+  th { font-weight: 600; color: #64748B; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; }
+  .rule { display: inline-block; border-top: 1px solid #94A3B8; font-size: .68rem;
+          color: #94A3B8; padding-top: .3rem; margin-top: .9rem; }
+
+  /* The live component, copied from style.css so this sheet shows the real
+     thing rather than a picture of it. */
+  .demo-logo {
+    --logo-grad: linear-gradient(100deg, #3E332C, #8C6A55 45%, #6B4F3F 72%, #42352D);
+    --logo-fallback: #5A463A;
+    --logo-tag-fg: #6E665F;
+    display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; line-height: 0;
+  }
+  .demo-logo.on-dark {
+    --logo-grad: linear-gradient(100deg, #E3E4DE, #F1C8B1 42%, #C9A186 70%, #D8D3CC);
+    --logo-fallback: #D8D3CC;
+    --logo-tag-fg: #BCB6AE;
+  }
+  .demo-logo img { height: 44px; width: auto; flex: none; }
+  .demo-logo .type { display: flex; flex-direction: column; gap: .34em; line-height: 1; }
+  .demo-logo .name {
+    font-family: Georgia, "Times New Roman", serif; font-size: 1.125rem;
+    letter-spacing: .015em; text-transform: uppercase; white-space: nowrap;
+    background-image: var(--logo-grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: var(--logo-fallback);
+  }
+  .demo-logo .tag {
+    font-family: Georgia, "Times New Roman", serif; font-size: .5625rem; line-height: 1.5;
+    letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--logo-tag-fg);
+  }
+  .demo-logo.sm img { height: 34px; }
+  .demo-logo.sm .name { font-size: .9375rem; }
+  .demo-logo.sm .tag { font-size: .4688rem; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <h1>Neoteric ERA — logo sheet</h1>
-  <p class="sub">The N monogram, in the site's own brand gradient. Full entity name set on two lines so it stays readable. Check both backgrounds and the small sizes before sign-off.</p>
+  <p class="sub">
+    The mark is the supplied artwork with its navy background keyed out. The name and
+    tagline are <strong>live text</strong>, coloured from the metals sampled off the mark
+    itself. Check both backgrounds and the small sizes before sign&nbsp;off.
+  </p>
 
-  <h2>Primary lockup · light backgrounds</h2>
+  <h2>The live component · light backgrounds</h2>
   <div class="panel light">
-    <img src="assets/images/branding/logo-dark.svg" alt="Neoteric ERA Digital Services primary logo" width="295" height="72">
+    <a class="demo-logo" href="#">
+      <img src="assets/images/branding/logo-mark.png" alt="" width="207" height="168">
+      <span class="type">
+        <span class="name">Neoteric ERA</span>
+        <span class="tag">Law Firm Digital<br>Marketing Agency</span>
+      </span>
+    </a>
+    <div><span class="rule" style="width:201px">201px — this is what the header renders</span></div>
+    <p class="cap" style="margin:1rem 0 0">44px mark, 18px name, 9px tagline.</p>
   </div>
 
-  <h2>White lockup · dark backgrounds</h2>
+  <h2>The live component · dark backgrounds</h2>
   <div class="panel dark">
-    <img src="assets/images/branding/logo-light.svg" alt="Neoteric ERA Digital Services white logo" width="295" height="72">
+    <a class="demo-logo on-dark" href="#">
+      <img src="assets/images/branding/logo-mark.png" alt="" width="207" height="168">
+      <span class="type">
+        <span class="name">Neoteric ERA</span>
+        <span class="tag">Law Firm Digital<br>Marketing Agency</span>
+      </span>
+    </a>
+    <p class="cap" style="margin:1.5rem 0 0">
+      The name switches to the silver family here. Copper turns to mud on ink, and silver
+      is invisible on white, so each ground gets the metal that works on it.
+    </p>
+  </div>
+
+  <h2>Mobile · 34px mark, tagline kept</h2>
+  <div class="panel light">
+    <a class="demo-logo sm" href="#">
+      <img src="assets/images/branding/logo-mark.png" alt="" width="207" height="168">
+      <span class="type">
+        <span class="name">Neoteric ERA</span>
+        <span class="tag">Law Firm Digital<br>Marketing Agency</span>
+      </span>
+    </a>
+    <p class="cap" style="margin:1.5rem 0 0">
+      166px. On one line the tagline had to be dropped below 480px because it needed about
+      300px of header. On two it fits everywhere.
+    </p>
+  </div>
+
+  <h2>Why the tagline sets two lines</h2>
+  <div class="panel light">
+    <table>
+      <thead><tr><th>Breakpoint</th><th>Mark</th><th>Name</th><th>Tagline</th><th>Two lines</th><th>One line</th></tr></thead>
+      <tbody>
+        <tr><td>Base</td><td>44px</td><td>18px</td><td>9px</td><td><strong>201px</strong></td><td>269px</td></tr>
+        <tr><td>≤1180px</td><td>42px</td><td>17px</td><td>8.5px</td><td><strong>191px</strong></td><td>255px</td></tr>
+        <tr><td>≤768px</td><td>40px</td><td>16px</td><td>8px</td><td><strong>181px</strong></td><td>241px</td></tr>
+        <tr><td>≤480px</td><td>34px</td><td>15px</td><td>7.5px</td><td><strong>166px</strong></td><td>223px</td></tr>
+      </tbody>
+    </table>
+    <p class="cap" style="margin:1rem 0 0">
+      On one line the 32 character tagline was wider than the name, so it decided the lockup
+      width and pushed it to 294px. On two lines the name decides it, which is how a lockup
+      should behave. 1180px is the tightest case, not the narrowest: the nav is still on
+      screen and at its smallest. Below 1080px the nav is hidden and the pressure comes off.
+    </p>
   </div>
 
   <h2>Mark alone, and the size test</h2>
   <div class="panel light">
     <div class="sizes">
-      <figure><img src="assets/images/branding/logo-mark.svg" alt="" width="96" height="96"><figcaption>96px</figcaption></figure>
-      <figure><img src="assets/images/branding/logo-mark.svg" alt="" width="48" height="48"><figcaption>48px</figcaption></figure>
-      <figure><img src="assets/images/branding/logo-mark.svg" alt="" width="32" height="32"><figcaption>32px</figcaption></figure>
-      <figure><img src="assets/images/branding/logo-mark.svg" alt="" width="20" height="20"><figcaption>20px</figcaption></figure>
-      <figure><img src="assets/images/branding/favicon.svg" alt="" width="32" height="32"><figcaption>favicon 32px</figcaption></figure>
-      <figure><img src="assets/images/branding/favicon.svg" alt="" width="16" height="16"><figcaption>favicon 16px</figcaption></figure>
+      <figure><img src="assets/images/branding/logo-mark.png" alt="" height="96"><figcaption>96px</figcaption></figure>
+      <figure><img src="assets/images/branding/logo-mark.png" alt="" height="50"><figcaption>50px footer</figcaption></figure>
+      <figure><img src="assets/images/branding/logo-mark.png" alt="" height="44"><figcaption>44px header</figcaption></figure>
+      <figure><img src="assets/images/branding/logo-mark.png" alt="" height="34"><figcaption>34px mobile</figcaption></figure>
+      <figure><img src="assets/images/branding/favicon-64.png" alt="" width="32" height="32"><figcaption>favicon 32px</figcaption></figure>
+      <figure><img src="assets/images/branding/favicon-64.png" alt="" width="16" height="16"><figcaption>favicon 16px</figcaption></figure>
     </div>
     <p class="cap" style="margin-top:1.5rem">
-      The favicon is redrawn, not scaled: a tile instead of a crest, since the two silhouettes are identical at 16px, and the plinth dropped, since a 4 unit bar disappears there and only muddies the letter.
+      The artwork is illustrated, so its fluting, chains and filigree stop resolving below about
+      40px. That is inherent to the drawing, not to the export. The icons sit on a slate-900 tile
+      because silver and copper vanish against dark browser chrome and wash out on white.
     </p>
   </div>
 
-  <h2>Lockup at real header size</h2>
+  <h2>Portable lockups · for anything outside the site</h2>
   <div class="panel light" style="margin-bottom:1rem">
-    <img src="assets/images/branding/logo-dark.svg" alt="" height="50" style="height:50px;width:auto">
-    <p class="cap" style="margin-top:1rem">50px tall, as it renders in the site header. Descriptor lands at 11px</p>
+    <img src="assets/images/branding/logo-lockup.png" alt="" style="max-width:100%;height:auto;width:411px">
   </div>
   <div class="panel dark">
-    <img src="assets/images/branding/logo-light.svg" alt="" height="50" style="height:50px;width:auto">
-    <p class="cap" style="margin-top:1rem">50px tall, over-dark header state</p>
+    <img src="assets/images/branding/logo-lockup-on-dark.png" alt="" style="max-width:100%;height:auto;width:411px">
+  </div>
+  <p class="cap" style="margin-top:.85rem">
+    821×288, transparent, 4× so it stays sharp when placed. Use these for email signatures,
+    decks and social profiles, where the HTML component is not available. Inside the site,
+    always use the component — its text is real and scales.
+  </p>
+
+  <h2>Colour · sampled from the artwork, not from the site palette</h2>
+  <div class="panel light">
+    <p class="cap" style="margin:0 0 1rem; color:#64748B">
+      Copper, for the name on light grounds
+    </p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#422214"></div><code>#422214 p12</code></div>
+      <div class="sw"><div class="chipc" style="background:#544237"></div><code>#544237 p30</code></div>
+      <div class="sw"><div class="chipc" style="background:#7C6355"></div><code>#7C6355 p50</code></div>
+      <div class="sw"><div class="chipc" style="background:#AF8D79"></div><code>#AF8D79 p70</code></div>
+      <div class="sw"><div class="chipc" style="background:#F1C8B1"></div><code>#F1C8B1 p90</code></div>
+    </div>
+    <p class="cap" style="margin:1.5rem 0 1rem; color:#64748B">
+      Silver, for the name on ink
+    </p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#3B3634"></div><code>#3B3634 p12</code></div>
+      <div class="sw"><div class="chipc" style="background:#5F5B57"></div><code>#5F5B57 p30</code></div>
+      <div class="sw"><div class="chipc" style="background:#828385"></div><code>#828385 p50</code></div>
+      <div class="sw"><div class="chipc" style="background:#B5B1AD"></div><code>#B5B1AD p70</code></div>
+      <div class="sw"><div class="chipc" style="background:#E3E4DE"></div><code>#E3E4DE p90</code></div>
+    </div>
+    <p class="cap" style="margin:1.5rem 0 0">
+      Percentiles of the opaque pixels in the mark, split by saturation: near neutral is the
+      silver, red over blue is the copper. Every stop used clears 3:1 for large text, and both
+      tagline colours clear 4.5:1 for small text.
+    </p>
   </div>
 
-  <h2>Palette</h2>
+  <h2>Site palette · unchanged, still carries everything else</h2>
   <div class="panel light">
     <div class="swatches">
-      <div class="sw"><div class="chip" style="background:#4F46E5"></div><code>#4F46E5 brand-500</code></div>
-      <div class="sw"><div class="chip" style="background:#7C3AED"></div><code>#7C3AED violet-500</code></div>
-      <div class="sw"><div class="chip" style="background:#22D3EE"></div><code>#22D3EE cyan-400</code></div>
-      <div class="sw"><div class="chip" style="background:linear-gradient(135deg,#4F46E5,#7C3AED 55%,#22D3EE)"></div><code>grad-brand</code></div>
-      <div class="sw"><div class="chip" style="background:#0F172A"></div><code>#0F172A slate-900</code></div>
-      <div class="sw"><div class="chip" style="background:#64748B"></div><code>#64748B slate-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#4F46E5"></div><code>#4F46E5 brand-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#7C3AED"></div><code>#7C3AED violet-500</code></div>
+      <div class="sw"><div class="chipc" style="background:#22D3EE"></div><code>#22D3EE cyan-400</code></div>
+      <div class="sw"><div class="chipc" style="background:#0F172A"></div><code>#0F172A slate-900</code></div>
+      <div class="sw"><div class="chipc" style="background:#64748B"></div><code>#64748B slate-500</code></div>
     </div>
+    <p class="cap" style="margin:1.25rem 0 0">
+      Worth being aware of: the logo is now warm metal and the site is cool indigo. That is a
+      deliberate contrast, not an accident — but if it reads as a clash to you, the fix is to
+      warm the site accents, not to recolour the mark.
+    </p>
   </div>
 
-  <h2>Construction</h2>
+  <h2>Files</h2>
   <div class="panel light">
-    <p style="margin:0 0 .75rem">
-      A bold N and a plinth bar are <strong>knocked out</strong> of the crest with
-      <code>fill-rule="evenodd"</code>, not drawn on top of it. So the holes are
-      genuinely transparent and one file works on white, on ink, or over a photograph.
-    </p>
-    <p style="margin:0 0 .75rem">
-      The N is a Helvetica style construction. Its diagonal is offset 14 units so the
-      <strong>perpendicular</strong> thickness lands at 8.75, matching the 8 unit stems.
-      Offset a steep diagonal by the stem width and it measures thinner than them.
-    </p>
-    <p style="margin:0">
-      Colours are the site's own <code>grad-brand</code> token and its
-      <code>slate-900</code> / <code>slate-500</code> text colours. Nothing new is introduced.
+    <table>
+      <thead><tr><th>File</th><th>Size</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td><code>logo-mark.png</code></td><td>73&nbsp;KB</td><td>The mark, in the header, footer and mobile nav. 207×168, transparent.</td></tr>
+        <tr><td><code>logo-lockup.png</code></td><td>~70&nbsp;KB</td><td>Portable lockup for light grounds, and the schema.org logo.</td></tr>
+        <tr><td><code>logo-lockup-on-dark.png</code></td><td>~70&nbsp;KB</td><td>Portable lockup for dark grounds.</td></tr>
+        <tr><td><code>favicon-64.png</code></td><td>5&nbsp;KB</td><td>Browser tab and manifest.</td></tr>
+        <tr><td><code>apple-touch-icon.png</code></td><td>29&nbsp;KB</td><td>iOS home screen, 180×180.</td></tr>
+        <tr><td><code>og-image.jpg</code></td><td>48&nbsp;KB</td><td>Open Graph and Twitter cards, 1200×630.</td></tr>
+      </tbody>
+    </table>
+    <p class="cap" style="margin:1rem 0 0">
+      The mark is a PNG because the artwork is a raster with metallic gradients, and no WebP
+      encoder is available in this environment. It is one cached request shared by every page.
     </p>
   </div>
 

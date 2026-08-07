@@ -24,8 +24,8 @@
 <meta name="color-scheme" content="light">
 
 <!-- Favicons & manifest -->
-<link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/images/branding/favicon.svg">
+<link rel="icon" href="assets/images/branding/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/images/branding/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
 <!-- Typography. Plus Jakarta Sans carries display and headings; Inter carries
@@ -111,12 +111,18 @@
     <div class="shell site-header__inner">
 
         <a class="site-logo" href="index.html" aria-label="Neoteric ERA, law firm digital marketing agency — home">
-            <!-- Two lockups stacked and cross-faded, so the logo colour changes
-                 in step with the header's own background. -->
-            <img class="site-logo__light" src="assets/images/branding/logo-light.svg"
-                 alt="Neoteric ERA — law firm digital marketing agency" width="295" height="72">
-            <img class="site-logo__dark" src="assets/images/branding/logo-dark.svg"
-                 alt="" aria-hidden="true" width="295" height="72">
+            <!-- The mark is illustrated artwork, so it stays a raster. The name
+                 and tagline are real text on purpose: rasterised, a 32 character
+                tagline is what forces the lockup wide. Set on two lines it
+                      drops the logo from 294px to 201px, which is a standard header
+                      width, and the name rather than the tagline sets it. As text it
+                      also stays crisp and is selectable. -->
+            <img class="site-logo__mark" src="assets/images/branding/logo-mark.png"
+                 alt="" aria-hidden="true" width="207" height="168" fetchpriority="high">
+            <span class="site-logo__type">
+                <span class="site-logo__name">Neoteric ERA</span>
+                <span class="site-logo__tag">Law Firm Digital<br>Marketing Agency</span>
+            </span>
         </a>
 
         <nav class="primary-nav" aria-label="Primary">
@@ -248,7 +254,18 @@
 <div class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Mobile navigation">
     <div class="mobile-nav__header">
         <a class="site-logo" href="index.html" aria-label="Neoteric ERA, law firm digital marketing agency — home">
-            <img src="assets/images/branding/logo-dark.svg" alt="Neoteric ERA — law firm digital marketing agency" width="295" height="72">
+            <!-- The mark is illustrated artwork, so it stays a raster. The name
+                 and tagline are real text on purpose: rasterised, a 32 character
+                 tagline lands at about 6px in a 50px header and cannot be read,
+                 whereas text stays crisp, can be stepped down per breakpoint,
+                 and is selectable. It also removes a second lockup file, since
+                 only the type colour differed between them. -->
+            <img class="site-logo__mark" src="assets/images/branding/logo-mark.png"
+                 alt="" aria-hidden="true" width="207" height="168" fetchpriority="high">
+            <span class="site-logo__type">
+                <span class="site-logo__name">Neoteric ERA</span>
+                <span class="site-logo__tag">Law Firm Digital<br>Marketing Agency</span>
+            </span>
         </a>
         <button class="mobile-nav__close" type="button" aria-label="Close navigation menu">
             <i class="bi bi-x-lg" aria-hidden="true"></i>
@@ -1062,8 +1079,19 @@
         <div class="shell footer-grid">
 
             <div class="footer-brand">
-                <a class="footer-brand__logo" href="index.html" aria-label="Neoteric ERA — home">
-                    <img src="assets/images/branding/logo-light.svg" alt="Neoteric ERA — law firm digital marketing agency" width="295" height="72">
+                <a class="footer-brand__logo site-logo site-logo--on-dark" href="index.html" aria-label="Neoteric ERA — home">
+                    <!-- The mark is illustrated artwork, so it stays a raster. The name
+                         and tagline are real text on purpose: rasterised, a 32 character
+                        tagline is what forces the lockup wide. Set on two lines it
+                              drops the logo from 294px to 201px, which is a standard header
+                              width, and the name rather than the tagline sets it. As text it
+                              also stays crisp and is selectable. -->
+                    <img class="site-logo__mark" src="assets/images/branding/logo-mark.png"
+                         alt="" aria-hidden="true" width="207" height="168" fetchpriority="high">
+                    <span class="site-logo__type">
+                        <span class="site-logo__name">Neoteric ERA</span>
+                        <span class="site-logo__tag">Law Firm Digital<br>Marketing Agency</span>
+                    </span>
                 </a>
                 <p class="footer-brand__text">
                     A dedicated marketing partner exclusively for law firms. Website development,

@@ -42,6 +42,13 @@
     .primary-nav__link { font-size: 0.875rem; padding-inline: 0.6rem; }
     .header-phone { display: none; }
 
+    /* The nav is at its narrowest here and still on screen, so this is the
+       tightest the header ever gets. Measured at a 1081px viewport the logo
+       needs 279px against a 425px budget. */
+    .site-logo__mark { height: 42px; }
+    .site-logo__name { font-size: 1.0625rem; }
+    .site-logo__tag  { font-size: 0.5313rem; }
+
     /* Below this width the panel is wider than the content column anyway, so
        it goes edge to edge and drops its radius rather than sitting in a
        narrow inset that wastes the little width there is. */
@@ -71,9 +78,6 @@
 @media (max-width: 1080px) {
     :root { --header-h: 70px; }
 
-    /* The lockup carries a two line descriptor, so it needs headroom. Step it
-       down in line with the header height rather than letting it crowd. */
-    .site-logo img { height: 46px; }
 
     .primary-nav { display: none; }
     .mega-menu { display: none; }
@@ -157,7 +161,9 @@
 @media (max-width: 768px) {
     :root { --header-h: 66px; --section-space: 3rem; --section-space-tight: 2.25rem; --section-space-lg: 3.75rem; }
 
-    .site-logo img { height: 42px; }
+    .site-logo__mark { height: 40px; }
+    .site-logo__name { font-size: 1rem; }
+    .site-logo__tag  { font-size: 0.5rem; }
 
     .topbar__inner { padding-inline: 2.25rem; font-size: 0.6875rem; }
     .topbar__close { right: 0.35rem; }
@@ -261,8 +267,10 @@
 @media (max-width: 480px) {
     :root { --header-h: 62px; --section-space: 2.75rem; }
 
-    .site-logo img { height: 34px; }
-    .mobile-nav__header .site-logo img { height: 32px; }
+    .site-logo__mark { height: 34px; }
+    .site-logo__name { font-size: 0.9375rem; }
+    .site-logo__tag { font-size: 0.4688rem; }
+    .mobile-nav__header .site-logo__mark { height: 32px; }
     .header-actions { gap: 0.4rem; }
     .header-actions .button-primary { padding-inline: 1rem; font-size: 0.75rem; min-height: 2.5rem; }
     .nav-toggle { width: 2.6rem; height: 2.6rem; }

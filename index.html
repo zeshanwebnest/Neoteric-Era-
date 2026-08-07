@@ -17,19 +17,19 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://www.neotericera.com/">
 <meta property="og:title" content="Law Firm Marketing Agency | Neoteric ERA Digital Services">
-<meta property="og:description" content="Website development, SEO, Google Ads and AI automation for law firms Ã¢ÂÂ one team, one strategy, measurable case enquiries.">
-<meta property="og:image" content="https://www.neotericera.com/assets/images/branding/logo-dark.svg">
+<meta property="og:description" content="Website development, SEO, Google Ads and AI automation for law firms — one team, one strategy, measurable case enquiries.">
+<meta property="og:image" content="https://www.neotericera.com/assets/images/branding/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Law Firm Marketing Agency | Neoteric ERA Digital Services">
 <meta name="twitter:description" content="Helping ambitious law firms build stronger digital visibility and sustainable client growth.">
-<meta name="twitter:image" content="https://www.neotericera.com/assets/images/branding/logo-dark.svg">
+<meta name="twitter:image" content="https://www.neotericera.com/assets/images/branding/og-image.jpg">
 
 <meta name="theme-color" content="#0A0E1C">
 <meta name="color-scheme" content="light">
 
 <!-- Favicons & manifest -->
-<link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/images/branding/favicon.svg">
+<link rel="icon" href="assets/images/branding/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/images/branding/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
 <!-- Typography. Plus Jakarta Sans carries display and headings; Inter carries
@@ -67,7 +67,7 @@
       "name": "Neoteric ERA Digital Services",
       "alternateName": "Neoteric ERA",
       "url": "https://www.neotericera.com/",
-      "logo": { "@type": "ImageObject", "url": "https://www.neotericera.com/assets/images/branding/logo-dark.svg" },
+      "logo": { "@type": "ImageObject", "url": "https://www.neotericera.com/assets/images/branding/logo-lockup.png" },
       "description": "A dedicated marketing partner exclusively for law firms. Website development, SEO, Google Ads, intake and AI automation that help law firms win more cases.",
       "slogan": "Helping Law Firms Win More Cases.",
       "telephone": "+92-309-0155045",
@@ -90,7 +90,7 @@
       "@type": "ProfessionalService",
       "@id": "https://www.neotericera.com/#service",
       "name": "Neoteric ERA Digital Services",
-      "image": "https://www.neotericera.com/assets/images/branding/logo-dark.svg",
+      "image": "https://www.neotericera.com/assets/images/branding/og-image.jpg",
       "url": "https://www.neotericera.com/",
       "telephone": "+92-309-0155045",
       "priceRange": "$$",
@@ -193,12 +193,18 @@
     <div class="shell site-header__inner">
 
         <a class="site-logo" href="index.html" aria-label="Neoteric ERA, law firm digital marketing agency — home">
-            <!-- Two lockups stacked and cross-faded, so the logo colour changes
-                 in step with the header's own background. -->
-            <img class="site-logo__light" src="assets/images/branding/logo-light.svg"
-                 alt="Neoteric ERA — law firm digital marketing agency" width="295" height="72">
-            <img class="site-logo__dark" src="assets/images/branding/logo-dark.svg"
-                 alt="" aria-hidden="true" width="295" height="72">
+            <!-- The mark is illustrated artwork, so it stays a raster. The name
+                 and tagline are real text on purpose: rasterised, a 32 character
+                tagline is what forces the lockup wide. Set on two lines it
+                      drops the logo from 294px to 201px, which is a standard header
+                      width, and the name rather than the tagline sets it. As text it
+                      also stays crisp and is selectable. -->
+            <img class="site-logo__mark" src="assets/images/branding/logo-mark.png"
+                 alt="" aria-hidden="true" width="207" height="168" fetchpriority="high">
+            <span class="site-logo__type">
+                <span class="site-logo__name">Neoteric ERA</span>
+                <span class="site-logo__tag">Law Firm Digital<br>Marketing Agency</span>
+            </span>
         </a>
 
         <nav class="primary-nav" aria-label="Primary">
@@ -330,7 +336,18 @@
 <div class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Mobile navigation">
     <div class="mobile-nav__header">
         <a class="site-logo" href="index.html" aria-label="Neoteric ERA, law firm digital marketing agency — home">
-            <img src="assets/images/branding/logo-dark.svg" alt="Neoteric ERA — law firm digital marketing agency" width="295" height="72">
+            <!-- The mark is illustrated artwork, so it stays a raster. The name
+                 and tagline are real text on purpose: rasterised, a 32 character
+                 tagline lands at about 6px in a 50px header and cannot be read,
+                 whereas text stays crisp, can be stepped down per breakpoint,
+                 and is selectable. It also removes a second lockup file, since
+                 only the type colour differed between them. -->
+            <img class="site-logo__mark" src="assets/images/branding/logo-mark.png"
+                 alt="" aria-hidden="true" width="207" height="168" fetchpriority="high">
+            <span class="site-logo__type">
+                <span class="site-logo__name">Neoteric ERA</span>
+                <span class="site-logo__tag">Law Firm Digital<br>Marketing Agency</span>
+            </span>
         </a>
         <button class="mobile-nav__close" type="button" aria-label="Close navigation menu">
             <i class="bi bi-x-lg" aria-hidden="true"></i>
@@ -418,7 +435,7 @@
 <main id="main">
 
     <!-- ======================================================================
-         01 ÃÂ· HERO
+         01 · HERO
          The H1 is unchanged by instruction. Everything else is the new
          law-firm copy, mapped onto the existing hero structure.
          ====================================================================== -->
@@ -503,7 +520,7 @@
     </section>
 
     <!-- ======================================================================
-         02 ÃÂ· TRUSTED BY
+         02 · TRUSTED BY
          The supplied tagline carries this band. The marquee names practice
          areas rather than client names: no law firm client names were provided,
          and inventing them is not an option.
@@ -543,7 +560,7 @@
     </section>
 
     <!-- ======================================================================
-         03 ÃÂ· SERVICES Ã¢ÂÂ the primary focus of this page
+         03 · SERVICES — the primary focus of this page
          Seven services now. The seventh uses the existing feature-card
          modifier so it spans both columns rather than leaving a gap.
          ====================================================================== -->
@@ -767,7 +784,7 @@
     </section>
 
     <!-- ======================================================================
-         04 ÃÂ· WHY US + STATS
+         04 · WHY US + STATS
          ====================================================================== -->
     <section class="section surface-gradient" aria-labelledby="whyHeading">
         <div class="bg-decor" aria-hidden="true">
@@ -852,7 +869,7 @@
     </section>
 
     <!-- ======================================================================
-         05 ÃÂ· PORTFOLIO PREVIEW
+         05 · PORTFOLIO PREVIEW
          The six law firm projects supplied by the client. No live URLs were
          given, so the frame bar carries the practice area instead of a domain
          and there is no "visit" link. The dedicated portfolio page still lists
@@ -887,7 +904,7 @@
                         </div>
                         <div class="work-card__shot">
                             <img src="assets/images/work-legal/family-law-website.webp"
-                                 alt="Screenshot of the Advantage AdvokatbyrÃÂ¥ family law firm website"
+                                 alt="Screenshot of the Advantage Advokatbyrå family law firm website"
                                  width="1000" height="750" loading="lazy" decoding="async">
                         </div>
                     </div>
@@ -1039,7 +1056,7 @@
     </section>
 
     <!-- ======================================================================
-         06 ÃÂ· PROCESS
+         06 · PROCESS
          ====================================================================== -->
     <section class="section surface-tint rule-top" data-process aria-labelledby="processHeading">
         <div class="shell">
@@ -1062,12 +1079,12 @@
             <div class="process">
                 <div class="process__visual reveal-scale">
                     <figure class="process__figure">
-                        <img class="is-current" src="assets/images/services/process-01.webp" alt="Discovery Ã¢ÂÂ understanding a law firm's practice areas and business goals" width="900" height="1125" loading="lazy" decoding="async">
-                        <img src="assets/images/services/process-03.webp" alt="Strategy and planning Ã¢ÂÂ keyword research and campaign roadmaps" width="900" height="1125" loading="lazy" decoding="async">
+                        <img class="is-current" src="assets/images/services/process-01.webp" alt="Discovery — understanding a law firm's practice areas and business goals" width="900" height="1125" loading="lazy" decoding="async">
+                        <img src="assets/images/services/process-03.webp" alt="Strategy and planning — keyword research and campaign roadmaps" width="900" height="1125" loading="lazy" decoding="async">
                         <img src="assets/images/services/process-05.webp" alt="Website and brand design for a legal practice" width="900" height="1125" loading="lazy" decoding="async">
-                        <img src="assets/images/services/process-06.webp" alt="Development and SEO Ã¢ÂÂ building a search-friendly legal website" width="900" height="1125" loading="lazy" decoding="async">
-                        <img src="assets/images/services/process-07.webp" alt="Launch and campaign setup Ã¢ÂÂ analytics and conversion tracking" width="900" height="1125" loading="lazy" decoding="async">
-                        <img src="assets/images/services/process-08.webp" alt="Growth and AI optimization Ã¢ÂÂ ongoing performance monitoring" width="900" height="1125" loading="lazy" decoding="async">
+                        <img src="assets/images/services/process-06.webp" alt="Development and SEO — building a search-friendly legal website" width="900" height="1125" loading="lazy" decoding="async">
+                        <img src="assets/images/services/process-07.webp" alt="Launch and campaign setup — analytics and conversion tracking" width="900" height="1125" loading="lazy" decoding="async">
+                        <img src="assets/images/services/process-08.webp" alt="Growth and AI optimization — ongoing performance monitoring" width="900" height="1125" loading="lazy" decoding="async">
                         <figcaption class="process__figure-caption">
                             <span data-process-label>Discovery</span>
                             <span class="numeral" data-process-counter>01 / 06</span>
@@ -1144,7 +1161,7 @@
     </section>
 
     <!-- ======================================================================
-         07 ÃÂ· TECHNOLOGY
+         07 · TECHNOLOGY
          ====================================================================== -->
     <section class="section section-tight surface-white rule-top" aria-labelledby="techHeading">
         <div class="shell">
@@ -1398,7 +1415,7 @@
     </section>
 
     <!-- ======================================================================
-         09 ÃÂ· INSIGHTS
+         09 · INSIGHTS
          ====================================================================== -->
     <section class="section surface-white" aria-labelledby="insightsHeading">
         <div class="shell">
@@ -1484,7 +1501,7 @@
     </section>
 
     <!-- ======================================================================
-         10 ÃÂ· FAQ
+         10 · FAQ
          ====================================================================== -->
     <section class="section surface-tint rule-top" id="faq" aria-labelledby="faqHeading">
         <div class="shell">
@@ -1495,7 +1512,7 @@
                         Questions About Neoteric ERA
                     </h2>
                     <p class="text-lead u-mt-4 reveal-up">
-                        If yours is not here, ask it directly Ã¢ÂÂ you will get a straight answer rather
+                        If yours is not here, ask it directly — you will get a straight answer rather
                         than a discovery call.
                     </p>
                     <div class="cluster u-mt-5 reveal-up">
@@ -1680,7 +1697,7 @@
     </section>
 
     <!-- ======================================================================
-         11 ÃÂ· CTA BAND
+         11 · CTA BAND
          ====================================================================== -->
     <section class="cta-band" aria-labelledby="ctaHeading">
         <div class="bg-decor" aria-hidden="true">
@@ -1782,8 +1799,19 @@
         <div class="shell footer-grid">
 
             <div class="footer-brand">
-                <a class="footer-brand__logo" href="index.html" aria-label="Neoteric ERA — home">
-                    <img src="assets/images/branding/logo-light.svg" alt="Neoteric ERA — law firm digital marketing agency" width="295" height="72">
+                <a class="footer-brand__logo site-logo site-logo--on-dark" href="index.html" aria-label="Neoteric ERA — home">
+                    <!-- The mark is illustrated artwork, so it stays a raster. The name
+                         and tagline are real text on purpose: rasterised, a 32 character
+                        tagline is what forces the lockup wide. Set on two lines it
+                              drops the logo from 294px to 201px, which is a standard header
+                              width, and the name rather than the tagline sets it. As text it
+                              also stays crisp and is selectable. -->
+                    <img class="site-logo__mark" src="assets/images/branding/logo-mark.png"
+                         alt="" aria-hidden="true" width="207" height="168" fetchpriority="high">
+                    <span class="site-logo__type">
+                        <span class="site-logo__name">Neoteric ERA</span>
+                        <span class="site-logo__tag">Law Firm Digital<br>Marketing Agency</span>
+                    </span>
                 </a>
                 <p class="footer-brand__text">
                     A dedicated marketing partner exclusively for law firms. Website development,

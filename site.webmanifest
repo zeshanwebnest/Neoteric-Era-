@@ -13,10 +13,16 @@
   "categories": ["business", "productivity"],
   "icons": [
     {
-      "src": "/assets/images/branding/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/assets/images/branding/favicon-64.png",
+      "sizes": "64x64",
+      "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/assets/images/branding/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

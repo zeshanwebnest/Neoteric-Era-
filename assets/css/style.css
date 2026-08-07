@@ -91,6 +91,9 @@
        small sizes. */
     --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* The logo only. Serif, to match the mark artwork; nothing else on the
+       site is set in it. Liberation and DejaVu are the Linux metric matches. */
+    --font-brand:   Georgia, "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 
     --w-regular: 400; --w-medium: 500; --w-semibold: 600;
     --w-bold: 700;    --w-extrabold: 800;
@@ -1028,33 +1031,69 @@ p:last-child { margin-bottom: 0; }
     min-height: var(--header-h);
 }
 
-/* --- Logo -------------------------------------------------------------- */
-.site-logo { display: inline-flex; align-items: center; flex: none; line-height: 0; position: relative; }
-.site-logo img { height: 50px; width: auto; }
+/* --- Logo ---------------------------------------------------------------
+   The mark is artwork and stays a raster; the name and tagline are real text.
 
-.site-logo__light, .site-logo__dark { transition: opacity var(--d-component) var(--ease-subtle); }
+   The tagline sets two lines because on one it is what forces the lockup wide:
+   201px against 269px, so the name rather than the tagline decides the width.
 
-/* The dark lockup is stacked on top of the light one and the pair is cross
-   faded, so the logo colour changes in step with the header background with
-   no second request and no flash.
+   Colour comes from the artwork, not from the site palette. The metals were
+   sampled off the mark itself: copper runs #422214 to #F1C8B1, silver #3B3634
+   to #E3E4DE. On white only the copper half has contrast, and on ink only the
+   silver half does, so each ground gets the family that works on it rather
+   than one gradient forced to serve both.
 
-   Pinned by top/left rather than `inset: 0`. Both edges of an axis plus a
-   non-auto width over-constrains the box, and the dark logo would then be
-   stretched to whatever the light one happens to measure instead of keeping
-   its own aspect ratio. Only the two logical origins are set; `height: 44px`
-   with `width: auto` above resolves the rest. */
-.site-logo__dark { position: absolute; top: 0; left: 0; opacity: 0; }
+   Three locally scoped tokens carry the whole light and dark switch. ------- */
+.site-logo {
+    --logo-grad: linear-gradient(100deg, #3E332C, #8C6A55 45%, #6B4F3F 72%, #42352D);
+    --logo-fallback: #5A463A;
+    --logo-tag-fg: #6E665F;
 
-.site-header--over-dark:not(.is-condensed):not(.is-mega-open) .site-logo__light { opacity: 1; }
-.site-header--over-dark:not(.is-condensed):not(.is-mega-open) .site-logo__dark { opacity: 0; }
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex: none;
+    text-decoration: none;
+    line-height: 0;
+}
 
-.site-header:not(.site-header--over-dark) .site-logo__light,
-.site-header.is-condensed .site-logo__light,
-.site-header.is-mega-open .site-logo__light { opacity: 0; }
+.site-logo__mark { height: 44px; width: auto; flex: none; }
 
-.site-header:not(.site-header--over-dark) .site-logo__dark,
-.site-header.is-condensed .site-logo__dark,
-.site-header.is-mega-open .site-logo__dark { opacity: 1; }
+.site-logo__type { display: flex; flex-direction: column; gap: 0.34em; line-height: 1; }
+
+.site-logo__name {
+    font-family: var(--font-brand);
+    font-size: 1.125rem;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    background-image: var(--logo-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--logo-fallback);   /* where background-clip is unsupported */
+}
+
+.site-logo__tag {
+    font-family: var(--font-brand);
+    font-size: 0.5625rem;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--logo-tag-fg);
+    transition: color var(--d-component) var(--ease-subtle);
+}
+
+/* On ink the copper goes to mud, so the name switches to the silver family and
+   its warm highlight. Both were sampled from the same artwork. */
+.site-logo--on-dark,
+.site-header--over-dark:not(.is-condensed):not(.is-mega-open) .site-logo {
+    --logo-grad: linear-gradient(100deg, #E3E4DE, #F1C8B1 42%, #C9A186 70%, #D8D3CC);
+    --logo-fallback: #D8D3CC;
+    --logo-tag-fg: #BCB6AE;
+}
 
 /* --- Primary navigation ------------------------------------------------ */
 .primary-nav { display: flex; align-items: center; }
@@ -1322,7 +1361,9 @@ a.mega-menu__column-title:hover { color: var(--accent-500); }
     flex: none;
 }
 
-.mobile-nav__header .site-logo img { height: 38px; }
+.mobile-nav__header .site-logo__mark { height: 38px; }
+.mobile-nav__header .site-logo__name { font-size: 1rem; }
+.mobile-nav__header .site-logo__tag { font-size: 0.5rem; }
 
 .mobile-nav__close {
     display: inline-flex;
@@ -1741,8 +1782,10 @@ a.mega-menu__column-title:hover { color: var(--accent-500); }
     gap: clamp(1.75rem, 1rem + 2.2vw, 3.5rem);
 }
 
-.footer-brand__logo { display: inline-block; margin-bottom: var(--s-4); line-height: 0; }
-.footer-brand__logo img { height: 48px; width: auto; }
+.footer-brand__logo { margin-bottom: var(--s-4); }
+.footer-brand__logo .site-logo__mark { height: 50px; }
+.footer-brand__logo .site-logo__name { font-size: 1.3125rem; }
+.footer-brand__logo .site-logo__tag { font-size: 0.625rem; }
 .footer-brand__text { max-width: 36ch; font-size: var(--t-small); line-height: 1.7; color: rgba(255,255,255,0.64); }
 
 .footer-contact { display: grid; gap: 0.7rem; margin-top: var(--s-5); }
