@@ -1022,7 +1022,10 @@
     align-items: center;
     justify-content: center;
     width: 2.5rem; height: 2.5rem;
-    background-color: #1B3A6B;
+    /* Was a hardcoded fill that fought its own contextual border and text: the
+       muted foreground sat at about 1.9:1 on it, and because the resting state
+       was already saturated the hover barely read as a change. */
+    background-color: var(--surface-raised);
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
     color: var(--on-surface-muted);

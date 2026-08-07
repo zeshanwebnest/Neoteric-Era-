@@ -464,8 +464,11 @@ vector or regenerated at higher resolution at source.
 PNG rather than WebP because no WebP encoder is available in this environment.
 The mark is one cached request shared by every page.
 
-The icons sit on a slate-900 tile. Silver and copper vanish against dark browser
-chrome and wash out on white, so this is the one place a plate is correct.
+The icons are transparent, with no tile. That trades something worth knowing:
+the mark is silver and copper, so it loses definition against a very dark or very
+light browser chrome, and a transparent touch icon renders on black on some older
+iOS versions. The manifest therefore no longer declares the touch icon
+`maskable`, since that requires an opaque image.
 
 `og-image.jpg` replaced an `og:image` that pointed at an SVG. Most platforms will
 not render SVG, so every social card was silently blank.

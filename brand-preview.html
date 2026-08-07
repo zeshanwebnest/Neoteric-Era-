@@ -158,8 +158,14 @@
     </div>
     <p class="cap" style="margin-top:1.5rem">
       The artwork is illustrated, so its fluting, chains and filigree stop resolving below about
-      40px. That is inherent to the drawing, not to the export. The icons sit on a slate-900 tile
-      because silver and copper vanish against dark browser chrome and wash out on white.
+      40px. That is inherent to the drawing, not to the export.
+    </p>
+    <p class="cap" style="margin-top:.75rem">
+      The icons are <strong>transparent</strong>, with no tile behind them. Worth knowing what
+      that trades: the mark is silver and copper, so it loses definition against a very dark or
+      very light browser chrome, and a transparent touch icon renders on black on some older
+      iOS versions. The manifest no longer declares the touch icon <code>maskable</code>, which
+      requires an opaque image.
     </p>
   </div>
 
